@@ -19,8 +19,8 @@ body { /* overriding base styles for all pages */
   margin: 0;
   min-height: 100vh;
   text-align: center;
-  background-color: #ffffff;
-  color: #111111;
+  background-color: #000;
+  color: #FFFFFF;
 }
 
 /* Override active navbar link color */
@@ -28,7 +28,7 @@ body { /* overriding base styles for all pages */
   color: #212529; /* dark neutral */
 }
 
-/* Optional: hover color */
+/* Hover color */
 .navbar-light .navbar-nav .nav-link:hover {
   color: #000;
 }
@@ -57,6 +57,71 @@ p {
    Landing page styles
    ========================= */
 
+/* Navbar link base color */
+#mainNav .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Color when hover */
+#mainNav .navbar-nav .nav-link:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Color when clicked */
+#mainNav .navbar-nav .nav-link.active {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+   
+
+/* Remove the teal underline/border on the active link */
+#mainNav.navbar-shrink .nav-link.active {
+  border-bottom: rgba(255,255,255,0.85) !important;
+}
+
+/* fixed button size */
+.btn-fixed {
+  min-width: 160px;   
+}
+
+/* Override masthead background */
+.masthead {
+  background: none !important;
+  background-color: #000; /* or #fff */
+}
+
+/* Frosted white glass navbar */
+#mainNav.navbar-shrink {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Override name color in navbar */
+#mainNav .navbar-brand,
+#mainNav .navbar-brand:hover,
+#mainNav .navbar-brand:focus {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Reduce the overall height of the navbar */
+#mainNav {
+    padding-top: 0.5rem !important;    
+    padding-bottom: 0.5rem !important;
+}
+
+/* Make my name smaller */
+#mainNav .navbar-brand {
+    font-size: 1rem !important;        
+}
+
+/* Make the links smaller */
+#mainNav .nav-link {
+    font-size: 0.8rem !important;      /* Smaller font for a cleaner look */
+    padding: 0.5rem 1rem !important;   /* Reduces space between links */
+}
+
 body.landing {
   /* landing-specific overrides if needed */
 }
@@ -76,4 +141,3 @@ body.cyber {
 body.photography {
     /* photography-specific overrides if needed */
 }
-
