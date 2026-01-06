@@ -122,6 +122,19 @@ p {
     padding: 0.5rem 1rem !important;   /* Reduces space between links */
 }
 
+/* Reduce font size for body text in about section */
+.about-section p {
+    width: 660px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.9rem;
+}
+
+/* Reduce font size for title text in about section */
+.about-section h2 {
+    font-size: 2rem !important; 
+}
+
 body.landing {
   /* landing-specific overrides if needed */
 }
