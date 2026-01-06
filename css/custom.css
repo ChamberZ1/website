@@ -1,0 +1,79 @@
+/* =========================
+   Global theme overrides
+   ========================= */
+
+:root {
+  --bs-primary: #212529;
+  --bs-info: #212529;
+  --bs-teal: #212529;
+  --bs-link-color: #212529;
+  --bs-link-hover-color: #000;
+
+}
+
+/* =========================
+   Base shared styles
+   ========================= */
+
+body { /* overriding base styles for all pages */
+  margin: 0;
+  min-height: 100vh;
+  text-align: center;
+  background-color: #ffffff;
+  color: #111111;
+}
+
+/* Override active navbar link color */
+.navbar-light .navbar-nav .nav-link.active {
+  color: #212529; /* dark neutral */
+}
+
+/* Optional: hover color */
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #000;
+}
+
+.navbar-light .navbar-nav .nav-link.active::after {
+  background-color: #212529;
+}
+
+/* =========================
+   Centered page content
+   ========================= */
+
+.page-center { /* utility class for centering content */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-size: 1.25rem;
+}
+
+/* =========================
+   Landing page styles
+   ========================= */
+
+body.landing {
+  /* landing-specific overrides if needed */
+}
+
+/* =========================
+   Cyber page styles
+   ========================= */
+
+body.cyber {
+    /* cyber-specific overrides if needed */
+}
+
+/* =========================
+   Photography page styles
+   ========================= */
+
+body.photography {
+    /* photography-specific overrides if needed */
+}
+
