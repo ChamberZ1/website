@@ -89,11 +89,16 @@ p {
   background-color: #000; /* or #fff */
 }
 
+
+/* =========================
+   navbar on large screens
+   ========================= */
+
 /* Frosted white glass navbar */
 #mainNav.navbar-shrink {
   background-color: rgba(255, 255, 255, 0.12) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
@@ -122,9 +127,71 @@ p {
     padding: 0.5rem 1rem !important;   /* Reduces space between links */
 }
 
+/* =========================
+   For less than large screens
+   ========================= */
+
+/* Mobile Navbar: Translucent Background */
+@media (max-width: 991.98px) { /* Responsive design: this applies only for screens under 992px. 992 is the official large (lg) breakpoint for Bootstrap */
+    
+    #mainNav {
+        background-color: rgba(0, 0, 0, 0.7) !important; /* Translucent black */
+        backdrop-filter: blur(12px); /* Adds a modern 'glass' effect */
+    }
+    
+    /* Change the 'Menu' button border and text color. Menu button only shows up on smaller screens */
+    #mainNav .navbar-toggler {
+        color: #ffffff !important; /* Changes 'Menu' text to white */
+        border-color: rgba(255, 255, 255, 0.5) !important; /* Changes border to faded white */
+        font-size: 0.8rem; /* Adjust hambugga button size */
+    }
+
+    #mainNav .navbar-toggler-icon {
+    /* Overrides the default teal hambergur icon with a white version */
+        filter: invert(1) grayscale(100%) brightness(200%);
+    }
+    
+
+    /* Keep the dropdown menu transparent as well */
+    #mainNav .navbar-collapse {
+        background-color: transparent !important;
+        border: none !important;
+    }
+
+    /* Change link colors to white so they show up on the dark background */
+    #mainNav .nav-link {
+        color: rgba(255, 255, 255, 0.8) !important;
+        padding: 1rem 0; /* Adds a bit of vertical space for thumb-tapping */
+    }
+
+    /* Show translucent background when the menu is toggled open */
+    #mainNav:has(.navbar-collapse.show),
+    #mainNav:has(.navbar-toggler:not(.collapsed)) {
+        background-color: rgba(0, 0, 0, 0.8) !important;
+        backdrop-filter: blur(12px);
+    }
+
+    /* Frosted white glass navbar */
+    #mainNav.navbar-shrink {
+        background-color: rgba(0, 0, 0, 0.8) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    
+}
+
+
+/* =========================
+   About Me Section
+   ========================= */
+
 /* Reduce font size for body text in about section */
 .about-section p {
-    width: 660px;
+    width: 85%;
+    max-width: 660px;
     margin-left: auto;
     margin-right: auto;
     font-size: 0.9rem;
@@ -135,9 +202,6 @@ p {
     font-size: 2rem !important; 
 }
 
-body.landing {
-  /* landing-specific overrides if needed */
-}
 
 /* =========================
    Cyber page styles
