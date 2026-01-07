@@ -1,17 +1,4 @@
 /* =========================
-   Global theme overrides
-   ========================= */
-
-:root {
-  --bs-primary: #212529;
-  --bs-info: #212529;
-  --bs-teal: #212529;
-  --bs-link-color: #212529;
-  --bs-link-hover-color: #000;
-
-}
-
-/* =========================
    Base shared styles
    ========================= */
 
@@ -21,20 +8,6 @@ body { /* overriding base styles for all pages */
   text-align: center;
   background-color: #000;
   color: #FFFFFF;
-}
-
-/* Override active navbar link color */
-.navbar-light .navbar-nav .nav-link.active {
-  color: #212529; /* dark neutral */
-}
-
-/* Hover color */
-.navbar-light .navbar-nav .nav-link:hover {
-  color: #000;
-}
-
-.navbar-light .navbar-nav .nav-link.active::after {
-  background-color: #212529;
 }
 
 /* =========================
@@ -53,29 +26,25 @@ p {
   font-size: 1.25rem;
 }
 
-/* =========================
-   Landing page styles
-   ========================= */
+/* ===========================================
+   Navbar overrides on default/large screens
+   =========================================== */
 
 /* Navbar link base color */
 #mainNav .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* Color when hover */
-#mainNav .navbar-nav .nav-link:hover {
-  color: rgba(255, 255, 255, 0.95);
-}
-
-/* Color when clicked */
+/* Hover AND Active State */
+#mainNav .navbar-nav .nav-link:hover,
 #mainNav .navbar-nav .nav-link.active {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
    
 
-/* Remove the teal underline/border on the active link */
+/* Make the teal underline/border on the active link white */
 #mainNav.navbar-shrink .nav-link.active {
-  border-bottom: rgba(255,255,255,0.85) !important;
+border-bottom: 0.25rem solid rgba(255,255,255,0.85) !important;
 }
 
 /* fixed button size */
@@ -89,10 +58,6 @@ p {
   background-color: #000; /* or #fff */
 }
 
-
-/* =========================
-   navbar on large screens
-   ========================= */
 
 /* Frosted white glass navbar */
 #mainNav.navbar-shrink {
@@ -135,7 +100,7 @@ p {
 @media (max-width: 991.98px) { /* Responsive design: this applies only for screens under 992px. 992 is the official large (lg) breakpoint for Bootstrap */
     
     #mainNav {
-        background-color: rgba(0, 0, 0, 0.7) !important; /* Translucent black */
+        background-color: rgba(0, 0, 0, 0.8) !important; /* Translucent black */
         backdrop-filter: blur(12px); /* Adds a modern 'glass' effect */
     }
     
@@ -178,6 +143,11 @@ p {
         -webkit-backdrop-filter: blur(12px);
 
         border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    /* remove the underline/border on the active link for mobile */
+    #mainNav.navbar-shrink .nav-link.active {
+        border-bottom: none !important;
     }
 
     
