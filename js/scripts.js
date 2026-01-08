@@ -52,3 +52,59 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+// BEGIN MY CODE
+
+// This method is only called when an element with the onclick="openImage(this.src)" attribute is clicked. So no need for conditional checks
+function openImage(imageUrl) {
+   const modal = document.getElementById("photoModal");
+   const modalImg = document.getElementById("fullImage");
+
+   modal.style.display = "flex"; // Show the modal
+   modalImg.src = imageUrl; // Put the clicked image in the modal
+}
+
+function closeModal() {
+    const modal = document.getElementById("photoModal");
+    const modalImg = document.getElementById("fullImage");
+
+    modal.style.display = "none"; // Hide the modal
+
+    // Reset zoom state
+    modalImg.classList.remove("is-zoomed"); 
+    modalImg.style.transformOrigin = "center center"; 
+    modalImg.removeEventListener("mousemove", updateZoomPos);
+
+}
+
+function toggleZoom(event) {
+    event.stopPropagation(); // Prevent the click from closing the modal
+
+    const img = event.target;
+    img.classList.toggle("is-zoomed");
+
+    if (img.classList.contains("is-zoomed")) {
+        // Apply initial position so it doesn't jump
+        updateZoomPos(event);
+        // Add listener to track mouse movement while zoomed
+        img.addEventListener("mousemove", updateZoomPos);
+    } else {
+        // Remove listener and reset position when zooming out
+        img.removeEventListener("mousemove", updateZoomPos);
+        img.style.transformOrigin = "center center";
+    }
+}
+
+function updateZoomPos(e) {
+    const img = e.target;
+
+    // Get the dimensions of the image and mouse position
+    const rect = img.getBoundingClientRect();
+
+    // Calculate mouse position as a percentage of the image (0 to 100)
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    // Move the "origin" of the scale to the mouse position
+    img.style.transformOrigin = `${x}% ${y}%`;
+}

@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
         <title>CHEESE</title>
         
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -19,9 +20,89 @@
         <link href="css/custom.css" rel="stylesheet">
     </head>
    
-    <body class="photography"> <!--  Added class for potential future styling  -->
-        <main class="page-center"> <!-- Centered content --> 
-            <p>The cameraman never dies.</p>
+    <body class="photography">
+        <main>
+            <div class="wrapper">
+                <div class="masonry-grid">
+                    <div class="masonry-item">
+                        <img src="assets/img/3p-1.jpeg" 
+                            alt="Mt. Olomana Trail (Three Peaks)" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/3p-2.jpeg" 
+                            alt="Mt. Olomana Trail (Three Peaks)" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/cliff-sea.jpeg" 
+                            alt="Makapu'u Lighthouse View" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/cow-in-field.JPG" 
+                            alt="Livermore Cow" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/hw-sea-view.jpg" 
+                            alt="From Pink Pillbox" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/lh-sea.jpeg" 
+                            alt="From Diamondhead" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/mtn-ridges1.jpeg" 
+                            alt="Wiliwilinui Ridge" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/mtn-ridges-w-stair.jpeg" 
+                            alt="Wiliwilinui Ridge with Stairway" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/rb-car.jpeg" 
+                            alt="Car Under Rainbow" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/rb-over-haus.jpeg" 
+                            alt="House Under Rainbow" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/squir-in-yose.JPG" 
+                            alt="Squirrel in Yosemite" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/view-haus-sea.jpeg" 
+                            alt="Lanikai Pillbox View" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/water.jpeg" 
+                            alt="Waimanalo Beach" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="assets/img/lh-sea.jpeg" 
+                            alt="Neon Streets" 
+                            onclick="openImage(this.src)">
+                    </div>
+                    </div>
+            </div>
         </main>
+
+        <div id="photoModal" class="modal-overlay" onclick="closeModal()">
+            <span class="close-button">&times;</span>
+            <img class="modal-content" id="fullImage" onclick="toggleZoom(event)">
+        </div>"
+
+        <script src="js/scripts.js"></script>
     </body>
 </html>
