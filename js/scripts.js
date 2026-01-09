@@ -55,13 +55,43 @@ window.addEventListener('DOMContentLoaded', event => {
 
 // BEGIN MY CODE
 
+let currentImageIndex = 0;
+let allImages = [];
+
+// Call this function when the page loads to "grab" all photography images
+window.onload = function() {
+    // Select all images inside your masonry-grid
+    const imgElements = document.querySelectorAll('.masonry-grid img');
+    allImages = Array.from(imgElements).map(img => img.src);
+};
+
 // This method is only called when an element with the onclick="openImage(this.src)" attribute is clicked. So no need for conditional checks
 function openImage(imageUrl) {
    const modal = document.getElementById("photoModal");
    const modalImg = document.getElementById("fullImage");
 
+   // Find where this image sits in our list
+   
+   currentImageIndex = allImages.indexOf(imageUrl);
+
+   modalImg.src = ""; // Clear old image
    modal.style.display = "flex"; // Show the modal
    modalImg.src = imageUrl; // Put the clicked image in the modal
+}
+
+function changeImage(direction, event) {
+    // stopPropagation prevents the modal from closing when clicking arrows
+    event.stopPropagation();
+    
+    currentImageIndex += direction;
+
+    // Loop back to start/end if we go out of bounds
+    if (currentImageIndex >= allImages.length) currentImageIndex = 0;
+    if (currentImageIndex < 0) currentImageIndex = allImages.length - 1;
+
+    const modalImg = document.getElementById("fullImage");
+    modalImg.classList.remove("is-zoomed"); // Reset zoom when switching images
+    modalImg.src = allImages[currentImageIndex];
 }
 
 function closeModal() {
@@ -107,4 +137,36 @@ function updateZoomPos(e) {
 
     // Move the "origin" of the scale to the mouse position
     img.style.transformOrigin = `${x}% ${y}%`;
+}
+
+/* Code for swiping between images on mobile devices */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+const modal = document.getElementById("photoModal");
+
+// Listen for the start of a touch
+modal.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+}, {passive: true}); // Doesn't interrupt scrolling
+
+// Listen for the end of a touch
+modal.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, {passive: true});
+
+function handleSwipe() {
+    const swipeThreshold = 50; // Minimum distance in pixels to count as a swipe
+    
+    if (touchEndX < touchStartX - swipeThreshold) {
+        // Swiped Left -> Show Next Image
+        changeImage(1, new Event('swipe'));
+    }
+    
+    if (touchEndX > touchStartX + swipeThreshold) {
+        // Swiped Right -> Show Previous Image
+        changeImage(-1, new Event('swipe'));
+    }
 }

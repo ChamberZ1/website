@@ -256,7 +256,7 @@ body.photography .masonry-item img:hover {
   object-fit: contain;
   width: auto;
   height: auto;
-  max-width: 90vw;
+  max-width: 80vw;
   max-height: 90vh;
   cursor: zoom-in;
 
@@ -268,17 +268,6 @@ body.photography .masonry-item img:hover {
 .modal-content.is-zoomed {
     transform: scale(3); /* Zoom in */
     cursor: zoom-out;      
-}
-
-/* X Close button */
-.close-button {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 /* ======================
@@ -329,3 +318,51 @@ body.photography .masonry-item img {
     }
 }
 
+/* =========================================
+   Arrow buttons for swiping through images
+   ========================================= */
+
+.prev-button, .next-button {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 8vw;
+
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+
+  background: none;
+  color: rgba(200, 200, 200, 0.2);
+  border: none;
+
+  /* ADAPTIVE SIZE: 4% of screen width */
+  /* clamp(min, preferred, max) */
+  font-size: clamp(10px, 1.75vw, 60px);
+
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 10000; /* Ensure they stay above the image */
+}
+
+
+.prev-button { left: 1vw; }
+.next-button { right: 1vw; }
+
+.prev-button:hover, .next-button:hover {
+  color: #FFFFFF;
+  transform: translateY(-50%) scale(1.1);
+}
+
+@media (max-width: 400px) {
+  .prev-button, .next-button {
+    display: none !important;
+  }
+
+  /* Make the image slightly wider now that 
+      the arrows are gone to use the extra space */
+  .modal-content {
+      max-width: 95vw;
+  }
+}

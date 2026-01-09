@@ -99,9 +99,11 @@
         </main>
 
         <div id="photoModal" class="modal-overlay" onclick="closeModal()">
-            <span class="close-button">&times;</span>
+            <button class="prev-button" onclick="event.stopPropagation(); changeImage(-1, event)">&#10094;</button>
+            <button class="next-button" onclick="event.stopPropagation(); changeImage(1, event)">&#10095;</button>
+
             <img class="modal-content" id="fullImage" onclick="toggleZoom(event)">
-        </div>"
+        </div>
 
         <script src="js/scripts.js"></script>
     </body>
