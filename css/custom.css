@@ -357,7 +357,7 @@ body.photography .masonry-item img {
   transform: translateY(-50%) scale(1.1);
 }
 
-@media (max-width: 400px) {
+@media (max-width: 768px) {
   .prev-button, .next-button {
     display: none !important;
   }
