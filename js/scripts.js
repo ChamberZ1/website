@@ -62,21 +62,21 @@ let allImages = [];
 window.onload = function() {
     // Select all images inside your masonry-grid
     const imgElements = document.querySelectorAll('.masonry-grid img');
-    allImages = Array.from(imgElements).map(img => img.src);
+    allImages = Array.from(imgElements).map(img => img.getAttribute('data-full'));
 };
 
-// This method is only called when an element with the onclick="openImage(this.src)" attribute is clicked. So no need for conditional checks
-function openImage(imageUrl) {
+function openImage(fullImageUrl) {
    const modal = document.getElementById("photoModal");
    const modalImg = document.getElementById("fullImage");
 
-   // Find where this image sits in our list
-   
-   currentImageIndex = allImages.indexOf(imageUrl);
-
    modalImg.src = ""; // Clear old image
    modal.style.display = "flex"; // Show the modal
-   modalImg.src = imageUrl; // Put the clicked image in the modal
+
+   // Find where this image sits in our list of 2000px images
+   currentImageIndex = allImages.indexOf(fullImageUrl);
+
+
+   modalImg.src = fullImageUrl; // Put the clicked image in the modal
 }
 
 function changeImage(direction, event) {

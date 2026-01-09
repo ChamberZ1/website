@@ -287,9 +287,11 @@ body.photography .masonry-grid {
 }
 
 body.photography .masonry-item {
-    display: inline-block; /* Essential to prevent items from splitting across columns */
+    display: block;
     width: 100%;
     margin-bottom: 1.1rem; /* Space between rows */
+    break-inside: avoid; /* Prevents items from breaking across columns */;
+
 }
 
 body.photography .masonry-item img {
