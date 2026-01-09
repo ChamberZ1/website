@@ -170,3 +170,12 @@ function handleSwipe() {
         changeImage(-1, new Event('swipe'));
     }
 }
+
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById("photoModal");
+    if (modal.style.display === "flex") {
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowLeft") changeImage(-1, e);
+        if (e.key === "ArrowRight") changeImage(1, e);
+    }
+});
