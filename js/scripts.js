@@ -81,7 +81,9 @@ function openImage(imageUrl) {
 
 function changeImage(direction, event) {
     // stopPropagation prevents the modal from closing when clicking arrows
-    event.stopPropagation();
+    if (event && typeof event.stopPropagation === 'function') {
+        event.stopPropagation();
+    }
     
     currentImageIndex += direction;
 
@@ -126,7 +128,7 @@ function toggleZoom(event) {
 }
 
 function updateZoomPos(e) {
-    const img = e.target;
+    const img = document.getElementById("fullImage");
 
     // Get the dimensions of the image and mouse position
     const rect = img.getBoundingClientRect();
