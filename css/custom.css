@@ -365,6 +365,6 @@ body.photography .masonry-item img {
   /* Make the image slightly wider now that 
       the arrows are gone to use the extra space */
   .modal-content {
-      max-width: 95vw;
+      max-width: 100vw;
   }
 }

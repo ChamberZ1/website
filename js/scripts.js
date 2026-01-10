@@ -71,6 +71,7 @@ function openImage(fullImageUrl) {
 
    modalImg.src = ""; // Clear old image
    modal.style.display = "flex"; // Show the modal
+   document.body.style.overflow = "hidden";
 
    // Find where this image sits in our list of 2000px images
    currentImageIndex = allImages.indexOf(fullImageUrl);
