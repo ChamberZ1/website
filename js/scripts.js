@@ -71,7 +71,7 @@ function openImage(fullImageUrl) {
 
    modalImg.src = ""; // Clear old image
    modal.style.display = "flex"; // Show the modal
-   document.body.style.overflow = "hidden";
+   document.body.style.overflow = "hidden"; // Disable background scrolling
 
    // Find where this image sits in our list of 2000px images
    currentImageIndex = allImages.indexOf(fullImageUrl);
@@ -151,16 +151,33 @@ const modal = document.getElementById("photoModal");
 
 // Listen for the start of a touch
 modal.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
+    if (e.targetTouches.length === 1) {
+        touchStartX = e.changedTouches[0].screenX;
+    }
 }, {passive: true}); // Doesn't interrupt scrolling
 
 // Listen for the end of a touch
 modal.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
+    if (e.targetTouches.length === 0 && e.changedTouches.length === 1) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }
+}, {passive: true});
+
+let isPinching = false;
+
+modal.addEventListener('touchmove', e => {
+    if (e.targetTouches.length > 1) {
+        isPinching = true; // User added a second finger
+    }
 }, {passive: true});
 
 function handleSwipe() {
+
+    if (isPinching) {
+        isPinching = false; // Reset for next time
+        return; // Exit! Don't change the image.
+    }
     const swipeThreshold = 50; // Minimum distance in pixels to count as a swipe
     
     if (touchEndX < touchStartX - swipeThreshold) {
