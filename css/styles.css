@@ -173,6 +173,7 @@ button {
   text-transform: none;
 }
 
+
 button,
 [type=button] {
   -webkit-appearance: button;
@@ -657,7 +658,7 @@ button:not(:disabled),
 
 .text-black {
   --bs-text-opacity: 1;
-  color: #000
+  color: #000;
 }
 
 .text-white-50 {
