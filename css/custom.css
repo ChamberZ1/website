@@ -209,64 +209,14 @@ footer.footer {
     padding-bottom: 1rem !important;
 }
 
+
+/* ================================================================
+   Styles for Photography.html
+   ================================================================ */
+
 body.photography {
-  background-color: #FFFFFF; /* Light background for photography page */
+  background-color: #FFFFFF;
 }
-
-/* photography-specific overrides if needed */
-body.photography .masonry-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  display: block;
-  cursor: pointer; /* Changes mouse to a hand icon */
-  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
-}
-
-/* Effects when hovering over the image */
-body.photography .masonry-item img:hover {
-    transform: scale(1.02); /* Slight zoom in */
-    filter: brightness(1.1); /* Makes the photo pop slightly */
-}
-
-/* The Background overlay */
-.modal-overlay {
-  display: none; /* Hidden by default */
-  position: fixed;
-  z-index: 9999; /* Sit on top of all */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  cursor: default;
-}
-
-/* The image inside the modal */
-.modal-content{
-
-  object-fit: contain;
-  width: auto;
-  height: auto;
-  max-width: 80vw;
-  max-height: 90vh;
-  cursor: zoom-in;
-
-  transition: transform 0.1s ease-out;
-  display: block;
-}
-
-/* Toggled with JavaScript */
-.modal-content.is-zoomed {
-    transform: scale(3); /* Zoom in */
-    cursor: zoom-out;      
-}
-
-/* =======================================
-   Masonry grid layout in Photography.html
-   ======================================= */
 
 body.photography .wrapper {
     width: 90%;
@@ -278,21 +228,6 @@ body.photography .wrapper {
 body.photography .masonry-grid {
     column-count: 4;
     column-gap: 1.1rem;
-}
-
-body.photography .masonry-item {
-    display: block;
-    width: 100%;
-    margin-bottom: 1.1rem; 
-    break-inside: avoid; 
-
-}
-
-body.photography .masonry-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 3px;
-    display: block;
 }
 
 @media (max-width: 1024px) {
@@ -313,9 +248,57 @@ body.photography .masonry-item img {
     }
 }
 
-/* =========================================
-   Arrow buttons for swiping through images
-   ========================================= */
+body.photography .masonry-item {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.1rem; 
+    break-inside: avoid; 
+}
+
+body.photography .masonry-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    display: block;
+    cursor: pointer; 
+    transition: transform 0.3s ease, filter 0.3s ease; 
+}
+
+body.photography .masonry-item img:hover {
+    transform: scale(1.02); 
+    filter: brightness(1.1); 
+}
+
+.modal-overlay {
+  display: none; 
+  position: fixed;
+  z-index: 9999; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+
+.modal-content{
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  max-width: 80vw;
+  max-height: 90vh;
+  cursor: zoom-in;
+
+  transition: transform 0.1s ease-out;
+  display: block;
+}
+
+.modal-content.is-zoomed {
+    transform: scale(3);
+    cursor: zoom-out;      
+}
 
 .prev-button, .next-button {
   position: fixed;
