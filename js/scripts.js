@@ -102,6 +102,7 @@ function closeModal() {
     const modalImg = document.getElementById("fullImage");
 
     modal.style.display = "none"; // Hide the modal
+    document.body.style.overflow = "auto"; // Re-enable background scrolling
 
     // Reset zoom state
     modalImg.classList.remove("is-zoomed"); 
@@ -146,6 +147,8 @@ function updateZoomPos(e) {
 
 let touchStartX = 0;
 let touchEndX = 0;
+let isPinching = false;
+
 
 const modal = document.getElementById("photoModal");
 
@@ -154,7 +157,7 @@ modal.addEventListener('touchstart', e => {
     if (e.targetTouches.length === 1) {
         touchStartX = e.changedTouches[0].screenX;
     }
-}, {passive: true}); // Doesn't interrupt scrolling
+}, {passive: true}); 
 
 // Listen for the end of a touch
 modal.addEventListener('touchend', e => {
@@ -164,8 +167,6 @@ modal.addEventListener('touchend', e => {
     }
 }, {passive: true});
 
-let isPinching = false;
-
 modal.addEventListener('touchmove', e => {
     if (e.targetTouches.length > 1) {
         isPinching = true; // User added a second finger
@@ -173,8 +174,9 @@ modal.addEventListener('touchmove', e => {
 }, {passive: true});
 
 function handleSwipe() {
+    const img = document.getElementById("fullImage");
 
-    if (isPinching) {
+    if (isPinching ||(img && img.classList.contains("is-zoomed")) ) {
         isPinching = false; // Reset for next time
         return; // Exit! Don't change the image.
     }

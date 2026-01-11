@@ -367,4 +367,9 @@ body.photography .masonry-item img {
   .modal-content {
       max-width: 100vw;
   }
+
+  .modal-content.is-zoomed {
+        transform: none !important; 
+        cursor: default;
+    }
 }
