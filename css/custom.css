@@ -202,30 +202,12 @@ border-bottom: 0.25rem solid rgba(255,255,255,0.85) !important;
     font-size: 1.2rem !important; 
 }
 
-/* =========================
-   Footer button links and copyright
-   ========================= */
-.contact-section .social a {
-    height: 2rem !important;      /* Reduced from 3rem */
-    width: 2rem !important;       /* Reduced from 3rem */
-    line-height: 2rem !important; /* Matches height to keep icon centered */
-    font-size: 0.8rem !important;  /* Shrinks the actual logo inside */
-}
 
 footer.footer {
-    font-size: 0.7rem !important; /* Smaller footprint for the copyright notice */
-    padding-top: 1rem !important;  /* Optional: reduces vertical empty space */
+    font-size: 0.7rem !important; 
+    padding-top: 1rem !important; 
     padding-bottom: 1rem !important;
 }
-
-/* =========================
-   Cyber page styles
-   ========================= */
-
-
-/* =========================
-   Photography page styles
-   ========================= */
 
 body.photography {
   background-color: #FFFFFF; /* Light background for photography page */
@@ -282,9 +264,9 @@ body.photography .masonry-item img:hover {
     cursor: zoom-out;      
 }
 
-/* ======================
-   Masonry grid layout
-   ====================== */
+/* =======================================
+   Masonry grid layout in Photography.html
+   ======================================= */
 
 body.photography .wrapper {
     width: 90%;
