@@ -10,12 +10,7 @@
   border: 0;
 }
 
-/* =========================
-   Base shared styles
-   ========================= */
-
 body {
-  margin: 0;
   min-height: 100vh;
   text-align: center;
   background-color: #000;
@@ -39,22 +34,21 @@ p {
 }
 
 /* Force the top section (Masthead) to be a full screen */
-  header.masthead {
-      min-height: 100vh !important;
-      display: flex !important;
-      flex-direction: column;
-      justify-content: center; /* Centers the Cyber/Gallery buttons vertically */
-  }
+header.masthead {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center; /* Centers the Cyber/Gallery buttons vertically */
+}
 
-  /* Force the About section to be its own full screen */
-  .about-section {
-      min-height: 100vh !important;
-      display: flex !important;
-      flex-direction: column;
-      justify-content: center; /* Centers the About text vertically */
-      padding-top: 0 !important; /* Removes any useless spacing */
-      padding-bottom: 0 !important;
-  }
+.about-section {
+    min-height: 100vh !important;  /* Force the About section to be its own full screen */
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center; /* Centers the About text vertically */
+    padding-top: 0 !important; /* Removes any useless spacing */
+    padding-bottom: 0 !important;
+}
 
 /* ===========================================
    Navbar overrides on default/large screens
@@ -62,7 +56,7 @@ p {
 
 /* Navbar link base color */
 #mainNav .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
 /* Hover AND Active State */
@@ -86,7 +80,7 @@ border-bottom: 0.25rem solid rgba(255,255,255,0.85) !important;
 /* Override masthead background */
 .masthead {
   background: none !important;
-  background-color: #000; /* or #fff */
+  background-color: #000;
 }
 
 
@@ -123,12 +117,7 @@ border-bottom: 0.25rem solid rgba(255,255,255,0.85) !important;
     padding: 0.5rem 1rem !important;   /* Reduces space between links */
 }
 
-/* =========================
-   For less than large screens
-   ========================= */
-
-/* Mobile Navbar: Translucent Background */
-@media (max-width: 991.98px) { /* Responsive design: this applies only for screens under 992px. 992 is the official large (lg) breakpoint for Bootstrap */
+@media (max-width: 991.98px) { 
     
     #mainNav {
         background-color: rgba(0, 0, 0, 0.8) !important; /* Translucent black */
@@ -188,7 +177,6 @@ border-bottom: 0.25rem solid rgba(255,255,255,0.85) !important;
    About Me Section
    ========================= */
 
-/* Reduce font size for body text in about section */
 .about-section p {
     width: 85%;
     max-width: 660px;
