@@ -197,12 +197,6 @@ border-bottom: 0.25rem solid rgba(255,255,255,0.85) !important;
     font-size: 0.9rem;
 }
 
-/* Reduce font size for title text in about section */
-.about-section h2 {
-    font-size: 1.2rem !important; 
-}
-
-
 footer.footer {
     font-size: 0.7rem !important; 
     padding-top: 1rem !important; 
