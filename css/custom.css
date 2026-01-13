@@ -17,6 +17,12 @@ body {
   color: #FFFFFF;
 }
 
+h1 {
+    font-family: var(--bs-body-font-family);
+    font-size: 1px;
+    color: transparent;
+}
+
 /* =========================
    Centered page content
    ========================= */
@@ -443,4 +449,34 @@ body.cyber {
     display: block !important;
     visibility: visible;
     opacity: 1;
+}
+
+/* ================================================================
+   Styles for Results.html
+   ================================================================ */
+
+
+.results-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; 
+    scroll-behavior: smooth;
+}
+
+.full-page-section {
+    width: 100%;
+    height: 100vh; 
+    scroll-snap-align: start; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    padding: 80px 20px; 
+    box-sizing: border-box;
+}
+
+.content-wrapper {
+    max-width: 1000px;
+    width: 100%;
+    text-align: left;
 }
