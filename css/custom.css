@@ -328,3 +328,67 @@ body.photography .masonry-item img:hover {
         cursor: default;
     }
 }
+
+/* ================================================================
+   Styles for Cyber.html
+   ================================================================ */
+
+body.cyber {
+    background-color: #1f1f1f !important;
+    margin: 0;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 15px;
+    padding-bottom: 15vh;   
+    box-sizing: border-box;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    max-width: 584px;
+    margin: 0 auto;
+    margin-top: 27px;
+    margin-bottom: 27px;
+    min-height: 38px;        
+    border: 1px solid #4d5156;
+    background-color: #4d5156;
+    border-radius: 24px;
+    padding: 0 20px;    
+    transition: box-shadow 0.1s;
+}
+
+.search-bar:hover {
+    border-color: #5f6368; 
+    background-color: #5f6368;
+}
+
+.search-bar:focus-within {
+    border-color: #303134; 
+    background-color: #303134;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: transparent;
+    caret-color: white;
+    color: white;
+}
+
+.top-right-header {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#profile-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; 
+}
