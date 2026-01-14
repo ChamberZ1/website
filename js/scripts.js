@@ -243,12 +243,21 @@ function toggleWindow(windowName) {
 
     const isAlreadyOpen = infoWindow.style.display === 'flex';
 
-    document.querySelectorAll('.window-popup').forEach(win => {
+    document.querySelectorAll('.window-popup, .start-menu-popup').forEach(win => {
         win.style.display = 'none';
+    });
+
+    document.querySelectorAll('.app-icon-container').forEach(icon => {
+        icon.classList.remove('active');
     });
 
     if (!isAlreadyOpen) {
         infoWindow.style.display = 'flex';
+
+        const matchingIcon = document.querySelector(`.app-icon-container[onclick*="${windowName}"]`);
+        if (matchingIcon && windowName !== 'start-menu') {
+            matchingIcon.classList.add('active');
+        }
     }
 }
 
