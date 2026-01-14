@@ -225,27 +225,43 @@ document.addEventListener('DOMContentLoaded', () => {
     updateClock();
 });
 
-function toggleStartMenu() {
-    const startMenu = document.getElementById('start-menu');
-    if (!startMenu) return;
-
-    // Toggle between display: none and display: flex
-    if (startMenu.style.display === 'none' || startMenu.style.display === '') {
-        startMenu.style.display = 'flex';
-    } else {
-        startMenu.style.display = 'none';
-    }
-}
-
 // Close Start Menu if clicking outside of it
 document.addEventListener('click', function(event) {
     const startMenu = document.getElementById('start-menu');
     const startBtn = document.querySelector('.start-btn');
 
-    // If the menu is open AND the click wasn't on the menu or the button
     if (startMenu && startMenu.style.display === 'flex') {
         if (!startMenu.contains(event.target) && !startBtn.contains(event.target)) {
             startMenu.style.display = 'none';
         }
     }
 });
+
+function toggleWindow(windowName) {
+    const infoWindow = document.getElementById(windowName);
+    if(!infoWindow) return;
+
+    const isAlreadyOpen = infoWindow.style.display === 'flex';
+
+    document.querySelectorAll('.window-popup').forEach(win => {
+        win.style.display = 'none';
+    });
+
+    if (!isAlreadyOpen) {
+        infoWindow.style.display = 'flex';
+    }
+}
+
+let highestZIndex = 1101; 
+
+function focusWindow(clickedWindow) {
+    const allWindows = document.querySelectorAll('.window-popup');
+    
+    allWindows.forEach(win => {
+        win.style.zIndex = "1100";
+        win.classList.remove('active-window'); 
+    });
+
+    clickedWindow.style.zIndex = "1105";
+    clickedWindow.classList.add('active-window'); 
+}

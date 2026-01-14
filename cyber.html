@@ -38,7 +38,7 @@
 
             <div id="exp-window" class="window-popup" style="display: none;">
                 <div class="window-header">
-                    <span>experience.pdf</span>
+                    <span>Experience</span>
                     <button onclick="toggleWindow('exp-window')">X</button>
                 </div>
                 <div class="window-body"></div>
@@ -46,13 +46,13 @@
 
             <div id="edu-window" class="window-popup" style="display: none;">
                 <div class="window-header">
-                    <span>education.pdf</span>
+                    <span>Education</span>
                     <button onclick="toggleWindow('edu-window')">X</button>
                 </div>
                 <div class="window-body"></div>
             </div>
 
-            <div id="start-menu" class="start-menu-popup" style="display:none;">
+            <div id="start-menu" class="start-menu-popup" style="display: none;">
                     <div class="start-menu-links">
                         <a href="index.html" class="menu-item">
                             <i class="fa-solid fa-house"></i> Return to Home Page 
@@ -60,23 +60,66 @@
                     </div>
             </div>
 
+            <div id="pi-hole-window" class="window-popup" style="display: none;">
+                <div class="window-header">
+                    <div class="window-left">
+                        <img src="/assets/svg/pi-hole.svg" class="header-icon">
+                        <span>Pi-hole Network Adblocker</span>
+                    </div>
+                    <button onclick="toggleWindow('pi-hole-window')">x</button>
+                </div>
+                <div class="window-body">
+                    <img src="assets/img/pi-hole-shark-invis.webp" alt="Pi-hole Project" class="project-preview">
+        
+                    <p class="project-desc">
+                        A DNS sinkhole configured on a Raspberry Pi to block and monitor DNS traffic.
+                    </p>
+        
+                    <div class="project-links">
+                        <a href="https://github.com/ChamberZ1/pihole-network-adblocker" target="_blank" class="github-link">
+                            <img src="assets/svg/github.svg" alt="GitHub">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="sliver-window" class="window-popup" style="display: none;">
+                <div class="window-header">
+                    <div class="header-left">
+                        <img src="/assets/svg/s.svg" class="header-icon">
+                        <span>Sliver C2</span>
+                    </div>
+                    <button onclick="toggleWindow('sliver-window')">x</button>
+                </div>
+                <div class="window-body">
+                    <img src="assets/img/sliver.webp" alt="Sliver C2 Framework" class="project-preview">
+        
+                    <p class="project-desc">
+                        A custom C++ stager built to deliver a Sliver C2 implant while evading Microsoft Defender Antivirus.
+                    </p>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/ChamberZ1/sliver" target="_blank" class="github-link">
+                            <img src="assets/svg/github.svg" alt="GitHub">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <nav class="taskbar">
-                <div class="start-btn app-icon-container" onclick="toggleStartMenu()">
+                <div class="start-btn app-icon-container" onclick="toggleWindow('start-menu')">
                     <img src="favicon-32x32.png" alt="Start" class="app-img">                
                 </div>
                 
-                <div class="spacer"></div>
-
                 <div class="taskbar-apps">
-                    <div class="app-icon-container" title="Pi-hole">
+                    <div class="app-icon-container" title="Pi-hole" onclick="toggleWindow('pi-hole-window')">
                         <img src="/assets/svg/pi-hole.svg" class="app-icon" title="Pi-hole">
                     </div>
-                    <div class="app-icon-container" title="AV-Evasion">
+                    <div class="app-icon-container" title="AV-Evasion" onclick="toggleWindow('sliver-window')">
                         <img src="/assets/svg/s.svg" class="app-icon" title="AV-Evasion">
                     </div>
                 </div>
-
-                <div class="spacer"></div>
 
                 <div class="taskbar-time" id="real-time">00:00</div>
             </nav>
