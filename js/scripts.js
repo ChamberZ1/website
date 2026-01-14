@@ -224,3 +224,28 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 1000);
     updateClock();
 });
+
+function toggleStartMenu() {
+    const startMenu = document.getElementById('start-menu');
+    if (!startMenu) return;
+
+    // Toggle between display: none and display: flex
+    if (startMenu.style.display === 'none' || startMenu.style.display === '') {
+        startMenu.style.display = 'flex';
+    } else {
+        startMenu.style.display = 'none';
+    }
+}
+
+// Close Start Menu if clicking outside of it
+document.addEventListener('click', function(event) {
+    const startMenu = document.getElementById('start-menu');
+    const startBtn = document.querySelector('.start-btn');
+
+    // If the menu is open AND the click wasn't on the menu or the button
+    if (startMenu && startMenu.style.display === 'flex') {
+        if (!startMenu.contains(event.target) && !startBtn.contains(event.target)) {
+            startMenu.style.display = 'none';
+        }
+    }
+});
