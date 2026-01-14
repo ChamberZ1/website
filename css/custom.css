@@ -547,6 +547,14 @@ html.cyber, body.cyber {
     flex-direction: row;
 }
 
+.file-link,
+.file-link:visited, 
+.file-link:hover, 
+.file-link:active {
+    text-decoration: none;
+    color: inherit;       
+}
+
 .file-wrapper {
     display: flex;
     flex-direction: column; 
