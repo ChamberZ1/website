@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no" />
         <meta name="description" content="Charles Zhao | Cybersecurity" />
 
         <title>HAKERMANE</title>
@@ -12,7 +12,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
 
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
         <link href="https://fonts.googleapis.com/css?family=Varela+Round|Nunito:400,700&display=swap" rel="stylesheet" />
 
@@ -23,8 +23,67 @@
    
     <body class="cyber"> 
         <h1 class="visually-hidden">Charles Zhao | Information Technology, Networking, and Cybersecurity Projects Portfolio</h1>
-        <main class="page-center">
-            <p>Coming soon.</p>
+        <main class="desktop-env">
+            <div class="icon-layer">
+                <div class = "desktop-icon" onclick="toggleWindow('exp-window')">
+                    <i class ="fa-solid fa-folder fa-3x"></i>
+                    <span>Experience</span>
+                </div>
+
+                <div class = "desktop-icon" onclick="toggleWindow('edu-window')">
+                    <i class="fa-solid fa-folder fa-3x"></i>
+                    <span>Education</span>
+                </div>
+            </div>
+
+            <div id="exp-window" class="window-popup" style="display: none;">
+                <div class="window-header">
+                    <span>experience.pdf</span>
+                    <button onclick="toggleWindow('exp-window')">X</button>
+                </div>
+                <div class="window-body"></div>
+            </div>
+
+            <div id="edu-window" class="window-popup" style="display: none;">
+                <div class="window-header">
+                    <span>education.pdf</span>
+                    <button onclick="toggleWindow('edu-window')">X</button>
+                </div>
+                <div class="window-body"></div>
+            </div>
+
+            <div id="start-menu" class="start-menu-popup" style="display:none;">
+                    <div class="start-menu-sidebar">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div class="start-menu-links">
+                        <a href="index.html" class="menu-item">
+                            <i class="fa-solid fa-house"></i> Return to Landing Page. 
+                        </a>
+                    </div>
+            </div>
+
+            <nav class="taskbar">
+                <div class="start-btn app-icon-container" onclick="toggleStartMenu()">
+                    <img src="favicon-32x32.png" alt="Start" class="app-img">                
+                </div>
+                
+                <div class="spacer"></div>
+
+                <div class="taskbar-apps">
+                    <div class="app-icon-container" title="Pi-hole">
+                        <img src="/assets/svg/pi-hole.svg" class="app-icon" title="Pi-hole">
+                    </div>
+                    <div class="app-icon-container" title="AV-Evasion">
+                        <img src="/assets/svg/s.svg" class="app-icon" title="AV-Evasion">
+                    </div>
+                </div>
+
+                <div class="spacer"></div>
+
+                <div class="taskbar-time" id="real-time">00:00</div>
+            </nav>
         </main>
+        <script src="js/scripts.js"></script>
     </body>
 </html>

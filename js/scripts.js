@@ -153,25 +153,27 @@ let isPinching = false;
 const modal = document.getElementById("photoModal");
 
 // Listen for the start of a touch
-modal.addEventListener('touchstart', e => {
-    if (e.targetTouches.length === 1) {
-        touchStartX = e.changedTouches[0].screenX;
-    }
-}, {passive: true}); 
+if(modal){
+    modal.addEventListener('touchstart', e => {
+        if (e.targetTouches.length === 1) {
+            touchStartX = e.changedTouches[0].screenX;
+        }
+    }, {passive: true}); 
 
-// Listen for the end of a touch
-modal.addEventListener('touchend', e => {
-    if (e.targetTouches.length === 0 && e.changedTouches.length === 1) {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }
-}, {passive: true});
+    // Listen for the end of a touch
+    modal.addEventListener('touchend', e => {
+        if (e.targetTouches.length === 0 && e.changedTouches.length === 1) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }
+    }, {passive: true});
 
-modal.addEventListener('touchmove', e => {
-    if (e.targetTouches.length > 1) {
-        isPinching = true; // User added a second finger
-    }
-}, {passive: true});
+    modal.addEventListener('touchmove', e => {
+        if (e.targetTouches.length > 1) {
+            isPinching = true; // User added a second finger
+        }
+    }, {passive: true});
+}
 
 function handleSwipe() {
     const img = document.getElementById("fullImage");
@@ -200,4 +202,25 @@ document.addEventListener('keydown', (e) => {
         if (e.key === "ArrowLeft") changeImage(-1, e);
         if (e.key === "ArrowRight") changeImage(1, e);
     }
+});
+
+// For the clock in cyber.html
+document.addEventListener('DOMContentLoaded', () => {
+    function updateClock() {
+        const clockElement = document.getElementById('real-time');
+        if (!clockElement) return; 
+
+        const now = new Date();
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12; 
+
+        clockElement.textContent = `${hours}:${minutes} ${ampm}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
 });
