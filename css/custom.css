@@ -542,6 +542,8 @@ html.cyber, body.cyber {
     margin: 0 auto;
 }
 
+/* This was created to make the file + matching text stacked and each pair appeaing side by side. 
+   Currently not doing anything as each folder only has one pair */
 .window-body.folder-view {
     justify-content: center;
     flex-direction: row;
