@@ -58,9 +58,8 @@ window.addEventListener('DOMContentLoaded', event => {
 let currentImageIndex = 0;
 let allImages = [];
 
-// Call this function when the page loads to "grab" all photography images
+// Grab all photography images and put it in a list
 window.onload = function() {
-    // Select all images inside your masonry-grid
     const imgElements = document.querySelectorAll('.masonry-grid img');
     allImages = Array.from(imgElements).map(img => img.getAttribute('data-full'));
 };
@@ -69,11 +68,11 @@ function openImage(fullImageUrl) {
    const modal = document.getElementById("photoModal");
    const modalImg = document.getElementById("fullImage");
 
-   modalImg.src = ""; // Clear old image
+   modalImg.src = ""; 
    modal.style.display = "flex"; // Show the modal
    document.body.style.overflow = "hidden"; // Disable background scrolling
 
-   // Find where this image sits in our list of 2000px images
+   // Find where this image sits in the list of images
    currentImageIndex = allImages.indexOf(fullImageUrl);
 
 
@@ -88,7 +87,7 @@ function changeImage(direction, event) {
     
     currentImageIndex += direction;
 
-    // Loop back to start/end if we go out of bounds
+    // Loop back to first/last image if we try to go out of bounds of the list of images
     if (currentImageIndex >= allImages.length) currentImageIndex = 0;
     if (currentImageIndex < 0) currentImageIndex = allImages.length - 1;
 
@@ -180,17 +179,15 @@ function handleSwipe() {
 
     if (isPinching ||(img && img.classList.contains("is-zoomed")) ) {
         isPinching = false; // Reset for next time
-        return; // Exit! Don't change the image.
+        return; 
     }
     const swipeThreshold = 50; // Minimum distance in pixels to count as a swipe
     
     if (touchEndX < touchStartX - swipeThreshold) {
-        // Swiped Left -> Show Next Image
         changeImage(1, new Event('swipe'));
     }
     
     if (touchEndX > touchStartX + swipeThreshold) {
-        // Swiped Right -> Show Previous Image
         changeImage(-1, new Event('swipe'));
     }
 }
