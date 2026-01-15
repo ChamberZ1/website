@@ -69,10 +69,10 @@ function openImage(fullImageUrl) {
    const modalImg = document.getElementById("fullImage");
 
    modalImg.src = ""; 
-   modal.style.display = "flex"; // Show the modal
+   modal.style.display = "flex"; 
    document.body.style.overflow = "hidden"; // Disable background scrolling
 
-   // Find where this image sits in the list of images
+   // Find where this image sits in our list of images
    currentImageIndex = allImages.indexOf(fullImageUrl);
 
 
@@ -169,7 +169,7 @@ if(modal){
 
     modal.addEventListener('touchmove', e => {
         if (e.targetTouches.length > 1) {
-            isPinching = true; // User added a second finger
+            isPinching = true; // Second finger deteected
         }
     }, {passive: true});
 }
