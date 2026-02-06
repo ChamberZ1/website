@@ -97,9 +97,34 @@
                     </div>
             </div>
 
+            <div id="cybertwit-window" class="window-popup" style="display: none;">
+                <div class="window-header">
+                    <div class="header-left">
+                        <img src="/assets/img/x.png" class="header-icon">
+                        <span>Daily Cybersecurity News</span>
+                    </div>
+                    <button onclick="toggleWindow('cybertwit-window')">x</button>
+                </div>
+                <div class="window-body">
+                    <img src="/assets/svg/xwhite.svg" alt="CyberTwitDaily" class="cybertwit-preview">
+        
+                    <p class="project-desc">
+                        An X feed aggregating the latest cybersecurity news, research, and exploits from top infosec sources.
+                    </p>
+        
+                    <div class="project-links">
+                        <a href="https://x.com/CyberTwitDaily" target="_blank" class="github-link">
+                            <img src="/assets/img/x.png" alt="X">
+                            <span>CyberTwitDaily</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
             <div id="pi-hole-window" class="window-popup" style="display: none;">
                 <div class="window-header">
-                    <div class="window-left">
+                    <div class="header-left">
                         <img src="/assets/svg/pi-hole.svg" class="header-icon">
                         <span>Pi-hole Network Adblocker</span>
                     </div>
@@ -155,6 +180,9 @@
                     </div>
                     <div class="app-icon-container" title="AV-Evasion" onclick="toggleWindow('sliver-window')">
                         <img src="/assets/svg/s.svg" class="app-icon" title="AV-Evasion">
+                    </div>
+                    <div class="app-icon-container" title="CyberTwit" onclick="toggleWindow('cybertwit-window')">
+                        <img src="/assets/svg/xwhite.svg" class="app-icon" title="CyberTwit">
                     </div>
                 </div>
 
