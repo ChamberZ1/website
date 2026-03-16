@@ -194,7 +194,7 @@ function handleSwipe() {
 
 document.addEventListener('keydown', (e) => {
     const modal = document.getElementById("photoModal");
-    if (modal.style.display === "flex") {
+    if (modal && modal.style.display === "flex") {
         if (e.key === "Escape") closeModal();
         if (e.key === "ArrowLeft") changeImage(-1, e);
         if (e.key === "ArrowRight") changeImage(1, e);
@@ -231,6 +231,44 @@ document.addEventListener('click', function(event) {
         if (!startMenu.contains(event.target) && !startBtn.contains(event.target)) {
             startMenu.style.display = 'none';
         }
+    }
+});
+
+// Lightweight JS smoke check: log missing critical DOM nodes without breaking the page.
+document.addEventListener('DOMContentLoaded', () => {
+    const missing = [];
+    const body = document.body;
+    if (!body) return;
+
+    const isPhotography = body.classList.contains('photography');
+    const isCyber = body.classList.contains('cyber');
+    const isSearch = body.classList.contains('search-replica');
+    const isHome = !isPhotography && !isCyber && !isSearch;
+
+    if (isHome) {
+        if (!document.getElementById('mainNav')) missing.push('#mainNav');
+        if (!document.querySelector('header.masthead')) missing.push('header.masthead');
+        if (!document.querySelector('#about')) missing.push('#about');
+    }
+
+    if (isPhotography) {
+        if (!document.getElementById('photoModal')) missing.push('#photoModal');
+        if (!document.querySelector('.masonry-grid')) missing.push('.masonry-grid');
+        if (!document.querySelector('.masonry-grid img')) missing.push('.masonry-grid img');
+    }
+
+    if (isCyber) {
+        if (!document.querySelector('.desktop-env')) missing.push('.desktop-env');
+        if (!document.getElementById('real-time')) missing.push('#real-time');
+    }
+
+    if (isSearch) {
+        if (!document.querySelector('.search-wrapper')) missing.push('.search-wrapper');
+        if (!document.querySelector('.search-input')) missing.push('.search-input');
+    }
+
+    if (missing.length > 0) {
+        console.warn('Smoke check: missing expected elements:', missing);
     }
 });
 
