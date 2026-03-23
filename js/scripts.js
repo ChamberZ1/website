@@ -68,6 +68,8 @@ function openImage(fullImageUrl) {
    const modal = document.getElementById("photoModal");
    const modalImg = document.getElementById("fullImage");
 
+   if (!modal || !modalImg) return;
+
    modalImg.src = ""; 
    modal.style.display = "flex"; // Show the modal
    document.body.style.overflow = "hidden"; // Disable background scrolling
@@ -75,8 +77,7 @@ function openImage(fullImageUrl) {
    // Find where this image sits in the list of images
    currentImageIndex = allImages.indexOf(fullImageUrl);
 
-
-   modalImg.src = fullImageUrl; // Put the clicked image in the modal
+    modalImg.src = fullImageUrl; // Put the clicked image in the modal
 }
 
 function changeImage(direction, event) {
@@ -84,7 +85,9 @@ function changeImage(direction, event) {
     if (event && typeof event.stopPropagation === 'function') {
         event.stopPropagation();
     }
-    
+
+    if (allImages.length === 0) return;
+
     currentImageIndex += direction;
 
     // Loop back to first/last image if we try to go out of bounds of the list of images
@@ -119,7 +122,8 @@ function toggleZoom(event) {
     if (img.classList.contains("is-zoomed")) {
         // Apply initial position so it doesn't jump
         updateZoomPos(event);
-        // Add listener to track mouse movement while zoomed
+        // Remove before adding to prevent stacking duplicate listeners
+        img.removeEventListener("mousemove", updateZoomPos);
         img.addEventListener("mousemove", updateZoomPos);
     } else {
         // Remove listener and reset position when zooming out
@@ -194,7 +198,7 @@ function handleSwipe() {
 
 document.addEventListener('keydown', (e) => {
     const modal = document.getElementById("photoModal");
-    if (modal.style.display === "flex") {
+    if (modal && modal.style.display === "flex") {
         if (e.key === "Escape") closeModal();
         if (e.key === "ArrowLeft") changeImage(-1, e);
         if (e.key === "ArrowRight") changeImage(1, e);
@@ -227,7 +231,7 @@ document.addEventListener('click', function(event) {
     const startMenu = document.getElementById('start-menu');
     const startBtn = document.querySelector('.start-btn');
 
-    if (startMenu && startMenu.style.display === 'flex') {
+    if (startMenu && startBtn && startMenu.style.display === 'flex') {
         if (!startMenu.contains(event.target) && !startBtn.contains(event.target)) {
             startMenu.style.display = 'none';
         }
@@ -257,8 +261,6 @@ function toggleWindow(windowName) {
         }
     }
 }
-
-let highestZIndex = 1101; 
 
 function focusWindow(clickedWindow) {
     const allWindows = document.querySelectorAll('.window-popup');
