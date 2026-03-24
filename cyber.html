@@ -122,6 +122,55 @@
                 </div>
             </div>
 
+            <div id="phisherman-window" class="window-popup" style="display: none;">
+                <div class="window-header">
+                    <div class="header-left">
+                        <img src="/assets/svg/phishmail.svg" class="header-icon">
+                        <span>Phisherman</span>
+                    </div>
+                    <button onclick="toggleWindow('phisherman-window')">x</button>
+                </div>
+                <div class="window-body">
+                    <img src="/assets/img/phishmail.webp" alt="Phisherman" class="project-preview">
+
+                    <p class="project-desc">
+                        Cascading detection system for phishing emails.
+                    </p>
+        
+                    <div class="project-links">
+                        <a href="https://github.com/ChamberZ1/phisherman" target="_blank" rel="noopener noreferrer" class="github-link">
+                            GitHub
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="kuberange-window" class="window-popup" style="display: none;">
+                <div class="window-header">
+                    <div class="header-left">
+                        <img src="/assets/svg/k8s.svg" class="header-icon">
+                        <span>KubeRange</span>
+                    </div>
+                    <button onclick="toggleWindow('kuberange-window')">x</button>
+                </div>
+                <div class="window-body">
+                    <img src="/assets/img/k8s.webp" alt="KubeRange" class="project-preview">
+
+                    <p class="project-desc">
+                        Full-stack web-app run on Docker containers and managed with Kubernetes.
+                    </p>
+        
+                    <div class="project-links">
+                        <a href="https://github.com/ChamberZ1/pihole-network-adblocker" target="_blank" rel="noopener noreferrer" class="github-link">
+                            GitHub
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+
             <div id="pi-hole-window" class="window-popup" style="display: none;">
                 <div class="window-header">
                     <div class="header-left">
@@ -183,6 +232,12 @@
                     </div>
                     <div class="app-icon-container" title="CyberTwit" onclick="toggleWindow('cybertwit-window')">
                         <img src="/assets/svg/xwhite.svg" class="app-icon" title="CyberTwit">
+                    </div>
+                    <div class="app-icon-container" title="Phisherman" onclick="toggleWindow('phisherman-window')">
+                        <img src="/assets/svg/phishmail.svg" class="app-icon" title="Phisherman">
+                    </div>
+                    <div class="app-icon-container" title="KubeRange" onclick="toggleWindow('kuberange-window')">
+                        <img src="/assets/svg/k8s.svg" class="app-icon" title="KubeRange">
                     </div>
                 </div>
 
