@@ -146,6 +146,31 @@ function updateZoomPos(e) {
     img.style.transformOrigin = `${x}% ${y}%`;
 }
 
+/* Hide back button on scroll down, reveal on scroll up (mobile only) */
+if (document.body.classList.contains('photography')) {
+    const backBtn = document.querySelector('.back-btn');
+    if (backBtn) {
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth > 600) return;
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY <= 0) {
+                backBtn.classList.remove('back-btn--hidden');
+                lastScrollY = 0;
+                return;
+            }
+
+            if (currentScrollY > lastScrollY) {
+                backBtn.classList.add('back-btn--hidden');
+            } else {
+                backBtn.classList.remove('back-btn--hidden');
+            }
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+    }
+}
+
 /* Code for swiping between images on mobile devices */
 
 let touchStartX = 0;

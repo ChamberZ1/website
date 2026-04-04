@@ -206,6 +206,23 @@ body.photography {
   background-color: #FFFFFF;
 }
 
+@media (max-width: 600px) {
+    .back-btn {
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border-radius: 6px;
+        padding: 0.35rem 0.55rem !important;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-btn.back-btn--hidden {
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+    }
+}
+
 body.photography .wrapper {
     min-height: 100vh;
     width: 90%;

@@ -26,16 +26,22 @@
                 min-height: 100vh;
             }
 
-            nav {
+            header {
                 position: fixed;
                 top: 0;
+                left: 0;
+                right: 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 padding: 2rem 2.5rem;
+                z-index: 100;
+            }
+
+            nav {
                 display: flex;
                 gap: 2rem;
             }
-
-            #nav-left { left: 0; }
-            #nav-right { right: 0; }
 
             nav a {
                 color: #fff;
@@ -48,18 +54,31 @@
             }
 
             nav a:hover { opacity: 1; }
+
+            @media (max-width: 600px) {
+                header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 0.6rem;
+                    padding: 1rem 1.25rem;
+                }
+                nav { gap: 1.25rem; }
+                nav a { font-size: 0.75rem; }
+            }
         </style>
     </head>
     <body>
-        <nav id="nav-left">
-            <a href="cyber.html">/cyber</a>
-            <a href="photography.html">/photography</a>
-        </nav>
+        <header>
+            <nav id="nav-left">
+                <a href="cyber.html">/cyber</a>
+                <a href="photography.html">/photography</a>
+            </nav>
 
-        <nav id="nav-right">
-            <a href="https://github.com/ChamberZ1" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/zcharles/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="assets/zcharles-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-        </nav>
+            <nav id="nav-right">
+                <a href="https://github.com/ChamberZ1" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/zcharles/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="assets/zcharles-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+            </nav>
+        </header>
     </body>
 </html>
