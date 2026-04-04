@@ -2,90 +2,64 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Charles Zhao | Portfolio Website" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Charles Zhao | Portfolio" />
         <title>Charles Zhao</title>
 
-        <!-- Open Graph Meta Tags -->
         <meta property="og:title" content="Charles Zhao" />
         <meta property="og:description" content="Charles Zhao personal portfolio website" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://zcharles.com/" />
 
-        <!-- Website icon -->
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
 
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round|Nunito:400,700&display=swap" rel="stylesheet" />
+        <style>
+            *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/custom.css" rel="stylesheet" />
+            body {
+                background: #000;
+                color: #fff;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                min-height: 100vh;
+            }
 
+            nav {
+                position: fixed;
+                top: 0;
+                padding: 2rem 2.5rem;
+                display: flex;
+                gap: 2rem;
+            }
 
+            #nav-left { left: 0; }
+            #nav-right { right: 0; }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 0.85rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                opacity: 0.6;
+                transition: opacity 0.2s;
+            }
+
+            nav a:hover { opacity: 1; }
+        </style>
     </head>
-    <body id="page-top">
-        <h1 class="visually-hidden">Charles Zhao | Cybersecurity & Photography Portfolio</h1>
-        
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.html">Charles Zhao</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="https://github.com/ChamberZ1" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                        <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/zcharles/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                        <li class="nav-item"><a class="nav-link" href="assets/zcharles-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
-
-                    </ul>
-                </div>
-            </div>
+    <body>
+        <nav id="nav-left">
+            <a href="cyber.html">/cyber</a>
+            <a href="photography.html">/photography</a>
         </nav>
 
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center"> 
-                <div class="text-center">
-                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-4 mt-4">
-                        <a class="btn btn-dark btn-lg btn-fixed" href="cyber.html">Cyber</a>
-                        <a class="btn btn-light btn-lg btn-fixed" href="photography.html">Gallery</a>
-                    </div>
-                </div>
-                
-            </div>
-        </header>
-
-        <!-- About-->
-        <section class="about-section text-center bg-black" id="about">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2 class="text-white mb-4">About Me</h2>
-                        <p class="text-white-50">
-                            I graduated from Virginia Tech with a B.S. and M.Eng. in Computer Engineering with a focus in networking and cybersecurity. As an SFS CyberCorps scholar, I am committed to protecting the United States' digital infrastructure. I am actively finding my niche within cybersecurity by doing hands-on projects in various topics. Currently, I am exploring the world of Radio Frequency (RF) and its intersection with cybersecurity. Outside of digital 1s and 0s, I like to go outdoors and interact with brobdingnagian rocks. But you know what I like more than giant rocks? KnOwledge.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-       
-        <!-- Footer-->
-        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Charles Zhao 2026</div></footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-  
+        <nav id="nav-right">
+            <a href="https://github.com/ChamberZ1" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/zcharles/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="assets/zcharles-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        </nav>
     </body>
 </html>
