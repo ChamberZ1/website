@@ -16,6 +16,8 @@ body {
   color: #FFFFFF;
 }
 
+a, a:hover, a:visited, a:active { text-decoration: none; color: inherit; }
+
 body.photography {
     background-color: #fff;
     color: #000;
