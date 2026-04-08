@@ -4,17 +4,25 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no" />
         <meta name="description" content="Charles Zhao | Cybersecurity" />
-
         <title>HAKERMANE</title>
+
+        <meta property="og:title" content="Cyber | Charles Zhao" />
+        <meta property="og:description" content="Cybersecurity projects by Charles Zhao" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://zcharles.com/cyber" />
+        <meta property="og:image" content="https://zcharles.com/android-chrome-512x512.png" />
+        <link rel="canonical" href="https://zcharles.com/cyber" />
+
+        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com; script-src 'self'; img-src 'self'; font-src https://cdnjs.cloudflare.com https://fonts.gstatic.com; manifest-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round|Nunito:400,700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
 
 
         <link href="css/styles.css" rel="stylesheet">
@@ -28,42 +36,34 @@
                 <i class="fa-solid fa-horse"></i>
             </div>
             <div class="icon-layer">
-                <div class = "desktop-icon" onclick="toggleWindow('exp-window')">
-                    <i class ="fa-solid fa-folder fa-3x"></i>
-                    <span>Experience</span>
-                </div>
+                <a class="desktop-icon" href="https://zcharles.com/assets/zcharles-resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open resume PDF">
+                    <i class="fa-solid fa-file fa-3x"></i>
+                    <span>Resume</span>
+                </a>
 
-                <div class = "desktop-icon" onclick="toggleWindow('edu-window')">
+                <a class="desktop-icon" href="https://github.com/ChamberZ1" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">
+                    <i class="fa-brands fa-github fa-3x"></i>
+                    <span>GitHub</span>
+                </a>
+
+                <a class="desktop-icon" href="https://www.linkedin.com/in/zcharles/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
+                    <i class="fa-brands fa-linkedin fa-3x"></i>
+                    <span>LinkedIn</span>
+                </a>
+
+                <div class="desktop-icon window-toggle" data-window="edu-window" role="button" tabindex="0" aria-controls="edu-window" aria-expanded="false">
                     <i class="fa-solid fa-folder fa-3x"></i>
                     <span>Education</span>
                 </div>
             </div>
 
-            <div id="exp-window" class="window-popup" style="display: none;">
+<div id="edu-window" class="window-popup">
                 <div class="window-header">
-                    <div class="window-left">
-                        <i class="fa-solid fa-folder"></i>
-                        <span>Experience</span>
-                    </div>
-                    <button onclick="toggleWindow('exp-window')">x</button>
-                </div>
-                <div class="window-body folder-view">
-                    <a href="assets/zcharles-resume.pdf" target="_blank" rel="noopener noreferrer" class="file-link">
-                        <div class="file-wrapper">
-                            <i class="fa-solid fa-file"></i>
-                            <span>Resume</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div id="edu-window" class="window-popup" style="display: none;">
-                <div class="window-header">
-                    <div class="window-left">
+                    <div class="header-left">
                         <i class="fa-solid fa-folder"></i>
                         <span>Education</span>
                     </div>
-                    <button onclick="toggleWindow('edu-window')">x</button>
+                    <button type="button" class="window-close" data-window="edu-window" aria-label="Close Education window">x</button>
                 </div>
                 <div class="window-body folder-view">
                     <a href="assets/bachelors-diploma.pdf" target="_blank" rel="noopener noreferrer" class="file-link">
@@ -89,21 +89,27 @@
                 </div>
             </div>
 
-            <div id="start-menu" class="start-menu-popup" style="display: none;">
+            <div id="start-menu" class="start-menu-popup">
                     <div class="start-menu-links">
                         <a href="index.html" class="menu-item">
-                            <i class="fa-solid fa-house"></i> Return to Home Page 
+                            <i class="fa-solid fa-house"></i> Return to Home Page
+                        </a>
+                        <a href="photography.html" class="menu-item">
+                            <i class="fa-solid fa-camera"></i> Photography
+                        </a>
+                        <a href="services.html" class="menu-item">
+                            <i class="fa-solid fa-calendar"></i> Services
                         </a>
                     </div>
             </div>
 
-            <div id="cybertwit-window" class="window-popup" style="display: none;">
+            <div id="cybertwit-window" class="window-popup">
                 <div class="window-header">
                     <div class="header-left">
-                        <img src="/assets/img/x.png" class="header-icon">
+                        <img src="/assets/img/x.png" class="header-icon" alt="X (formerly twitter) Icon">
                         <span>Daily Cybersecurity News</span>
                     </div>
-                    <button onclick="toggleWindow('cybertwit-window')">x</button>
+                    <button type="button" class="window-close" data-window="cybertwit-window" aria-label="Close Daily Cybersecurity News window">x</button>
                 </div>
                 <div class="window-body">
                     <img src="/assets/svg/xwhite.svg" alt="CyberTwitDaily" class="cybertwit-preview">
@@ -122,13 +128,13 @@
                 </div>
             </div>
 
-            <div id="phisherman-window" class="window-popup" style="display: none;">
+            <div id="phisherman-window" class="window-popup">
                 <div class="window-header">
                     <div class="header-left">
-                        <img src="/assets/svg/phishmail.svg" class="header-icon">
+                        <img src="/assets/svg/phishmail.svg" class="header-icon" alt="Icon for phisherman project">
                         <span>Phisherman</span>
                     </div>
-                    <button onclick="toggleWindow('phisherman-window')">x</button>
+                    <button type="button" class="window-close" data-window="phisherman-window" aria-label="Close Phisherman window">x</button>
                 </div>
                 <div class="window-body">
                     <img src="/assets/img/phishmail.webp" alt="Phisherman" class="project-preview">
@@ -146,13 +152,13 @@
                 </div>
             </div>
 
-            <div id="kuberange-window" class="window-popup" style="display: none;">
+            <div id="kuberange-window" class="window-popup">
                 <div class="window-header">
                     <div class="header-left">
-                        <img src="/assets/svg/k8s.svg" class="header-icon">
+                        <img src="/assets/svg/k8s.svg" class="header-icon" alt="Kubernetes icon">
                         <span>KubeRange</span>
                     </div>
-                    <button onclick="toggleWindow('kuberange-window')">x</button>
+                    <button type="button" class="window-close" data-window="kuberange-window" aria-label="Close KubeRange window">x</button>
                 </div>
                 <div class="window-body">
                     <img src="/assets/img/k8s.webp" alt="KubeRange" class="project-preview">
@@ -171,16 +177,16 @@
             </div>
 
 
-            <div id="pi-hole-window" class="window-popup" style="display: none;">
+            <div id="pi-hole-window" class="window-popup">
                 <div class="window-header">
                     <div class="header-left">
-                        <img src="/assets/svg/pi-hole.svg" class="header-icon">
+                        <img src="/assets/svg/pi-hole.svg" class="header-icon" alt="Pi-hole icon">
                         <span>Pi-hole Network Adblocker</span>
                     </div>
-                    <button onclick="toggleWindow('pi-hole-window')">x</button>
+                    <button type="button" class="window-close" data-window="pi-hole-window" aria-label="Close Pi-hole window">x</button>
                 </div>
                 <div class="window-body">
-                    <img src="assets/img/pi-hole-shark-invis.webp" alt="Pi-hole Project" class="project-preview">
+                    <img src="/assets/img/pi-hole-shark-invis.webp" alt="Pi-hole Project" class="project-preview">
         
                     <p class="project-desc">
                         A DNS sinkhole configured on a Raspberry Pi to block and monitor DNS traffic.
@@ -195,16 +201,16 @@
                 </div>
             </div>
 
-            <div id="sliver-window" class="window-popup" style="display: none;">
+            <div id="sliver-window" class="window-popup">
                 <div class="window-header">
                     <div class="header-left">
-                        <img src="/assets/svg/s.svg" class="header-icon">
+                        <img src="/assets/svg/s.svg" class="header-icon" alt="Sliver icon">
                         <span>Sliver C2</span>
                     </div>
-                    <button onclick="toggleWindow('sliver-window')">x</button>
+                    <button type="button" class="window-close" data-window="sliver-window" aria-label="Close Sliver C2 window">x</button>
                 </div>
                 <div class="window-body">
-                    <img src="assets/img/sliver.webp" alt="Sliver C2 Framework" class="project-preview">
+                    <img src="/assets/img/sliver.webp" alt="Sliver C2 Framework" class="project-preview">
         
                     <p class="project-desc">
                         A custom C++ stager built to deliver a Sliver C2 implant while evading Microsoft Defender Antivirus.
@@ -219,25 +225,25 @@
             </div>
 
             <nav class="taskbar">
-                <div class="start-btn app-icon-container" onclick="toggleWindow('start-menu')">
+                <div class="start-btn app-icon-container window-toggle" data-window="start-menu" role="button" tabindex="0" aria-controls="start-menu" aria-expanded="false">
                     <img src="favicon-32x32.png" alt="Start" class="app-img">                
                 </div>
                 
                 <div class="taskbar-apps">
-                    <div class="app-icon-container" title="Pi-hole" onclick="toggleWindow('pi-hole-window')">
-                        <img src="/assets/svg/pi-hole.svg" class="app-icon" title="Pi-hole">
+                    <div class="app-icon-container window-toggle" title="Pi-hole" data-window="pi-hole-window" role="button" tabindex="0" aria-controls="pi-hole-window" aria-expanded="false">
+                        <img src="/assets/svg/pi-hole.svg" class="app-icon" title="Pi-hole" alt="Pi-hole project">
                     </div>
-                    <div class="app-icon-container" title="AV-Evasion" onclick="toggleWindow('sliver-window')">
-                        <img src="/assets/svg/s.svg" class="app-icon" title="AV-Evasion">
+                    <div class="app-icon-container window-toggle" title="AV-Evasion" data-window="sliver-window" role="button" tabindex="0" aria-controls="sliver-window" aria-expanded="false">
+                        <img src="/assets/svg/s.svg" class="app-icon" title="AV-Evasion" alt="Sliver C2 project">
                     </div>
-                    <div class="app-icon-container" title="CyberTwit" onclick="toggleWindow('cybertwit-window')">
-                        <img src="/assets/svg/xwhite.svg" class="app-icon" title="CyberTwit">
+                    <div class="app-icon-container window-toggle" title="CyberTwit" data-window="cybertwit-window" role="button" tabindex="0" aria-controls="cybertwit-window" aria-expanded="false">
+                        <img src="/assets/svg/xwhite.svg" class="app-icon" title="CyberTwit" alt="CyberTwitDaily project">
                     </div>
-                    <div class="app-icon-container" title="Phisherman" onclick="toggleWindow('phisherman-window')">
-                        <img src="/assets/svg/phishmail.svg" class="app-icon" title="Phisherman">
+                    <div class="app-icon-container window-toggle" title="Phisherman" data-window="phisherman-window" role="button" tabindex="0" aria-controls="phisherman-window" aria-expanded="false">
+                        <img src="/assets/svg/phishmail.svg" class="app-icon" title="Phisherman" alt="Phisherman project">
                     </div>
-                    <div class="app-icon-container" title="KubeRange" onclick="toggleWindow('kuberange-window')">
-                        <img src="/assets/svg/k8s.svg" class="app-icon" title="KubeRange">
+                    <div class="app-icon-container window-toggle" title="KubeRange" data-window="kuberange-window" role="button" tabindex="0" aria-controls="kuberange-window" aria-expanded="false">
+                        <img src="/assets/svg/k8s.svg" class="app-icon" title="KubeRange" alt="KubeRange project">
                     </div>
                 </div>
 

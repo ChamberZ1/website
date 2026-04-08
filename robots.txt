@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /search-replica.html
+Allow: /
 
 User-agent: GPTBot
 Disallow: /

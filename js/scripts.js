@@ -1,158 +1,199 @@
-/*!
-* Start Bootstrap - Grayscale v7.0.6 (https://startbootstrap.com/theme/grayscale)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
-
-window.addEventListener('DOMContentLoaded', event => {
-
-    // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
-            return;
-        }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
-        } else {
-            navbarCollapsible.classList.add('navbar-shrink')
-        }
-
-    };
-
-    // Shrink the navbar 
-    navbarShrink();
-
-    // Shrink the navbar when page is scrolled
-    document.addEventListener('scroll', navbarShrink);
-
-    // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            rootMargin: '0px 0px -40%',
-        });
-    };
-
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
-            }
-        });
-    });
-
-});
-
-// BEGIN MY CODE
-
 let currentImageIndex = 0;
-let allImages = [];
+let imageItems = [];
 
-// Grab all photography images and put it in a list
-window.onload = function() {
-    const imgElements = document.querySelectorAll('.masonry-grid img');
-    allImages = Array.from(imgElements).map(img => img.getAttribute('data-full'));
-};
+let touchStartX = 0;
+let touchEndX = 0;
+let isPinching = false;
 
-function openImage(fullImageUrl) {
-   const modal = document.getElementById("photoModal");
-   const modalImg = document.getElementById("fullImage");
+function openImage(fullImageUrl, altText) {
+    const modal = document.getElementById("photoModal");
+    const modalImg = document.getElementById("fullImage");
 
-   if (!modal || !modalImg) return;
+    if (!modal || !modalImg || !fullImageUrl) return;
 
-   modalImg.src = ""; 
-   modal.style.display = "flex"; 
-   document.body.style.overflow = "hidden"; // Disable background scrolling
+    modalImg.src = "";
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
 
-   // Find where this image sits in our list of images
-   currentImageIndex = allImages.indexOf(fullImageUrl);
+    currentImageIndex = imageItems.findIndex(item => item.full === fullImageUrl);
 
-    modalImg.src = fullImageUrl; // Put the clicked image in the modal
+    if (currentImageIndex === -1) {
+        modalImg.src = fullImageUrl;
+        modalImg.alt = altText || "Expanded photograph";
+        return;
+    }
+
+    modalImg.src = imageItems[currentImageIndex].full;
+    modalImg.alt = imageItems[currentImageIndex].alt;
 }
 
 function changeImage(direction, event) {
-    // stopPropagation prevents the modal from closing when clicking arrows
     if (event && typeof event.stopPropagation === 'function') {
         event.stopPropagation();
     }
 
-    if (allImages.length === 0) return;
+    if (imageItems.length === 0) return;
 
     currentImageIndex += direction;
 
-    // Loop back to first/last image if we try to go out of bounds of the list of images
-    if (currentImageIndex >= allImages.length) currentImageIndex = 0;
-    if (currentImageIndex < 0) currentImageIndex = allImages.length - 1;
+    if (currentImageIndex >= imageItems.length) currentImageIndex = 0;
+    if (currentImageIndex < 0) currentImageIndex = imageItems.length - 1;
 
     const modalImg = document.getElementById("fullImage");
-    modalImg.classList.remove("is-zoomed"); // Reset zoom when switching images
-    modalImg.src = allImages[currentImageIndex];
+    if (!modalImg) return;
+
+    modalImg.classList.remove("is-zoomed");
+    modalImg.src = imageItems[currentImageIndex].full;
+    modalImg.alt = imageItems[currentImageIndex].alt;
 }
 
 function closeModal() {
     const modal = document.getElementById("photoModal");
     const modalImg = document.getElementById("fullImage");
 
-    modal.style.display = "none"; // Hide the modal
-    document.body.style.overflow = "auto"; // Re-enable background scrolling
+    if (!modal || !modalImg) return;
 
-    // Reset zoom state
-    modalImg.classList.remove("is-zoomed"); 
-    modalImg.style.transformOrigin = "center center"; 
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+
+    modalImg.classList.remove("is-zoomed");
+    modalImg.style.transformOrigin = "center center";
     modalImg.removeEventListener("mousemove", updateZoomPos);
-
 }
 
 function toggleZoom(event) {
-    event.stopPropagation(); // Prevent the click from closing the modal
+    if (!event || !event.target) return;
+
+    event.stopPropagation();
 
     const img = event.target;
     img.classList.toggle("is-zoomed");
 
     if (img.classList.contains("is-zoomed")) {
-        // Apply initial position so it doesn't jump
         updateZoomPos(event);
-        // Remove before adding to prevent stacking duplicate listeners
         img.removeEventListener("mousemove", updateZoomPos);
         img.addEventListener("mousemove", updateZoomPos);
     } else {
-        // Remove listener and reset position when zooming out
         img.removeEventListener("mousemove", updateZoomPos);
         img.style.transformOrigin = "center center";
     }
 }
 
-function updateZoomPos(e) {
+function updateZoomPos(event) {
     const img = document.getElementById("fullImage");
+    if (!img) return;
 
-    // Get the dimensions of the image and mouse position
     const rect = img.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
 
-    // Calculate mouse position as a percentage of the image (0 to 100)
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    // Move the "origin" of the scale to the mouse position
     img.style.transformOrigin = `${x}% ${y}%`;
 }
 
-/* Hide back button on scroll down, reveal on scroll up (mobile only) */
-if (document.body.classList.contains('photography')) {
+function handleSwipe() {
+    const img = document.getElementById("fullImage");
+
+    if (isPinching || (img && img.classList.contains("is-zoomed"))) {
+        isPinching = false;
+        return;
+    }
+
+    const swipeThreshold = 50;
+
+    if (touchEndX < touchStartX - swipeThreshold) {
+        changeImage(1, new Event('swipe'));
+    }
+
+    if (touchEndX > touchStartX + swipeThreshold) {
+        changeImage(-1, new Event('swipe'));
+    }
+}
+
+function setupPhotography() {
+    if (!document.body.classList.contains('photography')) return;
+
+    const imgElements = document.querySelectorAll('.masonry-grid img');
+    const modal = document.getElementById("photoModal");
+    const modalImg = document.getElementById("fullImage");
+    const prevBtn = document.getElementById('modalPrevBtn');
+    const nextBtn = document.getElementById('modalNextBtn');
+
+    imageItems = Array.from(imgElements).map(img => ({
+        full: img.getAttribute('data-full'),
+        alt: img.getAttribute('alt') || 'Expanded photograph',
+    }));
+
+    imgElements.forEach(img => {
+        img.setAttribute('role', 'button');
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('aria-label', `Open image: ${img.getAttribute('alt') || 'Photograph'}`);
+
+        img.addEventListener('click', () => {
+            openImage(img.getAttribute('data-full'), img.getAttribute('alt'));
+        });
+
+        img.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openImage(img.getAttribute('data-full'), img.getAttribute('alt'));
+            }
+        });
+    });
+
+    if (modal) {
+        modal.addEventListener('click', event => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        modal.addEventListener('touchstart', event => {
+            if (event.targetTouches.length === 1) {
+                touchStartX = event.changedTouches[0].screenX;
+            }
+        }, { passive: true });
+
+        modal.addEventListener('touchend', event => {
+            if (event.targetTouches.length === 0) {
+                if (event.changedTouches.length === 1) {
+                    touchEndX = event.changedTouches[0].screenX;
+                    handleSwipe();
+                } else {
+                    isPinching = false;
+                }
+            }
+        }, { passive: true });
+
+        modal.addEventListener('touchmove', event => {
+            if (event.targetTouches.length > 1) {
+                isPinching = true;
+            }
+        }, { passive: true });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', event => {
+            changeImage(-1, event);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', event => {
+            changeImage(1, event);
+        });
+    }
+
+    if (modalImg) {
+        modalImg.addEventListener('click', toggleZoom);
+    }
+
     const backBtn = document.querySelector('.back-btn');
     if (backBtn) {
         let lastScrollY = window.scrollY;
+
         window.addEventListener('scroll', () => {
             if (window.innerWidth > 600) return;
+
             const currentScrollY = window.scrollY;
 
             if (currentScrollY <= 0) {
@@ -166,119 +207,69 @@ if (document.body.classList.contains('photography')) {
             } else {
                 backBtn.classList.remove('back-btn--hidden');
             }
+
             lastScrollY = currentScrollY;
         }, { passive: true });
     }
 }
 
-/* Code for swiping between images on mobile devices */
+function setupCyber() {
+    if (!document.body.classList.contains('cyber')) return;
 
-let touchStartX = 0;
-let touchEndX = 0;
-let isPinching = false;
+    const windowToggles = document.querySelectorAll('.window-toggle[data-window]');
+    const windowCloseButtons = document.querySelectorAll('.window-close[data-window]');
 
+    windowToggles.forEach(toggle => {
+        const windowName = toggle.getAttribute('data-window');
+        if (!windowName) return;
 
-const modal = document.getElementById("photoModal");
+        toggle.addEventListener('click', () => {
+            toggleWindow(windowName);
+        });
 
-// Listen for the start of a touch
-if(modal){
-    modal.addEventListener('touchstart', e => {
-        if (e.targetTouches.length === 1) {
-            touchStartX = e.changedTouches[0].screenX;
-        }
-    }, {passive: true}); 
+        toggle.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleWindow(windowName);
+            }
+        });
+    });
 
-    // Listen for the end of a touch
-    modal.addEventListener('touchend', e => {
-        if (e.targetTouches.length === 0 && e.changedTouches.length === 1) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }
-    }, {passive: true});
+    windowCloseButtons.forEach(button => {
+        const windowName = button.getAttribute('data-window');
+        if (!windowName) return;
 
-    modal.addEventListener('touchmove', e => {
-        if (e.targetTouches.length > 1) {
-            isPinching = true; // Second finger deteected
-        }
-    }, {passive: true});
-}
+        button.addEventListener('click', () => {
+            toggleWindow(windowName);
+        });
+    });
 
-function handleSwipe() {
-    const img = document.getElementById("fullImage");
-
-    if (isPinching ||(img && img.classList.contains("is-zoomed")) ) {
-        isPinching = false; // Reset for next time
-        return; 
-    }
-    const swipeThreshold = 50; // Minimum distance in pixels to count as a swipe
-    
-    if (touchEndX < touchStartX - swipeThreshold) {
-        changeImage(1, new Event('swipe'));
-    }
-    
-    if (touchEndX > touchStartX + swipeThreshold) {
-        changeImage(-1, new Event('swipe'));
-    }
-}
-
-document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById("photoModal");
-    if (modal && modal.style.display === "flex") {
-        if (e.key === "Escape") closeModal();
-        if (e.key === "ArrowLeft") changeImage(-1, e);
-        if (e.key === "ArrowRight") changeImage(1, e);
-    }
-});
-
-// For the clock in cyber.html
-document.addEventListener('DOMContentLoaded', () => {
     function updateClock() {
         const clockElement = document.getElementById('real-time');
-        if (!clockElement) return; 
+        if (!clockElement) return;
 
         const now = new Date();
         let hours = now.getHours();
         let minutes = now.getMinutes();
-        
+
         minutes = minutes < 10 ? '0' + minutes : minutes;
         const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12 || 12; 
+        hours = hours % 12 || 12;
 
         clockElement.textContent = `${hours}:${minutes} ${ampm}`;
     }
 
     setInterval(updateClock, 1000);
     updateClock();
-});
+}
 
-// Close Start Menu if clicking outside of it
-document.addEventListener('click', function(event) {
-    const startMenu = document.getElementById('start-menu');
-    const startBtn = document.querySelector('.start-btn');
-
-    if (startMenu && startBtn && startMenu.style.display === 'flex') {
-        if (!startMenu.contains(event.target) && !startBtn.contains(event.target)) {
-            startMenu.style.display = 'none';
-        }
-    }
-});
-
-// Lightweight JS smoke check: log missing critical DOM nodes without breaking the page.
-document.addEventListener('DOMContentLoaded', () => {
+function runSmokeCheck() {
     const missing = [];
     const body = document.body;
     if (!body) return;
 
     const isPhotography = body.classList.contains('photography');
     const isCyber = body.classList.contains('cyber');
-    const isSearch = body.classList.contains('search-replica');
-    const isHome = !isPhotography && !isCyber && !isSearch;
-
-    if (isHome) {
-        if (!document.getElementById('mainNav')) missing.push('#mainNav');
-        if (!document.querySelector('header.masthead')) missing.push('header.masthead');
-        if (!document.querySelector('#about')) missing.push('#about');
-    }
 
     if (isPhotography) {
         if (!document.getElementById('photoModal')) missing.push('#photoModal');
@@ -291,19 +282,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!document.getElementById('real-time')) missing.push('#real-time');
     }
 
-    if (isSearch) {
-        if (!document.querySelector('.search-wrapper')) missing.push('.search-wrapper');
-        if (!document.querySelector('.search-input')) missing.push('.search-input');
-    }
-
     if (missing.length > 0) {
         console.warn('Smoke check: missing expected elements:', missing);
     }
-});
+}
 
 function toggleWindow(windowName) {
     const infoWindow = document.getElementById(windowName);
-    if(!infoWindow) return;
+    if (!infoWindow) return;
 
     const isAlreadyOpen = infoWindow.style.display === 'flex';
 
@@ -315,24 +301,48 @@ function toggleWindow(windowName) {
         icon.classList.remove('active');
     });
 
+    document.querySelectorAll('.window-toggle[data-window]').forEach(toggle => {
+        toggle.setAttribute('aria-expanded', 'false');
+    });
+
     if (!isAlreadyOpen) {
         infoWindow.style.display = 'flex';
 
-        const matchingIcon = document.querySelector(`.app-icon-container[onclick*="${windowName}"]`);
+        document.querySelectorAll(`.window-toggle[data-window="${windowName}"]`).forEach(toggle => {
+            toggle.setAttribute('aria-expanded', 'true');
+        });
+
+        const matchingIcon = document.querySelector(`.app-icon-container[data-window="${windowName}"]`);
         if (matchingIcon && windowName !== 'start-menu') {
             matchingIcon.classList.add('active');
         }
     }
 }
 
-function focusWindow(clickedWindow) {
-    const allWindows = document.querySelectorAll('.window-popup');
-    
-    allWindows.forEach(win => {
-        win.style.zIndex = "1100";
-        win.classList.remove('active-window'); 
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    setupPhotography();
+    setupCyber();
+    runSmokeCheck();
+});
 
-    clickedWindow.style.zIndex = "1105";
-    clickedWindow.classList.add('active-window'); 
-}
+document.addEventListener('keydown', event => {
+    const modal = document.getElementById("photoModal");
+    if (modal && modal.style.display === "flex") {
+        if (event.key === "Escape") closeModal();
+        if (event.key === "ArrowLeft") changeImage(-1, event);
+        if (event.key === "ArrowRight") changeImage(1, event);
+    }
+});
+
+// Close Start Menu if clicking outside of it
+document.addEventListener('click', event => {
+    const startMenu = document.getElementById('start-menu');
+    const startBtn = document.querySelector('.start-btn');
+
+    if (startMenu && startBtn && startMenu.style.display === 'flex') {
+        if (!startMenu.contains(event.target) && !startBtn.contains(event.target)) {
+            startMenu.style.display = 'none';
+            startBtn.setAttribute('aria-expanded', 'false');
+        }
+    }
+});

@@ -12,189 +12,20 @@
 
 body {
   min-height: 100vh;
-  text-align: center;
   background-color: #000;
   color: #FFFFFF;
 }
 
-h1 {
-    font-family: var(--bs-body-font-family);
-    font-size: 1px;
-    color: transparent;
-}
-
-/* =========================
-   Centered page content
-   ========================= */
-
-.page-center {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-p {
-  font-size: 1.25rem;
-}
-
-/* Force the top section (Masthead) to be a full screen */
-header.masthead {
-    min-height: 100vh !important;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center; /* Centers the Cyber/Gallery buttons vertically */
-}
-
-.about-section {
-    min-height: 100vh !important;  /* Force the About section to be its own full screen */
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center; /* Centers the About text vertically */
-    padding-top: 0 !important; /* Removes any useless spacing */
-    padding-bottom: 0 !important;
-}
-
-/* ===========================================
-   Navbar overrides on default/large screens
-   =========================================== */
-
-/* Navbar link base color */
-#mainNav .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.85) !important;
-}
-
-/* Hover AND Active State */
-#mainNav .navbar-nav .nav-link:hover,
-#mainNav .navbar-nav .nav-link.active {
-  color: rgba(255, 255, 255, 0.95) !important;
-}
-   
-
-/* Make the teal underline/border on the active link white */
-#mainNav.navbar-shrink .nav-link.active {
-border-bottom: 0.25rem solid rgba(255,255,255,0.85) !important;
-}
-
-/* fixed button size */
-.btn-fixed {
-  min-width: 160px;   
-}
-
-
-/* Override masthead background */
-.masthead {
-  background: none !important;
-  background-color: #000;
-}
-
-
-/* Frosted white glass navbar */
-#mainNav.navbar-shrink {
-  background-color: rgba(255, 255, 255, 0.12) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-/* Override name color in navbar */
-#mainNav .navbar-brand,
-#mainNav .navbar-brand:hover,
-#mainNav .navbar-brand:focus {
-  color: rgba(255, 255, 255, 0.85) !important;
-}
-
-/* Reduce the overall height of the navbar */
-#mainNav {
-    padding-top: 0.5rem !important;    
-    padding-bottom: 0.5rem !important;
-}
-
-/* Make my name smaller */
-#mainNav .navbar-brand {
-    font-size: 1rem !important;        
-}
-
-/* Make the links smaller */
-#mainNav .nav-link {
-    font-size: 0.8rem !important;      /* Smaller font for a cleaner look */
-    padding: 0.5rem 1rem !important;   /* Reduces space between links */
-}
-
-@media (max-width: 991.98px) { 
-    
-    #mainNav {
-        background-color: rgba(0, 0, 0, 0.8) !important; /* Translucent black */
-        backdrop-filter: blur(12px); /* Adds a modern 'glass' effect */
-    }
-    
-    /* Change the 'Menu' button border and text color. Menu button only shows up on smaller screens */
-    #mainNav .navbar-toggler {
-        color: #ffffff !important; /* Changes 'Menu' text to white */
-        border-color: rgba(255, 255, 255, 0.5) !important; /* Changes border to faded white */
-        font-size: 0.8rem; /* Adjust hambugga button size */
-    }
-
-    #mainNav .navbar-toggler-icon {
-    /* Overrides the default teal hambergur icon with a white version */
-        filter: invert(1) grayscale(100%) brightness(200%);
-    }
-    
-
-    /* Keep the dropdown menu transparent as well */
-    #mainNav .navbar-collapse {
-        background-color: transparent !important;
-        border: none !important;
-    }
-
-    /* Change link colors to white so they show up on the dark background */
-    #mainNav .nav-link {
-        color: rgba(255, 255, 255, 0.8) !important;
-        padding: 1rem 0; /* Adds a bit of vertical space for thumb-tapping */
-    }
-
-    /* Show translucent background when the menu is toggled open */
-    #mainNav:has(.navbar-collapse.show),
-    #mainNav:has(.navbar-toggler:not(.collapsed)) {
-        background-color: rgba(0, 0, 0, 0.8) !important;
-        backdrop-filter: blur(12px);
-    }
-
-    /* Frosted white glass navbar */
-    #mainNav.navbar-shrink {
-        background-color: rgba(0, 0, 0, 0.8) !important;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-
-        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-    }
-
-    /* remove the underline/border on the active link for mobile */
-    #mainNav.navbar-shrink .nav-link.active {
-        border-bottom: none !important;
-    }
-    
-}
-
-
-/* =========================
-   About Me Section
-   ========================= */
-
-.about-section p {
-    width: 85%;
-    max-width: 660px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 0.9rem;
+body.photography {
+    background-color: #fff;
+    color: #000;
 }
 
 footer.footer {
-    font-size: 0.7rem !important; 
-    padding-top: 1rem !important; 
-    padding-bottom: 1rem !important;
+    font-size: 0.7rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: #000;
 }
 
 
@@ -202,8 +33,15 @@ footer.footer {
    Styles for Photography.html
    ================================================================ */
 
-body.photography {
-  background-color: #FFFFFF;
+.back-btn {
+    position: fixed;
+    top: 1.2rem;
+    left: 1.5rem;
+    color: #888;
+    font-size: 1.3rem;
+    text-decoration: none;
+    z-index: 100;
+    line-height: 1;
 }
 
 @media (max-width: 600px) {
@@ -273,6 +111,11 @@ body.photography .masonry-item img {
 body.photography .masonry-item img:hover {
     transform: scale(1.02); 
     filter: brightness(1.1); 
+}
+
+body.photography .masonry-item img:focus-visible {
+    outline: 2px solid #111;
+    outline-offset: 2px;
 }
 
 .modal-overlay {
@@ -402,9 +245,28 @@ html.cyber, body.cyber {
     display: grid;
     grid-template-columns: repeat(auto-fill, 100px);
     grid-gap: 20px;
-    z-index: 1; 
+    z-index: 1;
     bottom: 70px;
     align-content: start;
+}
+
+@media (max-width: 600px) {
+    .icon-layer {
+        grid-template-columns: repeat(auto-fill, 70px);
+        grid-gap: 14px;
+    }
+
+    .desktop-icon {
+        width: 70px;
+    }
+
+    .desktop-icon i {
+        font-size: 1.75rem;
+    }
+
+    .desktop-icon span {
+        font-size: 0.7rem;
+    }
 }
 
 .desktop-icon {
@@ -415,6 +277,12 @@ html.cyber, body.cyber {
     color: rgba(255, 255, 255, 0.93);
     cursor: pointer;
     width: 100px;
+    text-decoration: none;
+}
+
+.window-toggle:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.9);
+    outline-offset: 2px;
 }
 
 .desktop-icon i, .desktop-icon img {
@@ -465,9 +333,15 @@ html.cyber, body.cyber {
 }
 
 .app-icon {
-    max-width: 80%;  /* Keeps the image from touching the border */
+    max-width: 80%;
     max-height: 80%;
-    object-fit: contain; /* Keeps the image from stretching/squishing */
+    object-fit: contain;
+}
+
+.app-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .app-icon-container:hover {
@@ -554,6 +428,8 @@ html.cyber, body.cyber {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 12px;
     max-width: 90%;
     margin: 0 auto;
@@ -631,16 +507,16 @@ html.cyber, body.cyber {
 
 .start-menu-popup {
     position: fixed;
-    bottom: 55px; 
+    bottom: 55px;
     left: 10px;
     width: 300px;
     background: rgba(20, 20, 20, 0.95);
     border: 1px solid #444;
     border-radius: 8px;
-    display: flex; 
+    display: none;
     box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
-    z-index: 1100; /* Higher than taskbar */
-    backdrop-filter: blur(10px); /* Glass effect */
+    z-index: 1100;
+    backdrop-filter: blur(10px);
 }
 
 .start-menu-links {
@@ -668,122 +544,4 @@ html.cyber, body.cyber {
 .menu-item:hover {
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
-}
-
-
-
-/* ================================================================
-   Styles for search-replica.html
-   ================================================================ */
-
-body.search-replica {
-    background-color: #1f1f1f !important;
-    margin: 0;
-    min-height: 100vh; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 15px;
-    padding-bottom: 15vh;   
-    box-sizing: border-box;
-}
-
-.top-right-header {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-#profile-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%; 
-}
-
-
-.search-wrapper {
-    position: relative;
-    width: 80%;
-    max-width: 584px !important;
-    margin: 0 auto;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-top: 27px;
-    margin-bottom: 27px;
-    min-height: 42px;        
-    border: 1px solid #4d5156;
-    background-color: #4d5156;
-    border-radius: 24px;
-    padding: 0 20px;    
-    transition: background-color 0.1s;
-    position: relative;
-    z-index: 2;
-}
-
-
-.search-bar:hover {
-    border-color: #5f6368; 
-    background-color: #5f6368;
-}
-
-.search-wrapper:has(:focus) .search-bar,
-.search-wrapper:focus-within .search-bar {
-    border-color: #303134; 
-    background-color: #303134;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-color: #53565b !important;
-}
-
-.search-input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    background: transparent;
-    caret-color: white;
-    color: white;
-    font-family: var(--bs-body-font-family) !important;
-}
-
-.suggestions-list {
-    display: none;
-    position: absolute;
-    visibility: hidden;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #303134;
-    border-radius: 0 0 24px 24px;
-    list-style: none;
-    margin: 0;
-    padding: 10px 0;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.suggestions-list li:hover {
-    background-color: #3c4043;
-}
-
-.suggestions-list li a {
-    display: block; 
-    padding: 8px 20px; 
-    color: #e8eaed;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.suggestions-list li:hover {
-    background-color: #3c4043;
-}
-
-.search-wrapper:focus-within .suggestions-list {
-    display: block !important;
-    visibility: visible;
-    opacity: 1;
 }
