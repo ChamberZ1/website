@@ -191,6 +191,25 @@ main {
     transform: translateY(-1px);
 }
 
+.site-footer {
+    border-top: 1px solid var(--panel-border);
+    padding: 1.75rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.825rem;
+    color: var(--muted);
+}
+
+.site-footer a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: var(--text);
+}
+
 @media (max-width: 600px) {
     main {
         padding: 3rem 1.25rem 4rem;
