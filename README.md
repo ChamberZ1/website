@@ -4,10 +4,10 @@ Personal portfolio website for yours truly.
 
 ## Pages
 
-- **index.html** — Main landing page with top navigation
+- **index.html** — Landing page: intro + Files dropdown (resume, transcript), Projects grid, dark/light toggle
 - **cyber.html** — Cybersecurity portfolio, styled as a desktop OS environment
 - **photography.html** — Photography gallery
-- **services.html** — Services and booking page
+- **services.html** — Services and booking page (live, but not linked from the landing page)
 
 ## Projects Featured
 
@@ -22,5 +22,5 @@ Personal portfolio website for yours truly.
 ## Stack
 
 - HTML / CSS / JavaScript
-- Bootstrap 5 CSS (legacy theme styles still loaded on select pages)
+- Bootstrap 5 CSS (legacy theme styles still loaded on cyber.html and photography.html)
 - Font Awesome 6
