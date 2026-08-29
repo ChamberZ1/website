@@ -154,7 +154,7 @@ h1 {
     border-radius: var(--radius);
     padding: 0.45rem 0.85rem;
     cursor: pointer;
-    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+    transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
 .dropdown-btn:hover { border-color: var(--border-strong); color: var(--text); }
@@ -220,6 +220,8 @@ h1 {
 .links a:hover { color: var(--text); }
 
 /* ---------- section 2: projects ---------- */
+
+.projects:focus { outline: none; }
 
 .projects {
     min-height: 100vh;
