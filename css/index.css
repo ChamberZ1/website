@@ -107,7 +107,6 @@ body {
 /* ---------- section 1: intro ---------- */
 
 .intro {
-    position: relative;
     min-height: 100vh;
     min-height: 100svh;
     display: flex;
@@ -220,30 +219,6 @@ h1 {
 
 .links a:hover { color: var(--text); }
 
-/* ---------- scroll cue ---------- */
-
-.scroll-cue {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.5rem;
-    line-height: 0;
-}
-
-.scroll-cue span {
-    display: block;
-    width: 9px;
-    height: 9px;
-    border-right: 1.5px solid var(--text-muted);
-    border-bottom: 1.5px solid var(--text-muted);
-    transform: rotate(45deg);
-    opacity: 0.7;
-    transition: opacity 0.2s var(--ease);
-}
-
-.scroll-cue:hover span { opacity: 1; }
-
 /* ---------- section 2: projects ---------- */
 
 .projects {
@@ -322,5 +297,4 @@ h2 {
     .about { font-size: 1.0625rem; }
     .links { gap: 1.15rem; }
     .project-grid { grid-template-columns: 1fr; }
-    .scroll-cue { bottom: 1.75rem; }
 }
