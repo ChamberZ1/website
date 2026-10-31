@@ -52,11 +52,11 @@ footer.footer {
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
         border-radius: 6px;
-        padding: 0.35rem 0.55rem !important;
+        padding: 0.35rem 0.55rem;
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    .back-btn.back-btn--hidden {
+    .back-btn.back-btn--hidden:not(:focus-visible) {
         opacity: 0;
         transform: translateY(-10px);
         pointer-events: none;
@@ -128,11 +128,21 @@ body.photography .masonry-item img:focus-visible {
   top: 0;
   width: 100%;
   height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  color: #fff;
   background-color: rgba(0,0,0,0.9);
   justify-content: center;
   align-items: center;
   cursor: default;
 }
+
+.modal-overlay[open] { display: flex; }
+.modal-overlay::backdrop { background: transparent; }
 
 .modal-content{
   object-fit: contain;
@@ -163,7 +173,7 @@ body.photography .masonry-item img:focus-visible {
   align-items: center;
 
   background: none;
-  color: rgba(200, 200, 200, 0.2);
+  color: rgba(255, 255, 255, 0.85);
   border: none;
 
   font-size: clamp(10px, 1.75vw, 60px);
@@ -177,18 +187,37 @@ body.photography .masonry-item img:focus-visible {
 .prev-button { left: 1vw; }
 .next-button { right: 1vw; }
 
-.prev-button:hover, .next-button:hover {
+.prev-button:hover, .next-button:hover,
+.prev-button:focus-visible, .next-button:focus-visible {
   color: #FFFFFF;
   transform: translateY(-50%) scale(1.1);
 }
 
 @media (max-width: 768px) {
   .prev-button, .next-button {
-    display: none !important;
+    top: auto;
+    bottom: 1rem;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    font-size: 1.25rem;
+    background: #222;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    transform: none;
+  }
+
+  .prev-button { left: 1rem; }
+  .next-button { right: 1rem; }
+
+  .prev-button:hover, .next-button:hover,
+  .prev-button:focus-visible, .next-button:focus-visible {
+    transform: none;
   }
 
   .modal-content {
       max-width: 100vw;
+      cursor: default;
   }
 
   .modal-content.is-zoomed {
@@ -201,14 +230,15 @@ body.photography .masonry-item img:focus-visible {
    Styles for cyber.html
    ================================================================ */
 
-html.cyber, body.cyber {
+body.cyber {
     overflow: hidden;
     position: fixed;
 }
 
 .desktop-env {
     width: 100vw;
-    height: 100vh;    
+    height: 100vh;
+    height: 100dvh;
     background: #212529;
     position: relative;
     overflow: hidden; 
@@ -242,8 +272,11 @@ html.cyber, body.cyber {
 
 .icon-layer {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 14px;
+    left: 14px;
+    width: 140px;
+    padding: 6px;
+    overflow-y: auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, 100px);
     grid-gap: 20px;
@@ -254,21 +287,15 @@ html.cyber, body.cyber {
 
 @media (max-width: 600px) {
     .icon-layer {
+        width: 110px;
         grid-template-columns: repeat(auto-fill, 70px);
         grid-gap: 14px;
-    }
-
-    .desktop-icon {
-        width: 70px;
     }
 
     .desktop-icon i {
         font-size: 1.75rem;
     }
 
-    .desktop-icon span {
-        font-size: 0.7rem;
-    }
 }
 
 .desktop-icon {
@@ -286,6 +313,9 @@ html.cyber, body.cyber {
     outline: 2px solid rgba(255, 255, 255, 0.9);
     outline-offset: 2px;
 }
+
+.window-toggle { padding: 0; font: inherit; }
+.desktop-icon.window-toggle { border: 0; background: none; }
 
 .desktop-icon i, .desktop-icon img {
     margin-bottom: 8px;
@@ -363,7 +393,9 @@ html.cyber, body.cyber {
     display: none;
 
     flex-direction: column; /* This stacks header on top of body */
-    min-width: 350px;
+    min-width: 0;
+    max-height: calc(100vh - 120px);
+    max-height: calc(100dvh - 120px);
     position: fixed; /* Fixes it to the screen */
     top: 50%;
     left: 50%;
@@ -376,7 +408,7 @@ html.cyber, body.cyber {
     border-radius: 8px;
     z-index: 1101;
     backdrop-filter: blur(15px);
-    overflow: hidden;
+    overflow: auto;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
@@ -389,6 +421,7 @@ html.cyber, body.cyber {
 }
 
 .window-header {
+    flex-shrink: 0;
     background: #1a1a1a;
     padding: 10px;
     display: flex;
@@ -440,14 +473,7 @@ html.cyber, body.cyber {
 .window-body.folder-view {
     justify-content: center;
     flex-direction: row;
-}
-
-.file-link,
-.file-link:visited, 
-.file-link:hover, 
-.file-link:active {
-    text-decoration: none;
-    color: inherit;       
+    flex-wrap: wrap;
 }
 
 .file-wrapper {
@@ -512,6 +538,10 @@ html.cyber, body.cyber {
     bottom: 55px;
     left: 10px;
     width: 300px;
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh - 65px);
+    max-height: calc(100dvh - 65px);
+    overflow: auto;
     background: rgba(20, 20, 20, 0.95);
     border: 1px solid #444;
     border-radius: 8px;
@@ -546,4 +576,40 @@ html.cyber, body.cyber {
 .menu-item:hover {
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
+}
+
+.modal-close, .modal-zoom {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10000;
+    color: #fff;
+    background: #222;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+}
+
+.modal-zoom { right: auto; left: 1rem; }
+.modal-zoom[aria-pressed="true"] { background: #555; }
+
+@media (max-width: 768px) {
+    .modal-zoom { display: none; }
+}
+
+.github-link img { width: 20px; height: 20px; object-fit: contain; }
+
+@media (max-width: 600px) {
+    .desktop-icon { width: 70px; }
+    .desktop-icon span { font-size: 0.7rem; }
+    .taskbar { padding: 0 4px; gap: 4px; }
+    .taskbar-apps { position: static; transform: none; }
+    .app-icon-container { width: 30px; height: 30px; margin: 0 2px; }
+    .taskbar-time { font-size: 0.65rem; white-space: nowrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
 }

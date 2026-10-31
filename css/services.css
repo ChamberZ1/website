@@ -86,12 +86,14 @@ main {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 1.25rem;
     align-items: start;
 }
 
 .service-card {
+    min-width: 0;
+    overflow-wrap: anywhere;
     background: var(--panel-bg);
     border: 1px solid var(--panel-border);
     border-radius: 16px;
@@ -159,7 +161,7 @@ main {
     color: var(--tag-text);
 }
 
-.service-meta {
+.service-card > .service-meta {
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--text);
@@ -195,6 +197,8 @@ main {
     border-top: 1px solid var(--panel-border);
     padding: 1.75rem 2.5rem;
     display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: space-between;
     align-items: center;
     font-size: 0.825rem;
@@ -208,6 +212,11 @@ main {
 
 .site-footer a:hover {
     color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .book-now { transition: none; }
+    .book-now:hover { transform: none; }
 }
 
 @media (max-width: 600px) {

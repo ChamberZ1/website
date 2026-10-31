@@ -13,7 +13,7 @@
         <meta property="og:image" content="https://zcharles.com/android-chrome-512x512.png" />
         <link rel="canonical" href="https://zcharles.com/" />
 
-        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'none';">
 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -28,15 +28,24 @@
             <span class="theme-toggle-icon" aria-hidden="true"></span>
         </button>
 
-        <main>
-            <section class="intro">
-                <div class="intro-inner">
+        <div class="page-layout">
+            <header class="sidebar">
+                <div class="sidebar-heading">
+                    <button type="button" id="sidebar-toggle" class="sidebar-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar-content" hidden>
+                        <span class="hamburger-icon" aria-hidden="true"></span>
+                    </button>
                     <h1>Charles Zhao</h1>
+                </div>
 
-                    <p class="about">
-                        Cybersecurity and software engineer. B.S. '24 and M.Eng. '25, now building
-                        things at the intersection of security, infrastructure, and machine learning.
-                    </p>
+                <div id="sidebar-content" class="sidebar-content">
+                    <nav class="links" aria-label="Site, profile, and contact links">
+                        <a href="https://github.com/ChamberZ1" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://www.linkedin.com/in/zcharles/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://learn.cylabacademy.org/users/zcharles517" target="_blank" rel="noopener noreferrer">CyLab</a>
+                        <a href="photography.html">/Photography</a>
+                        <a href="https://www.youtube.com/@cztrailblaze" target="_blank" rel="noopener noreferrer">YouTube</a>
+                        <a href="mailto:zcharles@vt.edu">Contact</a>
+                    </nav>
 
                     <div class="actions">
                         <div class="dropdown">
@@ -55,56 +64,45 @@
                             </ul>
                         </div>
                     </div>
-
-                    <nav class="links" aria-label="Site, profile, and contact links">
-                        <a href="#projects">Projects</a>
-                        <a href="https://github.com/ChamberZ1" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href="https://www.linkedin.com/in/zcharles/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://learn.cylabacademy.org/users/zcharles517" target="_blank" rel="noopener noreferrer">CyLab</a>
-                        <a href="photography.html">/Photography</a>
-                        <a href="mailto:zcharles@vt.edu">Contact</a>
-                    </nav>
                 </div>
-            </section>
+            </header>
 
-            <section class="projects" id="projects" tabindex="-1">
-                <div class="projects-inner">
-                    <h2>Projects</h2>
+            <main class="projects" id="projects" aria-labelledby="projects-heading">
+                <h2 id="projects-heading">Projects</h2>
 
-                    <div class="project-grid">
-                        <article class="project-card">
-                            <h3>KubeRange</h3>
-                            <p>Kubernetes-based cyber range that dynamically provisions isolated vulnerable environments (DVWA, OWASP Juice Shop) for security training, with centralized log monitoring via the ELK Stack.</p>
-                            <a href="https://github.com/ChamberZ1/KubeRange" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
-                        </article>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <h3>KubeRange</h3>
+                        <p>Kubernetes-based cyber range that dynamically provisions isolated vulnerable environments (DVWA, OWASP Juice Shop) for security training, with centralized log monitoring via the ELK Stack.</p>
+                        <a href="https://github.com/ChamberZ1/KubeRange" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
+                    </article>
 
-                        <article class="project-card">
-                            <h3>Phisherman</h3>
-                            <p>Multi-layer system leveraging rules, classic ML, and deep learning models to detect phishing emails.</p>
-                            <a href="https://github.com/ChamberZ1/phisherman" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
-                        </article>
+                    <article class="project-card">
+                        <h3>Phisherman</h3>
+                        <p>Multi-layer system leveraging rules, classic ML, and deep learning models to detect phishing emails.</p>
+                        <a href="https://github.com/ChamberZ1/phisherman" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
+                    </article>
 
-                        <article class="project-card">
-                            <h3>Sliver C2 Stager</h3>
-                            <p>A custom C++ stager built to deliver a Sliver C2 implant while evading Microsoft Defender Antivirus.</p>
-                            <a href="https://github.com/ChamberZ1/sliver" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
-                        </article>
+                    <article class="project-card">
+                        <h3>Sliver C2 Stager</h3>
+                        <p>A custom C++ stager built to deliver a Sliver C2 implant while evading Microsoft Defender Antivirus.</p>
+                        <a href="https://github.com/ChamberZ1/sliver" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
+                    </article>
 
-                        <article class="project-card">
-                            <h3>Pi-hole Network Adblocker</h3>
-                            <p>A DNS sinkhole configured on a Raspberry Pi to block and monitor DNS traffic across the home network.</p>
-                            <a href="https://github.com/ChamberZ1/pihole-network-adblocker" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
-                        </article>
+                    <article class="project-card">
+                        <h3>Pi-hole Network Adblocker</h3>
+                        <p>A DNS sinkhole configured on a Raspberry Pi to block and monitor DNS traffic across the home network.</p>
+                        <a href="https://github.com/ChamberZ1/pihole-network-adblocker" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
+                    </article>
 
-                        <article class="project-card">
-                            <h3>CyberTwitDaily</h3>
-                            <p>An X feed aggregating the latest cybersecurity news, research, and exploits from top infosec sources.</p>
-                            <a href="https://github.com/ChamberZ1/cybertwit" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
-                        </article>
-                    </div>
+                    <article class="project-card">
+                        <h3>CyberTwitDaily</h3>
+                        <p>An X feed aggregating the latest cybersecurity news, research, and exploits from top infosec sources.</p>
+                        <a href="https://github.com/ChamberZ1/cybertwit" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
+                    </article>
                 </div>
-            </section>
-        </main>
+            </main>
+        </div>
 
         <script src="js/index.js"></script>
     </body>

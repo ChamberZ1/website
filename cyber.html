@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="Charles Zhao | Cybersecurity" />
         <title>HAKERMANE</title>
 
@@ -13,7 +13,7 @@
         <meta property="og:image" content="https://zcharles.com/android-chrome-512x512.png" />
         <link rel="canonical" href="https://zcharles.com/cyber" />
 
-        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com; script-src 'self'; img-src 'self'; font-src https://cdnjs.cloudflare.com https://fonts.gstatic.com; manifest-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com; script-src 'self'; img-src 'self'; font-src https://cdnjs.cloudflare.com https://fonts.gstatic.com; manifest-src 'self'; base-uri 'self'; form-action 'none';">
 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -22,7 +22,7 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
 
 
         <link href="css/styles.css" rel="stylesheet">
@@ -36,7 +36,7 @@
                 <i class="fa-solid fa-horse"></i>
             </div>
             <div class="icon-layer">
-                <a class="desktop-icon" href="https://zcharles.com/assets/zcharles-resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open resume PDF">
+                <a class="desktop-icon" href="assets/zcharles-resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open resume PDF">
                     <i class="fa-solid fa-file fa-3x"></i>
                     <span>Resume</span>
                 </a>
@@ -51,13 +51,13 @@
                     <span>LinkedIn</span>
                 </a>
 
-                <div class="desktop-icon window-toggle" data-window="edu-window" role="button" tabindex="0" aria-controls="edu-window" aria-expanded="false">
+                <button type="button" class="desktop-icon window-toggle" data-window="edu-window" aria-controls="edu-window" aria-expanded="false">
                     <i class="fa-solid fa-folder fa-3x"></i>
                     <span>Education</span>
-                </div>
+                </button>
             </div>
 
-<div id="edu-window" class="window-popup">
+<div id="edu-window" class="window-popup" role="dialog" aria-label="Education">
                 <div class="window-header">
                     <div class="header-left">
                         <i class="fa-solid fa-folder"></i>
@@ -103,7 +103,7 @@
                     </div>
             </div>
 
-            <div id="cybertwit-window" class="window-popup">
+            <div id="cybertwit-window" class="window-popup" role="dialog" aria-label="Daily Cybersecurity News">
                 <div class="window-header">
                     <div class="header-left">
                         <img src="/assets/img/x.png" class="header-icon" alt="X (formerly twitter) Icon">
@@ -128,7 +128,7 @@
                 </div>
             </div>
 
-            <div id="phisherman-window" class="window-popup">
+            <div id="phisherman-window" class="window-popup" role="dialog" aria-label="Phisherman">
                 <div class="window-header">
                     <div class="header-left">
                         <img src="/assets/svg/phishmail.svg" class="header-icon" alt="Icon for phisherman project">
@@ -152,7 +152,7 @@
                 </div>
             </div>
 
-            <div id="kuberange-window" class="window-popup">
+            <div id="kuberange-window" class="window-popup" role="dialog" aria-label="KubeRange">
                 <div class="window-header">
                     <div class="header-left">
                         <img src="/assets/svg/k8s.svg" class="header-icon" alt="Kubernetes icon">
@@ -177,7 +177,7 @@
             </div>
 
 
-            <div id="pi-hole-window" class="window-popup">
+            <div id="pi-hole-window" class="window-popup" role="dialog" aria-label="Pi-hole Network Adblocker">
                 <div class="window-header">
                     <div class="header-left">
                         <img src="/assets/svg/pi-hole.svg" class="header-icon" alt="Pi-hole icon">
@@ -201,7 +201,7 @@
                 </div>
             </div>
 
-            <div id="sliver-window" class="window-popup">
+            <div id="sliver-window" class="window-popup" role="dialog" aria-label="Sliver C2">
                 <div class="window-header">
                     <div class="header-left">
                         <img src="/assets/svg/s.svg" class="header-icon" alt="Sliver icon">
@@ -224,27 +224,27 @@
                 </div>
             </div>
 
-            <nav class="taskbar">
-                <div class="start-btn app-icon-container window-toggle" data-window="start-menu" role="button" tabindex="0" aria-controls="start-menu" aria-expanded="false">
+            <nav class="taskbar" aria-label="Desktop applications">
+                <button type="button" class="start-btn app-icon-container window-toggle" data-window="start-menu" aria-controls="start-menu" aria-expanded="false">
                     <img src="favicon-32x32.png" alt="Start" class="app-img">                
-                </div>
+                </button>
                 
                 <div class="taskbar-apps">
-                    <div class="app-icon-container window-toggle" title="Pi-hole" data-window="pi-hole-window" role="button" tabindex="0" aria-controls="pi-hole-window" aria-expanded="false">
+                    <button type="button" class="app-icon-container window-toggle" title="Pi-hole" data-window="pi-hole-window" aria-controls="pi-hole-window" aria-expanded="false">
                         <img src="/assets/svg/pi-hole.svg" class="app-icon" title="Pi-hole" alt="Pi-hole project">
-                    </div>
-                    <div class="app-icon-container window-toggle" title="AV-Evasion" data-window="sliver-window" role="button" tabindex="0" aria-controls="sliver-window" aria-expanded="false">
+                    </button>
+                    <button type="button" class="app-icon-container window-toggle" title="AV-Evasion" data-window="sliver-window" aria-controls="sliver-window" aria-expanded="false">
                         <img src="/assets/svg/s.svg" class="app-icon" title="AV-Evasion" alt="Sliver C2 project">
-                    </div>
-                    <div class="app-icon-container window-toggle" title="CyberTwit" data-window="cybertwit-window" role="button" tabindex="0" aria-controls="cybertwit-window" aria-expanded="false">
+                    </button>
+                    <button type="button" class="app-icon-container window-toggle" title="CyberTwit" data-window="cybertwit-window" aria-controls="cybertwit-window" aria-expanded="false">
                         <img src="/assets/svg/xwhite.svg" class="app-icon" title="CyberTwit" alt="CyberTwitDaily project">
-                    </div>
-                    <div class="app-icon-container window-toggle" title="Phisherman" data-window="phisherman-window" role="button" tabindex="0" aria-controls="phisherman-window" aria-expanded="false">
+                    </button>
+                    <button type="button" class="app-icon-container window-toggle" title="Phisherman" data-window="phisherman-window" aria-controls="phisherman-window" aria-expanded="false">
                         <img src="/assets/svg/phishmail.svg" class="app-icon" title="Phisherman" alt="Phisherman project">
-                    </div>
-                    <div class="app-icon-container window-toggle" title="KubeRange" data-window="kuberange-window" role="button" tabindex="0" aria-controls="kuberange-window" aria-expanded="false">
+                    </button>
+                    <button type="button" class="app-icon-container window-toggle" title="KubeRange" data-window="kuberange-window" aria-controls="kuberange-window" aria-expanded="false">
                         <img src="/assets/svg/k8s.svg" class="app-icon" title="KubeRange" alt="KubeRange project">
-                    </div>
+                    </button>
                 </div>
 
                 <div class="taskbar-time" id="real-time">00:00</div>
