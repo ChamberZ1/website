@@ -300,6 +300,9 @@ h2 {
 }
 
 .project-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
     align-self: flex-start;
     margin-top: 0.35rem;
     font-size: 0.8125rem;
@@ -310,6 +313,12 @@ h2 {
 }
 
 .project-card a:hover { color: var(--text); }
+
+.external-icon {
+    width: 0.85em;
+    height: 0.85em;
+    flex-shrink: 0;
+}
 
 /* ---------- mobile ---------- */
 
