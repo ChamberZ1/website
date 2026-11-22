@@ -11,7 +11,7 @@ const { posts, heading: Heading = 'h2' } = Astro.props;
             <Heading><a href={`/archives/${id}`}>{data.title}</a></Heading>
             <p class="post-meta">
                 <time datetime={isoDate(data.date)}>{longDate(data.date)}</time>, {data.category}
-                {data.draft && <strong>(draft)</strong>}
+                {data.draft && <strong> (draft)</strong>}
             </p>
             <p>{data.summary}</p>
         </li>

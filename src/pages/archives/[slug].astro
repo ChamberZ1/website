@@ -19,7 +19,7 @@ const preview = cover && await getImage({ src: cover, width: Math.min(cover.widt
         <p class="post-meta">
             <time datetime={isoDate(date)}>{longDate(date)}</time>, {category}
             {updated && <>. Updated <time datetime={isoDate(updated)}>{longDate(updated)}</time></>}
-            {draft && <strong>(draft)</strong>}
+            {draft && <strong> (draft)</strong>}
         </p>
         {cover && <Image src={cover} alt={coverAlt} width={Math.min(cover.width, 1200)} />}
         <div class="prose"><Content /></div>
