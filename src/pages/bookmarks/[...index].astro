@@ -1,0 +1,47 @@
+---
+// A rest route so that /bookmarks is not built while it has no published links.
+import Base from '../../layouts/Base.astro';
+import { getBookmarks } from '../../data/bookmarks';
+
+export async function getStaticPaths() {
+    return (await getBookmarks()).length ? [{ params: { index: undefined } }] : [];
+}
+
+const sections = await getBookmarks();
+---
+<Base title="Bookmarks | Charles Zhao" description="Useful sites and tools, picked by Charles Zhao" path="/bookmarks">
+    <h1>Bookmarks</h1>
+    <p class="post-meta">Useful sites and tools.</p>
+
+    <div id="bookmark-search" class="bookmark-search" hidden>
+        <label class="visually-hidden" for="bookmark-query">Search bookmarks</label>
+        <input id="bookmark-query" type="search" placeholder="Search" autocomplete="off" />
+    </div>
+
+    <nav class="bookmark-nav" aria-label="Bookmark sections">
+        {sections.map(({ id, name }) => <a href={`#${id}`}>{name}</a>)}
+    </nav>
+
+    {sections.map((section) => (
+        <section id={section.id} class="bookmark-section" aria-labelledby={`${section.id}-heading`}>
+            <h2 id={`${section.id}-heading`}>{section.name}</h2>
+            {section.groups.map((group) => (
+                <div class="bookmark-group">
+                    {group.name && <h3>{group.name}</h3>}
+                    <ul>
+                        {group.links.map((link) => (
+                            <li data-search={[section.name, group.name, link.name, link.description, ...link.tags].join(' ').toLowerCase()}>
+                                <a href={link.url} target="_blank" rel="noopener noreferrer">{link.name}</a>
+                                {link.favorite && <span class="bookmark-favorite"><span aria-hidden="true">★</span><span class="visually-hidden">Favorite</span></span>}
+                                <span class="bookmark-description">{link.description}{link.draft && ' (draft)'}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
+        </section>
+    ))}
+    <p id="bookmark-empty" class="post-meta" role="status" hidden>Nothing matches that search.</p>
+
+    <script is:inline src="/js/bookmarks.js"></script>
+</Base>

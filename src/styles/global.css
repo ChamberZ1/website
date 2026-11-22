@@ -342,11 +342,11 @@ h2 {
 .prose table { display: block; overflow-x: auto; border-collapse: collapse; }
 .prose :is(th, td) { padding: 0.4rem 0.75rem; border: 1px solid var(--border); text-align: left; }
 
-/* ---------- toolbox ---------- */
+/* ---------- bookmarks ---------- */
 
-.tool-search { max-width: 44rem; margin-top: 1.25rem; }
-.tool-search[hidden] { display: none; }
-.tool-search input {
+.bookmark-search { max-width: 44rem; margin-top: 1.25rem; }
+.bookmark-search[hidden] { display: none; }
+.bookmark-search input {
     width: 100%;
     min-height: 44px;
     padding: 0.5rem 0.9rem;
@@ -357,20 +357,20 @@ h2 {
     font: inherit;
 }
 
-.tool-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1rem; }
-.tool-nav a { color: var(--text-muted); font-size: 0.875rem; }
-.tool-nav a:hover { color: var(--text); }
+.bookmark-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1rem; }
+.bookmark-nav a { color: var(--text-muted); font-size: 0.875rem; }
+.bookmark-nav a:hover { color: var(--text); }
 
-.tool-section { max-width: 44rem; margin-top: 2.5rem; scroll-margin-top: 1rem; }
-.tool-section > h2 { margin-bottom: 0.75rem; font-size: 1.35rem; }
-.tool-group + .tool-group { margin-top: 1.25rem; }
-.tool-group h3 { margin-bottom: 0.35rem; font-size: 1rem; font-weight: 500; }
-.tool-group ul { padding-left: 1rem; list-style: none; border-left: 1px solid var(--border); }
-.tool-group li { padding: 0.25rem 0; }
-.tool-group a { color: var(--text); text-underline-offset: 0.2em; }
-.tool-favorite { margin-left: 0.35rem; }
-.tool-description { margin-left: 0.5rem; color: var(--text-muted); font-size: 0.875rem; }
-#tool-empty:not([hidden]) { margin-top: 2rem; }
+.bookmark-section { max-width: 44rem; margin-top: 2.5rem; scroll-margin-top: 1rem; }
+.bookmark-section > h2 { margin-bottom: 0.75rem; font-size: 1.35rem; }
+.bookmark-group + .bookmark-group { margin-top: 1.25rem; }
+.bookmark-group h3 { margin-bottom: 0.35rem; font-size: 1rem; font-weight: 500; }
+.bookmark-group ul { padding-left: 1rem; list-style: none; border-left: 1px solid var(--border); }
+.bookmark-group li { padding: 0.25rem 0; }
+.bookmark-group a { color: var(--text); text-underline-offset: 0.2em; }
+.bookmark-favorite { margin-left: 0.35rem; }
+.bookmark-description { margin-left: 0.5rem; color: var(--text-muted); font-size: 0.875rem; }
+#bookmark-empty:not([hidden]) { margin-top: 2rem; }
 
 /* ---------- garage ---------- */
 
@@ -484,9 +484,9 @@ h2 {
     .links { gap: 0; }
     .links a, .site-footer a { display: flex; align-items: center; min-height: 44px; }
     .post-filter button, .mod-links a { min-height: 44px; }
-    .tool-nav a, .tool-group a { display: inline-flex; align-items: center; min-height: 44px; }
-    .tool-group li { padding: 0 0 0.5rem; }
-    .tool-description { display: block; margin: -0.35rem 0 0; }
+    .bookmark-nav a, .bookmark-group a { display: inline-flex; align-items: center; min-height: 44px; }
+    .bookmark-group li { padding: 0 0 0.5rem; }
+    .bookmark-description { display: block; margin: -0.35rem 0 0; }
     .post-list :is(h2, h3) a, .block-link a { display: inline-flex; align-items: center; min-height: 44px; }
     .links a { width: 100%; font-size: 1rem; }
     .links-profile { margin-top: 0.75rem; padding-top: 0.75rem; }

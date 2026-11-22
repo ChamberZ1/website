@@ -5,7 +5,7 @@
     "groups": [
       {
         "name": "LLMs",
-        "tools": [
+        "links": [
           { "name": "Claude", "url": "https://claude.ai/", "description": "AI assistant from Anthropic.", "draft": false },
           { "name": "ChatGPT", "url": "https://chatgpt.com/", "description": "AI assistant from OpenAI.", "draft": false },
           { "name": "Gemini", "url": "https://gemini.google.com/", "description": "AI assistant from Google.", "draft": false },
@@ -14,7 +14,7 @@
       },
       {
         "name": "Coding Agents",
-        "tools": [
+        "links": [
           { "name": "Claude Code", "url": "https://claude.com/product/claude-code", "description": "Coding agent from Anthropic.", "draft": false },
           { "name": "Codex", "url": "https://openai.com/codex/", "description": "Coding agent from OpenAI.", "draft": false },
           { "name": "Cursor", "url": "https://cursor.com/", "description": "Code editor with built-in AI.", "draft": false }
@@ -22,7 +22,7 @@
       },
       {
         "name": "Agentic AI",
-        "tools": [
+        "links": [
           { "name": "Building effective agents", "url": "https://www.anthropic.com/research/building-effective-agents", "description": "Article on common agent patterns and when to use them.", "draft": false },
           { "name": "Model Context Protocol", "url": "https://modelcontextprotocol.io/", "description": "Open standard for connecting AI apps to tools and data.", "tags": ["mcp"], "draft": false },
           { "name": "LangGraph", "url": "https://www.langchain.com/langgraph", "description": "Framework for building agents.", "draft": false }
@@ -36,14 +36,14 @@
     "groups": [
       {
         "name": "Learn",
-        "tools": [
+        "links": [
           { "name": "Web Security Academy", "url": "https://portswigger.net/web-security", "description": "Free web security training with labs.", "tags": ["training"], "draft": false },
           { "name": "MITRE ATT&CK", "url": "https://attack.mitre.org/", "description": "Reference of attacker tactics and techniques.", "draft": false }
         ]
       },
       {
         "name": "Use",
-        "tools": [
+        "links": [
           { "name": "CyberChef", "url": "https://gchq.github.io/CyberChef/", "description": "Decode, convert and analyze data in the browser.", "draft": false },
           { "name": "VirusTotal", "url": "https://www.virustotal.com/", "description": "Scan files and links for malware.", "draft": false },
           { "name": "Have I Been Pwned", "url": "https://haveibeenpwned.com/", "description": "Check whether an email appears in known data breaches.", "draft": false }
@@ -56,7 +56,7 @@
     "name": "Developer Tools",
     "groups": [
       {
-        "tools": [
+        "links": [
           { "name": "DevDocs", "url": "https://devdocs.io/", "description": "Many API docs in one searchable place.", "tags": ["documentation"], "draft": false },
           { "name": "regex101", "url": "https://regex101.com/", "description": "Test and explain regular expressions.", "tags": ["regex"], "draft": false },
           { "name": "explainshell", "url": "https://explainshell.com/", "description": "Explains each part of a shell command.", "tags": ["linux", "bash"], "draft": false },
@@ -70,7 +70,7 @@
     "name": "Adblock",
     "groups": [
       {
-        "tools": [
+        "links": [
           { "name": "uBlock Origin", "url": "https://github.com/gorhill/uBlock", "description": "Content blocker for web browsers.", "tags": ["browser", "extension", "privacy"], "draft": false }
         ]
       }
@@ -81,7 +81,7 @@
     "name": "Free Books Online",
     "groups": [
       {
-        "tools": [
+        "links": [
           { "name": "Project Gutenberg", "url": "https://www.gutenberg.org/", "description": "Free ebooks, mostly older works in the public domain.", "tags": ["reading"], "draft": false },
           { "name": "Internet Archive", "url": "https://archive.org/details/texts", "description": "Digital library of books and texts to read or borrow.", "tags": ["reading", "library"], "draft": false },
           { "name": "Standard Ebooks", "url": "https://standardebooks.org/", "description": "Carefully formatted public domain ebooks.", "tags": ["reading"], "draft": false },
@@ -95,7 +95,7 @@
     "name": "Travel",
     "groups": [
       {
-        "tools": [
+        "links": [
           { "name": "Google Maps", "url": "https://www.google.com/maps", "description": "Plan destinations, check ETAs, read reviews, and find stops such as gas stations, restaurants and hotels.", "tags": ["directions", "road trip", "food"], "draft": false },
           { "name": "Google My Maps", "url": "https://www.google.com/mymaps", "description": "Make a custom map of a trip's destinations and stops.", "tags": ["planning", "road trip", "itinerary"], "draft": false },
           { "name": "Google Flights", "url": "https://www.google.com/travel/flights", "description": "Compare flights and track prices.", "tags": ["airfare"], "draft": false },

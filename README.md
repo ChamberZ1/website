@@ -64,12 +64,12 @@ This repository is public, so anyone can read a draft on GitHub, and an image's
 location data stays in the original file. Keep private drafts elsewhere and
 remove location data before committing photos.
 
-## Adding to Toolbox
+## Adding to Bookmarks
 
-Edit `src/content/toolbox/tools.json`. Sections hold groups, and groups hold
-tools. A group's `name` is optional. Each tool needs `name`, an `https` `url` and
+Edit `src/content/bookmarks/bookmarks.json`. Sections hold groups, and groups hold
+links. A group's `name` is optional. Each link needs `name`, an `https` `url` and
 a `description`. Optional: `tags` (extra search words), `favorite` (adds a star)
-and `draft`. Tools are hidden until `"draft": false`, and empty groups and
+and `draft`. Links are hidden until `"draft": false`, and empty groups and
 sections are hidden too. Push to `main` to publish.
 
 ## Adding to Garage
