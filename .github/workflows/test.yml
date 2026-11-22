@@ -1,0 +1,25 @@
+name: test
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          ASTRO_TELEMETRY_DISABLED: 1
+      - name: Test
+        run: |
+          geckodriver --host 127.0.0.1 --port 4444 &
+          timeout 30 sh -c 'until curl -sf http://127.0.0.1:4444/status; do sleep 1; done'
+          WEBDRIVER_URL=http://127.0.0.1:4444 python3 -m unittest discover -s tests -v

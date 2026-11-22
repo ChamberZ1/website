@@ -5,3 +5,7 @@ Thumbs.db
 .vscode/
 
 __pycache__/
+
+node_modules/
+dist/
+.astro/

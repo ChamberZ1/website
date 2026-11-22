@@ -21,14 +21,28 @@ Personal portfolio website for yours truly.
 
 ## Stack
 
-- HTML / CSS / JavaScript
+- Astro (static output); existing pages are plain HTML / CSS / JavaScript in `public/`
 - Shared base CSS and page-specific styles
 - Font Awesome 6
 
 
+## Development
+
+Requires Node 22.23.4 or newer.
+
+```sh
+npm ci
+npm run dev      # local server
+npm run build    # output in dist/
+```
+
+## Deployment
+
+Cloudflare Pages: build command `npm run build`, output directory `dist`.
+
 ## Validation
 
-Run the static integration checks with Python 3:
+Build first, then run the static integration checks with Python 3:
 
 ```sh
 python3 -m unittest discover -s tests
@@ -60,7 +74,7 @@ is unset; physical touch devices still warrant a manual check.
 
 ## Hosting security
 
-Serve the following as HTTP response headers for HTML pages:
+`public/_headers` sets these response headers on Cloudflare Pages:
 
 ```text
 Content-Security-Policy: frame-ancestors 'none'
@@ -68,6 +82,5 @@ X-Content-Type-Options: nosniff
 Referrer-Policy: strict-origin-when-cross-origin
 ```
 
-Keep the existing page-specific CSP meta tags as well. `frame-ancestors` must be
-sent as a response header; browsers do not enforce it in a meta tag. Configure
-these headers in the hosting service (this repository has no hosting config).
+Keep the page-specific CSP meta tags as well. Browsers ignore `frame-ancestors`
+in a meta tag, so it must stay in the response header.
