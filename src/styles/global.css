@@ -187,7 +187,7 @@ body {
 }
 
 .links a:hover { color: var(--text); }
-.links a[aria-current="page"] { color: var(--text); }
+.links a[aria-current] { color: var(--text); }
 .links-profile { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
 
 /* ---------- projects ---------- */
@@ -276,6 +276,7 @@ h2 {
 .section-card {
     display: flex;
     flex-direction: column;
+    align-self: start;
     overflow: hidden;
     padding-bottom: 1.1rem;
     color: var(--text);
@@ -290,6 +291,57 @@ h2 {
 .section-card img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 .section-card-label { padding: 1.1rem 1.5rem 0; font-weight: 500; }
 .section-card-summary { padding: 0.25rem 1.5rem 0; color: var(--text-muted); font-size: 0.875rem; }
+
+/* ---------- archives ---------- */
+
+.post-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.post-filter[hidden] { display: none; }
+.post-filter button {
+    padding: 0.35rem 0.85rem;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+.post-filter button[aria-pressed="true"] { color: var(--text); border-color: var(--text-muted); }
+
+.post-list { max-width: 44rem; list-style: none; }
+.post-list > li + li { margin-top: 2rem; }
+.post-list :is(h2, h3) { margin: 0; font-size: 1.125rem; font-weight: 500; line-height: 1.4; }
+.post-list a { color: inherit; text-decoration: none; }
+.post-list a:hover { text-decoration: underline; }
+.post-meta { color: var(--text-muted); font-size: 0.875rem; }
+.post-list .post-meta { margin-bottom: 0.35rem; }
+
+.post { max-width: 42rem; overflow-wrap: break-word; }
+.post h1 { margin-bottom: 0.5rem; }
+.post img { display: block; max-width: 100%; height: auto; margin-top: 1.5rem; border-radius: var(--radius); }
+
+.prose { margin-top: 2rem; }
+.prose > * + * { margin-top: 1.1rem; }
+.prose :is(h2, h3) { margin-top: 2.25rem; margin-bottom: 0; line-height: 1.3; }
+.prose h2 { font-size: 1.35rem; }
+.prose h3 { font-size: 1.1rem; font-weight: 500; }
+.prose a { color: inherit; text-underline-offset: 0.2em; }
+.prose :is(ul, ol) { padding-left: 1.4rem; }
+.prose li + li { margin-top: 0.35rem; }
+.prose blockquote { padding-left: 1rem; color: var(--text-muted); border-left: 3px solid var(--border-strong); }
+.prose code { font-size: 0.9em; }
+.prose pre {
+    overflow-x: auto;
+    padding: 1rem;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    line-height: 1.5;
+}
+.prose table { display: block; overflow-x: auto; border-collapse: collapse; }
+.prose :is(th, td) { padding: 0.4rem 0.75rem; border: 1px solid var(--border); text-align: left; }
+
+/* ---------- footer and utilities ---------- */
 
 .site-footer {
     display: flex;
@@ -368,6 +420,8 @@ h2 {
     .theme-toggle { position: absolute; }
     .links { gap: 0; }
     .links a, .site-footer a { display: flex; align-items: center; min-height: 44px; }
+    .post-filter button { min-height: 44px; }
+    .post-list :is(h2, h3) a, .block-link a { display: inline-flex; align-items: center; min-height: 44px; }
     .links a { width: 100%; font-size: 1rem; }
     .links-profile { margin-top: 0.75rem; padding-top: 0.75rem; }
     .project-card { padding-bottom: 0.75rem; }

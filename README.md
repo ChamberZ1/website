@@ -39,6 +39,31 @@ npm run dev      # local server
 npm run build    # output in dist/
 ```
 
+## Adding a post to Archives
+
+1. Copy `src/content/archives/example-post.md`. The file name becomes the address:
+   `my-trip.md` is published at `/archives/my-trip`.
+2. Fill in the top block:
+
+   | Field | Required | Notes |
+   |---|---|---|
+   | `title`, `summary`, `category` | yes | Reuse a category name exactly to group posts |
+   | `date` | yes | `YYYY-MM-DD` |
+   | `updated` | no | Date of the last real revision |
+   | `cover`, `coverAlt` | no | Such as `./images/my-trip.jpg`, with a description |
+   | `draft` | no | Defaults to `true` (hidden). Set `false` to publish |
+   | `showOnHome` | no | Defaults to `false`. Set `true` to list it on the homepage |
+
+3. Write below it in Markdown. Put images in `src/content/archives/images/` and
+   add them with `![description](./images/photo.jpg)`.
+4. Check it with `npm run dev`, then push to `main`.
+
+The Archives link appears by itself once one post is published.
+
+This repository is public, so anyone can read a draft on GitHub, and an image's
+location data stays in the original file. Keep private drafts elsewhere and
+remove location data before committing photos.
+
 ## Deployment
 
 Cloudflare Pages: build command `npm run build`, output directory `dist`.

@@ -1,0 +1,24 @@
+---
+// The list page. A rest route so that /archives is not built while there are no posts.
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../data/posts';
+
+export async function getStaticPaths() {
+    return (await getPosts()).length ? [{ params: { index: undefined } }] : [];
+}
+
+const posts = await getPosts();
+const categories = [...new Set(posts.map(({ data }) => data.category))].sort();
+---
+<Base title="Archives | Charles Zhao" description="Writing by Charles Zhao" path="/archives">
+    <h1>Archives</h1>
+    {categories.length > 1 && (
+        <div id="post-filter" class="post-filter" role="group" aria-label="Filter by category" hidden>
+            <button type="button" data-filter="" aria-pressed="true">All</button>
+            {categories.map((category) => <button type="button" data-filter={category} aria-pressed="false">{category}</button>)}
+        </div>
+    )}
+    <PostList posts={posts} />
+    {categories.length > 1 && <script is:inline src="/js/archives.js"></script>}
+</Base>

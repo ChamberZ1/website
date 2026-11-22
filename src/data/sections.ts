@@ -1,5 +1,7 @@
+import { getPosts } from './posts';
+
 // Navigation links and homepage cards. Set `enabled: true` once a section has a
-// page and real content.
+// page and real content. Archives turns on by itself with the first published post.
 export interface Section {
     label: string;
     href: string;
@@ -15,4 +17,7 @@ const sections: Section[] = [
     { label: '/Garage', href: '/garage', summary: 'My Honda Rebel 500 and its modifications.', enabled: false },
 ];
 
-export const liveSections = sections.filter((section) => section.enabled);
+export async function getLiveSections() {
+    const hasPosts = (await getPosts()).length > 0;
+    return sections.filter(({ href, enabled }) => enabled || (href === '/archives' && hasPosts));
+}

@@ -1,9 +1,12 @@
 ---
 import { profile } from '../data/profile';
-import { liveSections } from '../data/sections';
+import { getLiveSections } from '../data/sections';
 
-interface Props { home?: boolean }
-const { home = false } = Astro.props;
+interface Props { path?: string }
+const { path } = Astro.props;
+const home = path === '/';
+const sections = await getLiveSections();
+const current = (href: string) => path === href ? 'page' : path?.startsWith(`${href}/`) ? 'true' : undefined;
 ---
 <header class="sidebar">
     <div class="sidebar-heading">
@@ -17,7 +20,7 @@ const { home = false } = Astro.props;
         <nav class="links" aria-label="Site">
             <a href={profile.resume} target="_blank" rel="noopener noreferrer">Resume</a>
             <a href="/" aria-current={home ? 'page' : undefined}>Projects</a>
-            {liveSections.map((section) => <a href={section.href}>{section.label}</a>)}
+            {sections.map(({ href, label }) => <a href={href} aria-current={current(href)}>{label}</a>)}
         </nav>
 
         <nav class="links links-profile" aria-label="Profile and contact">

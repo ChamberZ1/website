@@ -6,4 +6,5 @@ export default defineConfig({
   build: { format: 'file', inlineStylesheets: 'never' },
   // The site's CSP forbids inline scripts and styles.
   vite: { build: { assetsInlineLimit: 0 } },
+  markdown: { syntaxHighlight: false },
 });

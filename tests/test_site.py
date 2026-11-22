@@ -5,6 +5,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import unittest
 from urllib.parse import urlsplit
+from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1] / 'dist'
 
@@ -102,6 +103,15 @@ class SiteTests(unittest.TestCase):
         self.assertTrue(modal.get('aria-label', '').strip() or modal.get('aria-labelledby', '').strip(),
                         'The photo viewer needs an accessible name')
         self.assertTrue(any(t == 'button' and a.get('id') == 'modalCloseBtn' for t, a in photo.tags))
+
+    def test_drafts_and_placeholders_are_not_published(self):
+        for path in [*ROOT.rglob('*.html'), *ROOT.rglob('*.xml')]:
+            self.assertNotIn('[Placeholder]', path.read_text(encoding='utf-8'), path.name)
+
+    def test_sitemap_lists_only_built_pages(self):
+        for url in ElementTree.parse(ROOT / 'sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc'):
+            target = resolve(ROOT / 'index.html', urlsplit(url.text).path)
+            self.assertTrue(target.is_file(), f'sitemap lists missing {url.text}')
 
     def test_private_documents_stay_removed(self):
         self.assertEqual([p.name for p in ROOT.rglob('*.pdf')], ['zcharles-resume.pdf'])

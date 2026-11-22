@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { isoDate, longDate } from '../data/posts';
+
+interface Props { posts: CollectionEntry<'archives'>[]; heading?: 'h2' | 'h3' }
+const { posts, heading: Heading = 'h2' } = Astro.props;
+---
+<ul class="post-list">
+    {posts.map(({ id, data }) => (
+        <li data-category={data.category}>
+            <Heading><a href={`/archives/${id}`}>{data.title}</a></Heading>
+            <p class="post-meta">
+                <time datetime={isoDate(data.date)}>{longDate(data.date)}</time>, {data.category}
+                {data.draft && <strong>(draft)</strong>}
+            </p>
+            <p>{data.summary}</p>
+        </li>
+    ))}
+</ul>

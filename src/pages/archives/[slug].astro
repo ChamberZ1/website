@@ -1,0 +1,28 @@
+---
+import { render } from 'astro:content';
+import { Image, getImage } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import { getPosts, isoDate, longDate } from '../../data/posts';
+
+export async function getStaticPaths() {
+    return (await getPosts()).map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { title, date, updated, summary, category, cover, coverAlt, draft } = post.data;
+const { Content } = await render(post);
+const preview = cover && await getImage({ src: cover, width: Math.min(cover.width, 1200), format: 'jpg' });
+---
+<Base title={`${title} | Charles Zhao`} description={summary} path={`/archives/${post.id}`} image={preview?.src} published={isoDate(date)}>
+    <article class="post">
+        <h1>{title}</h1>
+        <p class="post-meta">
+            <time datetime={isoDate(date)}>{longDate(date)}</time>, {category}
+            {updated && <>. Updated <time datetime={isoDate(updated)}>{longDate(updated)}</time></>}
+            {draft && <strong>(draft)</strong>}
+        </p>
+        {cover && <Image src={cover} alt={coverAlt} width={Math.min(cover.width, 1200)} />}
+        <div class="prose"><Content /></div>
+        <p class="block-link"><a href="/archives">All posts</a></p>
+    </article>
+</Base>

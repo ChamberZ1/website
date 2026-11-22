@@ -2,10 +2,15 @@
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionCard from '../components/SectionCard.astro';
+import PostList from '../components/PostList.astro';
 import { projects } from '../data/projects';
-import { liveSections } from '../data/sections';
+import { getPosts } from '../data/posts';
+import { getLiveSections } from '../data/sections';
+
+const sections = await getLiveSections();
+const posts = (await getPosts()).filter(({ data }) => data.showOnHome);
 ---
-<Base title="Charles Zhao" description="Charles Zhao personal portfolio website" path="/" home>
+<Base title="Charles Zhao" description="Charles Zhao personal portfolio website" path="/">
     <section class="section" id="projects" aria-labelledby="projects-heading">
         <h2 id="projects-heading">Projects</h2>
         <div class="project-grid">
@@ -13,10 +18,17 @@ import { liveSections } from '../data/sections';
         </div>
     </section>
 
+    {posts.length > 0 && (
+        <section class="section" aria-labelledby="writing-heading">
+            <h2 id="writing-heading">Writing</h2>
+            <PostList posts={posts} heading="h3" />
+        </section>
+    )}
+
     <section class="section" aria-labelledby="explore-heading">
         <h2 id="explore-heading">Explore</h2>
         <div class="project-grid">
-            {liveSections.map((section) => <SectionCard {...section} />)}
+            {sections.map((section) => <SectionCard {...section} />)}
         </div>
     </section>
 </Base>
