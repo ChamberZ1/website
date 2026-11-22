@@ -47,7 +47,17 @@
         "links": [
           { "name": "CyberChef", "url": "https://gchq.github.io/CyberChef/", "description": "Decode, convert and analyze data in the browser.", "draft": false },
           { "name": "VirusTotal", "url": "https://www.virustotal.com/", "description": "Scan files and links for malware.", "draft": false },
-          { "name": "Have I Been Pwned", "url": "https://haveibeenpwned.com/", "description": "Check whether an email appears in known data breaches.", "draft": false }
+          { "name": "Have I Been Pwned", "url": "https://haveibeenpwned.com/", "description": "Check whether an email appears in known data breaches.", "draft": false },
+          { "name": "Google Hacking Database", "url": "https://www.exploit-db.com/google-hacking-database", "description": "Search queries that reveal exposed information on Google.", "tags": ["ghdb", "dorks", "osint", "exploit-db"], "draft": false }
+        ]
+      },
+      {
+        "name": "CTFs",
+        "links": [
+          { "name": "CTFtime", "url": "https://ctftime.org/event/list/upcoming", "description": "Upcoming CTF events.", "tags": ["competition"], "draft": false },
+          { "name": "TryHackMe", "url": "https://tryhackme.com/", "description": "Guided cybersecurity lessons and labs.", "tags": ["training"], "draft": false },
+          { "name": "OverTheWire", "url": "https://overthewire.org/wargames/", "description": "Wargames that teach security step by step.", "tags": ["linux", "bandit"], "draft": false },
+          { "name": "Hack The Box", "url": "https://www.hackthebox.com/", "description": "Hacking labs and challenges.", "tags": ["hackthebox", "htb", "training"], "draft": false }
         ]
       }
     ]
