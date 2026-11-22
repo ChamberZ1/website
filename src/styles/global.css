@@ -288,7 +288,6 @@ h2 {
 .section > h2 { margin-bottom: 1.25rem; }
 
 .intro p { max-width: 40rem; font-size: 1.125rem; }
-.intro p + p { margin-top: 0.75rem; }
 
 .resume-button {
     display: inline-flex;
@@ -305,18 +304,6 @@ h2 {
 }
 
 .resume-button:hover { opacity: 0.85; }
-
-.entry + .entry { margin-top: 2rem; }
-.entry h3 { font-size: 1rem; font-weight: 500; }
-.entry ul { max-width: 46rem; margin: 0.75rem 0; padding-left: 1.1rem; }
-.entry li + li { margin-top: 0.4rem; }
-.entry-meta { color: var(--text-muted); font-size: 0.875rem; }
-
-.entry-detail { display: block; }
-
-.skills > div { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 1rem; }
-.skills > div + div { margin-top: 0.5rem; }
-.skills dt { color: var(--text-muted); font-size: 0.875rem; }
 
 .block-link { margin-top: 1.25rem; }
 .block-link a { color: var(--text-muted); font-size: 0.875rem; }
@@ -335,11 +322,10 @@ h2 {
     transition: border-color 0.2s var(--ease);
 }
 
-a.section-card:hover { border-color: var(--border-strong); }
+.section-card:hover { border-color: var(--border-strong); }
 .section-card img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 .section-card-label { padding: 1.1rem 1.5rem 0; font-weight: 500; }
 .section-card-summary { padding: 0.25rem 1.5rem 0; color: var(--text-muted); font-size: 0.875rem; }
-.placeholder { border-style: dashed; color: var(--text-muted); }
 
 .site-footer {
     display: flex;
@@ -429,7 +415,6 @@ a.section-card:hover { border-color: var(--border-strong); }
 
 @media (max-width: 600px) {
     .project-grid { grid-template-columns: 1fr; }
-    .skills > div { grid-template-columns: 1fr; gap: 0; }
 }
 
 @media (min-width: 821px) and (max-height: 640px) {

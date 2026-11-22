@@ -2,17 +2,10 @@
 import type { Section } from '../data/sections';
 
 type Props = Section;
-const { label, href, summary, image, enabled } = Astro.props;
+const { label, href, summary, image } = Astro.props;
 ---
-{enabled ? (
-    <a class="section-card" href={href}>
-        {image && <img src={image} alt="" width="800" height="600" loading="lazy" />}
-        <span class="section-card-label">{label}</span>
-        <span class="section-card-summary">{summary}</span>
-    </a>
-) : (
-    <div class="section-card placeholder">
-        <span class="section-card-label">{label}</span>
-        <span class="section-card-summary">{summary} [Dev preview only: not published]</span>
-    </div>
-)}
+<a class="section-card" href={href}>
+    {image && <img src={image} alt="" width="800" height="600" loading="lazy" />}
+    <span class="section-card-label">{label}</span>
+    <span class="section-card-summary">{summary}</span>
+</a>

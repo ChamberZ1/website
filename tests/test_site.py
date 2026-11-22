@@ -103,11 +103,6 @@ class SiteTests(unittest.TestCase):
                         'The photo viewer needs an accessible name')
         self.assertTrue(any(t == 'button' and a.get('id') == 'modalCloseBtn' for t, a in photo.tags))
 
-    def test_unfinished_sections_are_not_published(self):
-        for path in ROOT.rglob('*.html'):
-            self.assertNotIn('[Placeholder', path.read_text(encoding='utf-8'), path.name)
-            self.assertNotIn('[Dev preview', path.read_text(encoding='utf-8'), path.name)
-
     def test_private_documents_stay_removed(self):
         self.assertEqual([p.name for p in ROOT.rglob('*.pdf')], ['zcharles-resume.pdf'])
 

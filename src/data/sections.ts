@@ -1,4 +1,5 @@
-// Set `enabled: true` once a section has a page and real content.
+// Navigation links and homepage cards. Set `enabled: true` once a section has a
+// page and real content.
 export interface Section {
     label: string;
     href: string;

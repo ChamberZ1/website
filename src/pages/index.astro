@@ -4,30 +4,13 @@ import ProjectCard from '../components/ProjectCard.astro';
 import SectionCard from '../components/SectionCard.astro';
 import { profile } from '../data/profile';
 import { projects } from '../data/projects';
-import { sections, liveSections } from '../data/sections';
-
-const { education } = profile;
-const shownSections = import.meta.env.DEV ? sections : liveSections;
+import { liveSections } from '../data/sections';
 ---
 <Base title="Charles Zhao" description="Charles Zhao personal portfolio website" path="/" home>
     <section class="section intro" aria-labelledby="about-heading">
         <h2 id="about-heading">About</h2>
-        {profile.intro
-            ? <p>{profile.intro}</p>
-            : import.meta.env.DEV && <p class="placeholder">[Placeholder: introduction to be written by the site owner. Hidden on the published site.]</p>}
-        <p class="intro-facts">{education.degrees[0].name}, {education.school}. {education.program}.</p>
+        <p>{profile.intro}</p>
         <a class="resume-button" href={profile.resume} target="_blank" rel="noopener noreferrer">View resume</a>
-    </section>
-
-    <section class="section" aria-labelledby="experience-heading">
-        <h2 id="experience-heading">Experience</h2>
-        {profile.experience.map((job) => (
-            <article class="entry">
-                <h3>{job.role}, {job.organization}</h3>
-                <p class="entry-meta">{job.dates}, {job.location}</p>
-                <ul>{job.points.map((point) => <li>{point}</li>)}</ul>
-            </article>
-        ))}
     </section>
 
     <section class="section" id="projects" aria-labelledby="projects-heading">
@@ -35,29 +18,12 @@ const shownSections = import.meta.env.DEV ? sections : liveSections;
         <div class="project-grid">
             {projects.map((project) => <ProjectCard {...project} />)}
         </div>
-        <p class="block-link"><a href="/cyber">Browse projects as a desktop</a></p>
-    </section>
-
-    <section class="section" aria-labelledby="education-heading">
-        <h2 id="education-heading">Education</h2>
-        <article class="entry">
-            <h3>{education.school}</h3>
-            <ul>{education.degrees.map(({ name, date, details }) => <li>{name}, {date}<span class="entry-meta entry-detail">{details}</span></li>)}</ul>
-        </article>
-    </section>
-
-    <section class="section" aria-labelledby="skills-heading">
-        <h2 id="skills-heading">Skills and certification</h2>
-        <dl class="skills">
-            {profile.skills.map(({ group, items }) => <div><dt>{group}</dt><dd>{items.join(', ')}</dd></div>)}
-            <div><dt>Certification</dt><dd>{profile.certifications.join(', ')}</dd></div>
-        </dl>
     </section>
 
     <section class="section" aria-labelledby="explore-heading">
         <h2 id="explore-heading">Explore</h2>
         <div class="project-grid">
-            {shownSections.map((section) => <SectionCard {...section} />)}
+            {liveSections.map((section) => <SectionCard {...section} />)}
         </div>
     </section>
 </Base>
