@@ -23,6 +23,7 @@
       {
         "name": "Agentic AI",
         "links": [
+          { "name": "Muse", "url": "https://muse.ai/", "description": "Personal AI agent from Meta.", "draft": false },
           { "name": "Building effective agents", "url": "https://www.anthropic.com/research/building-effective-agents", "description": "Article on common agent patterns and when to use them.", "draft": false },
           { "name": "Model Context Protocol", "url": "https://modelcontextprotocol.io/", "description": "Open standard for connecting AI apps to tools and data.", "tags": ["mcp"], "draft": false },
           { "name": "LangGraph", "url": "https://www.langchain.com/langgraph", "description": "Framework for building agents.", "draft": false }
