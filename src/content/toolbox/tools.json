@@ -31,32 +31,6 @@
     ]
   },
   {
-    "id": "adblock",
-    "name": "Adblock",
-    "groups": [
-      {
-        "tools": [
-          { "name": "uBlock Origin", "url": "https://github.com/gorhill/uBlock", "description": "Content blocker for web browsers.", "tags": ["browser", "extension", "privacy"], "draft": false },
-          { "name": "Pi-hole", "url": "https://pi-hole.net/", "description": "Blocks ads for a whole home network.", "tags": ["dns", "network"], "draft": true }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "free-books-online",
-    "name": "Free Books Online",
-    "groups": [
-      {
-        "tools": [
-          { "name": "Project Gutenberg", "url": "https://www.gutenberg.org/", "description": "Free ebooks, mostly older works in the public domain.", "tags": ["reading"], "draft": false },
-          { "name": "Internet Archive", "url": "https://archive.org/details/texts", "description": "Digital library of books and texts to read or borrow.", "tags": ["reading", "library"], "draft": false },
-          { "name": "Standard Ebooks", "url": "https://standardebooks.org/", "description": "Carefully formatted public domain ebooks.", "tags": ["reading"], "draft": true },
-          { "name": "LibriVox", "url": "https://librivox.org/", "description": "Free public domain audiobooks read by volunteers.", "tags": ["audio"], "draft": true }
-        ]
-      }
-    ]
-  },
-  {
     "id": "cybersecurity",
     "name": "Cybersecurity",
     "groups": [
@@ -87,6 +61,47 @@
           { "name": "regex101", "url": "https://regex101.com/", "description": "Test and explain regular expressions.", "tags": ["regex"], "draft": true },
           { "name": "explainshell", "url": "https://explainshell.com/", "description": "Explains each part of a shell command.", "tags": ["linux", "bash"], "draft": true },
           { "name": "Excalidraw", "url": "https://excalidraw.com/", "description": "Quick hand-drawn style diagrams.", "tags": ["diagram"], "draft": true }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "adblock",
+    "name": "Adblock",
+    "groups": [
+      {
+        "tools": [
+          { "name": "uBlock Origin", "url": "https://github.com/gorhill/uBlock", "description": "Content blocker for web browsers.", "tags": ["browser", "extension", "privacy"], "draft": false },
+          { "name": "Pi-hole", "url": "https://pi-hole.net/", "description": "Blocks ads for a whole home network.", "tags": ["dns", "network"], "draft": true }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "free-books-online",
+    "name": "Free Books Online",
+    "groups": [
+      {
+        "tools": [
+          { "name": "Project Gutenberg", "url": "https://www.gutenberg.org/", "description": "Free ebooks, mostly older works in the public domain.", "tags": ["reading"], "draft": false },
+          { "name": "Internet Archive", "url": "https://archive.org/details/texts", "description": "Digital library of books and texts to read or borrow.", "tags": ["reading", "library"], "draft": false },
+          { "name": "Standard Ebooks", "url": "https://standardebooks.org/", "description": "Carefully formatted public domain ebooks.", "tags": ["reading"], "draft": true },
+          { "name": "LibriVox", "url": "https://librivox.org/", "description": "Free public domain audiobooks read by volunteers.", "tags": ["audio"], "draft": true }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "travel",
+    "name": "Travel",
+    "groups": [
+      {
+        "tools": [
+          { "name": "Google Flights", "url": "https://www.google.com/travel/flights", "description": "Compare flights and track prices.", "tags": ["airfare"], "draft": true },
+          { "name": "Rome2Rio", "url": "https://www.rome2rio.com/", "description": "Ways to get between two places by plane, train, bus or car.", "tags": ["transport"], "draft": true },
+          { "name": "Wikivoyage", "url": "https://en.wikivoyage.org/", "description": "Free travel guides written by volunteers.", "tags": ["guides"], "draft": true },
+          { "name": "Atlas Obscura", "url": "https://www.atlasobscura.com/", "description": "Unusual places to visit.", "draft": true },
+          { "name": "Recreation.gov", "url": "https://www.recreation.gov/", "description": "Book campsites and permits on U.S. federal land.", "tags": ["camping", "parks"], "draft": true }
         ]
       }
     ]
