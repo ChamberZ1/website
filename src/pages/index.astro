@@ -11,7 +11,7 @@ import { getLiveSections } from '../data/sections';
 const channel = profile.links.find(({ label }) => label === 'YouTube');
 const cards = [
     ...await getLiveSections(),
-    ...(channel ? [{ ...channel, summary: 'My YouTube channel.', icon: 'M3 6.5h18v11H3zM10.5 9.5v5l4-2.5z' }] : []),
+    ...(channel ? [{ ...channel, summary: 'My YouTube channel.', image: '/assets/img/youtube-banner-800px.webp' }] : []),
 ];
 const posts = (await getPosts()).filter(({ data }) => data.showOnHome);
 ---
