@@ -4,7 +4,7 @@ Personal portfolio website for yours truly.
 
 ## Pages
 
-- **/** (`src/pages/index.astro`): introduction, resume link, projects, photography card
+- **/** (`src/pages/index.astro`): projects, resume link, photography card
 - **/cyber** (`public/cyber.html`): cybersecurity portfolio, styled as a desktop OS environment (live, but not linked from the landing page)
 - **/photography** (`public/photography.html`): photography gallery
 - **/services** (`public/services.html`): services and booking page (live, but not linked from the landing page)

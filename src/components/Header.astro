@@ -15,8 +15,7 @@ const { home = false } = Astro.props;
 
     <div id="sidebar-content" class="sidebar-content">
         <nav class="links" aria-label="Site">
-            <a href="/" aria-current={home ? 'page' : undefined}>About</a>
-            <a href="/#projects">Projects</a>
+            <a href="/" aria-current={home ? 'page' : undefined}>Projects</a>
             {liveSections.map((section) => <a href={section.href}>{section.label}</a>)}
         </nav>
 

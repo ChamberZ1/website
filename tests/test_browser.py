@@ -195,7 +195,7 @@ class BrowserTests(unittest.TestCase):
         for _ in range(links + 1):
             self.key('\ue004')
         self.assertTrue(self.script("return document.getElementById('sidebar-content').hidden"))
-        self.assertTrue(self.script("return document.activeElement.matches('.resume-button')"))
+        self.assertTrue(self.script("return document.activeElement.matches('.project-card a')"))
         self.click('#sidebar-toggle')
         self.click('#theme-toggle')
         self.assertTrue(self.script("return document.getElementById('sidebar-content').hidden"))

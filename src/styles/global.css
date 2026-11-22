@@ -284,26 +284,8 @@ h2 {
 
 /* ---------- homepage sections ---------- */
 
-.section + .section { margin-top: 4rem; }
+.section + .section { margin-top: 3rem; }
 .section > h2 { margin-bottom: 1.25rem; }
-
-.intro p { max-width: 40rem; font-size: 1.125rem; }
-
-.resume-button {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    margin-top: 1.5rem;
-    padding: 0.5rem 1.25rem;
-    color: var(--bg);
-    background: var(--text);
-    border-radius: var(--radius);
-    font-size: 0.9375rem;
-    text-decoration: none;
-    transition: opacity 0.2s var(--ease);
-}
-
-.resume-button:hover { opacity: 0.85; }
 
 .block-link { margin-top: 1.25rem; }
 .block-link a { color: var(--text-muted); font-size: 0.875rem; }
