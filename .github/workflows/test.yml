@@ -16,7 +16,18 @@ jobs:
         env:
           ASTRO_TELEMETRY_DISABLED: 1
       - name: Test
+        shell: bash
         run: |
-          geckodriver --host 127.0.0.1 --port 4444 &
+          geckodriver --host 127.0.0.1 --port 4444 > geckodriver.log 2>&1 &
           timeout 30 sh -c 'until curl -sf http://127.0.0.1:4444/status; do sleep 1; done'
-          WEBDRIVER_URL=http://127.0.0.1:4444 python3 -m unittest discover -s tests -v
+          WEBDRIVER_URL=http://127.0.0.1:4444 python3 -m unittest discover -s tests -v 2>&1 | tee test.log
+      - name: Show failures as annotations
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          import re
+          log = open('test.log', encoding='utf-8').read()
+          for block in re.split(r'={60,}\n', log)[1:]:
+              text = re.split(r'\n-{60,}\nRan ', block)[0][-3000:]
+              print('::error::' + text.replace('%', '%25').replace('\r', '').replace('\n', '%0A'))
+          PY
