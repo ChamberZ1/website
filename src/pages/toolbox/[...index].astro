@@ -33,7 +33,7 @@ const sections = await getToolSections();
                             <li data-search={[section.name, group.name, tool.name, tool.description, ...tool.tags].join(' ').toLowerCase()}>
                                 <a href={tool.url} target="_blank" rel="noopener noreferrer">{tool.name}</a>
                                 {tool.favorite && <span class="tool-favorite"><span aria-hidden="true">★</span><span class="visually-hidden">Favorite</span></span>}
-                                <span class="tool-description">{tool.description}{tool.draft && ' (suggestion)'}</span>
+                                <span class="tool-description">{tool.description}{tool.draft && ' (draft)'}</span>
                             </li>
                         ))}
                     </ul>
