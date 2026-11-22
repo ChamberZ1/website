@@ -15,7 +15,7 @@ const shownSections = import.meta.env.DEV ? sections : liveSections;
         {profile.intro
             ? <p>{profile.intro}</p>
             : import.meta.env.DEV && <p class="placeholder">[Placeholder: introduction to be written by the site owner. Hidden on the published site.]</p>}
-        <p class="intro-facts">{education.degrees[0].name}, {education.school}. {education.programs[0]}.</p>
+        <p class="intro-facts">{education.degrees[0].name}, {education.school}. {education.program}.</p>
         <a class="resume-button" href={profile.resume} target="_blank" rel="noopener noreferrer">View resume</a>
     </section>
 
@@ -42,15 +42,16 @@ const shownSections = import.meta.env.DEV ? sections : liveSections;
         <h2 id="education-heading">Education</h2>
         <article class="entry">
             <h3>{education.school}</h3>
-            <ul>{education.degrees.map(({ name, date }) => <li>{name}, {date}</li>)}</ul>
-            <p class="entry-meta">Programs: {education.programs.join(', ')}</p>
+            <ul>{education.degrees.map(({ name, date, details }) => <li>{name}, {date}<span class="entry-meta entry-detail">{details}</span></li>)}</ul>
         </article>
     </section>
 
     <section class="section" aria-labelledby="skills-heading">
-        <h2 id="skills-heading">Skills and certifications</h2>
-        <ul class="tags">{profile.skills.map((skill) => <li>{skill}</li>)}</ul>
-        <p class="entry-meta">Certifications: {profile.certifications.join(', ')}</p>
+        <h2 id="skills-heading">Skills and certification</h2>
+        <dl class="skills">
+            {profile.skills.map(({ group, items }) => <div><dt>{group}</dt><dd>{items.join(', ')}</dd></div>)}
+            <div><dt>Certification</dt><dd>{profile.certifications.join(', ')}</dd></div>
+        </dl>
     </section>
 
     <section class="section" aria-labelledby="explore-heading">
