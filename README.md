@@ -4,7 +4,7 @@ Personal portfolio website for yours truly.
 
 ## Pages
 
-- **index.html** — Projects landing page with name and navigation sidebar, mobile hamburger menu, Files dropdown (resume, transcript), and dark/light toggle
+- **index.html** — Projects landing page with name and navigation sidebar, mobile hamburger menu, resume link, and dark/light toggle
 - **cyber.html** — Cybersecurity portfolio, styled as a desktop OS environment
 - **photography.html** — Photography gallery
 - **services.html** — Services and booking page (live, but not linked from the landing page)
@@ -53,7 +53,7 @@ WEBDRIVER_URL=http://127.0.0.1:4444 python3 -m unittest discover -s tests -v
 The suite starts its own temporary localhost server and headless Firefox session.
 It covers keyboard navigation, native-dialog focus containment, scroll
 restoration, mouse and keyboard zoom/panning, synthetic touch gestures, desktop window state,
-theme persistence and blocked storage, Files dropdown behavior, and layouts
+theme persistence and blocked storage, and layouts
 at narrow widths, the mobile breakpoint, and short landscape windows.
 It requires no Python packages. Browser checks are skipped when `WEBDRIVER_URL`
 is unset; physical touch devices still warrant a manual check.

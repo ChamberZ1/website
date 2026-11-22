@@ -82,6 +82,9 @@ class SiteTests(unittest.TestCase):
                         'The photo viewer needs an accessible name')
         self.assertTrue(any(t == 'button' and a.get('id') == 'modalCloseBtn' for t, a in photo.tags))
 
+    def test_private_documents_stay_removed(self):
+        self.assertEqual([p.name for p in (ROOT / 'assets').rglob('*.pdf')], ['zcharles-resume.pdf'])
+
 
 if __name__ == '__main__':
     unittest.main()

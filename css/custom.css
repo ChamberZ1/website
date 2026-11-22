@@ -479,7 +479,7 @@ body.cyber {
 .file-wrapper {
     display: flex;
     flex-direction: column; 
-    cursor: pointer;
+    align-items: center;
     width: 100px;
 }
 

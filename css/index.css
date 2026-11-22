@@ -165,70 +165,23 @@ h1 {
 .sidebar-toggle[aria-expanded="true"] .hamburger-icon::before { transform: translateY(6px) rotate(45deg); }
 .sidebar-toggle[aria-expanded="true"] .hamburger-icon::after { transform: translateY(-6px) rotate(-45deg); }
 
-/* ---------- files dropdown ---------- */
+/* ---------- resume link ---------- */
 
 .actions { margin-top: 1.75rem; }
 
-.dropdown { position: relative; display: inline-block; }
-
-.dropdown-btn {
+.resume-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
-    font: inherit;
     font-size: 0.875rem;
     color: var(--text-muted);
-    background: transparent;
+    text-decoration: none;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 0.45rem 0.85rem;
-    cursor: pointer;
     transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
 }
 
-.dropdown-btn:hover { border-color: var(--border-strong); color: var(--text); }
-
-.chevron {
-    width: 6px;
-    height: 6px;
-    border-right: 1.5px solid var(--text-muted);
-    border-bottom: 1.5px solid var(--text-muted);
-    transform: rotate(45deg) translate(-2px, -2px);
-    transition: transform 0.2s var(--ease);
-}
-
-.dropdown-btn[aria-expanded="true"] .chevron {
-    transform: rotate(-135deg) translate(-2px, -2px);
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: calc(100% + 6px);
-    left: 0;
-    min-width: 100%;
-    width: max-content;
-    list-style: none;
-    background: var(--bg-raised);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 0.3rem;
-    z-index: 50;
-}
-
-.dropdown-menu[hidden] { display: none; }
-
-.dropdown-menu a {
-    display: block;
-    padding: 0.45rem 0.85rem;
-    font-size: 0.875rem;
-    color: var(--text);
-    text-decoration: none;
-    border-radius: 6px;
-    white-space: nowrap;
-    transition: background-color 0.15s var(--ease);
-}
-
-.dropdown-menu a:hover { background: var(--accent-bg); }
+.resume-link:hover { border-color: var(--border-strong); color: var(--text); }
 
 /* ---------- navigation ---------- */
 
@@ -364,13 +317,6 @@ h2 {
         border: 1px solid var(--border);
         border-radius: var(--radius);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-    .sidebar-content .dropdown { display: block; }
-    .sidebar-content .dropdown-menu {
-        position: static;
-        width: 100%;
-        min-width: 0;
-        margin-top: 0.5rem;
     }
 }
 

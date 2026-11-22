@@ -185,39 +185,7 @@ class BrowserTests(unittest.TestCase):
         self.assertEqual(self.script('return document.documentElement.dataset.theme'),
                          'light' if system == 'dark' else 'dark')
 
-    def test_files_dropdown_keyboard_and_selection_focus(self):
-        self.load('index.html')
-        self.script("document.getElementById('files-btn').focus()")
-        self.key('\ue007')
-        self.assertFalse(self.script("return document.getElementById('files-menu').hidden"))
-        self.key('\ue004')
-        self.assertTrue(self.script("return document.activeElement.matches('#files-menu a')"))
-        self.key('\ue00c')
-        self.assertTrue(self.script("return document.getElementById('files-menu').hidden"))
-        self.assertEqual(self.script('return document.activeElement.id'), 'files-btn')
-
-        self.click('#files-btn')
-        for _ in range(3):
-            self.key('\ue004')
-        self.assertTrue(self.script("return document.getElementById('files-menu').hidden"))
-        self.click('#files-btn')
-        self.click('h1')
-        self.assertEqual(self.script("return document.getElementById('files-btn').getAttribute('aria-expanded')"), 'false')
-        original = self.request('GET', self.session + '/window')
-        self.click('#files-btn')
-        self.key('\ue004')
-        self.key('\ue007')
-        handles = self.request('GET', self.session + '/window/handles')
-        self.assertEqual(len(handles), 2, 'Selecting a file must still open its new tab')
-        for handle in handles:
-            if handle != original:
-                self.request('POST', self.session + '/window', {'handle': handle})
-                self.request('DELETE', self.session + '/window')
-        self.request('POST', self.session + '/window', {'handle': original})
-        self.assertTrue(self.script("return document.getElementById('files-menu').hidden"))
-        self.assertEqual(self.script('return document.activeElement.id'), 'files-btn')
-
-    def test_mobile_sidebar_keyboard_nested_files_and_resizing(self):
+    def test_mobile_sidebar_keyboard_and_resizing(self):
         self.resize(700, 800)
         self.load('index.html')
         self.assertTrue(self.script("return document.getElementById('sidebar-content').hidden"))
@@ -228,13 +196,6 @@ class BrowserTests(unittest.TestCase):
         self.assertEqual(self.script("return document.getElementById('sidebar-toggle').getAttribute('aria-expanded')"), 'true')
         self.key('\ue004')
         self.assertTrue(self.script("return document.activeElement.matches('.links a')"))
-        self.click('#files-btn')
-        self.key('\ue004')
-        self.assertTrue(self.script("return document.activeElement.matches('#files-menu a')"))
-        self.key('\ue00c')
-        self.assertTrue(self.script("return document.getElementById('files-menu').hidden"))
-        self.assertFalse(self.script("return document.getElementById('sidebar-content').hidden"))
-        self.assertEqual(self.script('return document.activeElement.id'), 'files-btn')
         self.key('\ue00c')
         self.assertTrue(self.script("return document.getElementById('sidebar-content').hidden"))
         self.assertEqual(self.script('return document.activeElement.id'), 'sidebar-toggle')

@@ -31,50 +31,6 @@
         });
     }
 
-    /* ---------- files dropdown ---------- */
-
-    const btn = document.getElementById('files-btn');
-    const menu = document.getElementById('files-menu');
-
-    function setOpen(open) {
-        if (!btn || !menu) return;
-        btn.setAttribute('aria-expanded', String(open));
-        menu.hidden = !open;
-    }
-
-    if (btn && menu) {
-        const dropdown = btn.closest('.dropdown');
-
-        btn.addEventListener('click', function (event) {
-            event.stopPropagation();
-            setOpen(btn.getAttribute('aria-expanded') !== 'true');
-        });
-
-        document.addEventListener('click', function (event) {
-            if (!menu.hidden && !menu.contains(event.target)) setOpen(false);
-        });
-
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape' && !menu.hidden) {
-                event.preventDefault();
-                setOpen(false);
-                btn.focus();
-            }
-        });
-
-        dropdown?.addEventListener('focusout', function (event) {
-            if (!dropdown.contains(event.relatedTarget)) setOpen(false);
-        });
-
-        /* close after picking a file, since the PDF opens in a new tab */
-        menu.addEventListener('click', function (event) {
-            if (event.target.closest('a[href]')) {
-                setOpen(false);
-                btn.focus();
-            }
-        });
-    }
-
     /* ---------- mobile navigation disclosure ---------- */
 
     const sidebarToggle = document.getElementById('sidebar-toggle');
@@ -90,21 +46,17 @@
         sidebarContent.hidden = mobileLayout.matches && !expanded;
         sidebarToggle.setAttribute('aria-expanded', String(expanded));
         sidebarToggle.setAttribute('aria-label', expanded ? 'Close navigation' : 'Open navigation');
-        if (!expanded) setOpen(false);
         if (restoreFocus && mobileLayout.matches) sidebarToggle.focus();
     }
 
     function syncSidebarLayout() {
         const focusWasInside = sidebarContent.contains(document.activeElement);
         const toggleHadFocus = document.activeElement === sidebarToggle;
-        const fileLinkHadFocus = menu?.contains(document.activeElement);
         sidebarToggle.hidden = !mobileLayout.matches;
         setSidebarOpen(false);
         if (mobileLayout.matches && focusWasInside) sidebarToggle.focus();
         if (!mobileLayout.matches && toggleHadFocus) {
             sidebarContent.querySelector('a[href], button')?.focus();
-        } else if (!mobileLayout.matches && fileLinkHadFocus) {
-            btn?.focus();
         }
     }
 
