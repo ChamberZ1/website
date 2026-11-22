@@ -69,6 +69,13 @@ class BrowserTests(unittest.TestCase):
     def resize(self, width, height):
         self.request('POST', self.session + '/window/rect',
                      {'width': width, 'height': height})
+        # Media query change events arrive on the next frame.
+        self.request('POST', self.session + '/execute/async', {
+            'script': '''
+                const done = arguments[arguments.length - 1];
+                requestAnimationFrame(() => requestAnimationFrame(() => done()));
+            ''', 'args': [],
+        })
 
     def load(self, page):
         self.request('POST', self.session + '/url', {'url': self.base_url + page})
