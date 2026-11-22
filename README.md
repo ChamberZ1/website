@@ -4,10 +4,14 @@ Personal portfolio website for yours truly.
 
 ## Pages
 
-- **index.html** — Projects landing page with name and navigation sidebar, mobile hamburger menu, resume link, and dark/light toggle
-- **cyber.html** — Cybersecurity portfolio, styled as a desktop OS environment
-- **photography.html** — Photography gallery
-- **services.html** — Services and booking page (live, but not linked from the landing page)
+- **/** (`src/pages/index.astro`): introduction, resume, experience, projects, education, skills
+- **/cyber** (`public/cyber.html`): cybersecurity portfolio, styled as a desktop OS environment
+- **/photography** (`public/photography.html`): photography gallery
+- **/services** (`public/services.html`): services and booking page (live, but not linked from the landing page)
+
+Homepage content lives in `src/data/`. Turn a section on in `src/data/sections.ts`
+once it has a page and real content. `npm run dev` also shows unpublished
+sections as placeholders.
 
 ## Projects Featured
 

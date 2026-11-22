@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    /** Public path without .html, for example "/" or "/toolbox". */
+    path?: string;
+    home?: boolean;
+    noindex?: boolean;
+}
+
+const { title, description, path, home = false, noindex = false } = Astro.props;
+const url = path && new URL(path, Astro.site).href;
+// The dev server needs inline code and a websocket; the built site does not.
+const csp = import.meta.env.PROD && "default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'none';";
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={description} />
+        {noindex && <meta name="robots" content="noindex" />}
+        <title>{title}</title>
+
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://zcharles.com/android-chrome-512x512.png" />
+        {url && <meta property="og:url" content={url} />}
+        {url && <link rel="canonical" href={url} />}
+
+        {csp && <meta http-equiv="Content-Security-Policy" content={csp} />}
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <script is:inline src="/js/theme.js"></script>
+    </head>
+    <body>
+        <a class="skip-link" href="#main">Skip to content</a>
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+        </button>
+
+        <div class="page-layout">
+            <Header home={home} />
+            <div class="content">
+                <main id="main" tabindex="-1">
+                    <slot />
+                </main>
+                <Footer />
+            </div>
+        </div>
+
+        <script is:inline src="/js/index.js"></script>
+    </body>
+</html>

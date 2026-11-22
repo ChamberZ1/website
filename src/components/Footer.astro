@@ -1,0 +1,9 @@
+---
+import { profile } from '../data/profile';
+
+const contact = profile.links.find(({ href }) => href.startsWith('mailto:'));
+---
+<footer class="site-footer">
+    <p>&copy; {new Date().getFullYear()} {profile.name}</p>
+    {contact && <a href={contact.href}>{contact.label}</a>}
+</footer>

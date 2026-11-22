@@ -191,10 +191,11 @@ class BrowserTests(unittest.TestCase):
         self.assertTrue(self.script("return document.getElementById('sidebar-content').hidden"))
         self.assertEqual(self.script('return document.activeElement.id'), 'sidebar-toggle')
         self.click('#sidebar-toggle')
-        for _ in range(8):
+        links = self.script("return document.querySelectorAll('#sidebar-content a').length")
+        for _ in range(links + 1):
             self.key('\ue004')
         self.assertTrue(self.script("return document.getElementById('sidebar-content').hidden"))
-        self.assertTrue(self.script("return document.activeElement.matches('.project-card a')"))
+        self.assertTrue(self.script("return document.activeElement.matches('.resume-button')"))
         self.click('#sidebar-toggle')
         self.click('#theme-toggle')
         self.assertTrue(self.script("return document.getElementById('sidebar-content').hidden"))
@@ -207,7 +208,7 @@ class BrowserTests(unittest.TestCase):
         self.assertTrue(self.script("return document.getElementById('sidebar-content').hidden"))
         self.assertEqual(self.script('return document.activeElement.id'), 'sidebar-toggle')
         self.click('#sidebar-toggle')
-        self.click('.links a[href="photography.html"]')
+        self.click('.links a[href="/photography"]')
         self.assertTrue(self.script("return document.body.classList.contains('photography')"))
 
     def test_zoom_is_stable_and_cleared_when_changing_images(self):
