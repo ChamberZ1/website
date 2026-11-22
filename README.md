@@ -9,8 +9,8 @@ Personal portfolio website for yours truly.
 - **/photography** (`public/photography.html`): photography gallery
 - **/services** (`public/services.html`): services and booking page (live, but not linked from the landing page)
 
-Homepage content lives in `src/data/`. Turn a section on in `src/data/sections.ts`
-once it has a page and real content.
+Homepage content lives in `src/data/`. Sections appear in the menu by themselves
+once they have published content.
 
 ## Projects Featured
 
@@ -63,6 +63,14 @@ The Archives link appears by itself once one post is published.
 This repository is public, so anyone can read a draft on GitHub, and an image's
 location data stays in the original file. Keep private drafts elsewhere and
 remove location data before committing photos.
+
+## Adding to Toolbox
+
+Edit `src/content/toolbox/tools.json`. Sections hold groups, and groups hold
+tools. A group's `name` is optional. Each tool needs `name`, an `https` `url` and
+a `description`. Optional: `tags` (extra search words), `favorite` (adds a star)
+and `draft`. Tools are hidden until `"draft": false`, and empty groups and
+sections are hidden too. Push to `main` to publish.
 
 ## Adding to Garage
 

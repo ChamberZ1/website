@@ -1,0 +1,47 @@
+---
+// A rest route so that /toolbox is not built while it has no published tools.
+import Base from '../../layouts/Base.astro';
+import { getToolSections } from '../../data/toolbox';
+
+export async function getStaticPaths() {
+    return (await getToolSections()).length ? [{ params: { index: undefined } }] : [];
+}
+
+const sections = await getToolSections();
+---
+<Base title="Toolbox | Charles Zhao" description="Useful sites and tools, picked by Charles Zhao" path="/toolbox">
+    <h1>Toolbox</h1>
+    <p class="post-meta">Sites and tools worth bookmarking.</p>
+
+    <div id="tool-search" class="tool-search" hidden>
+        <label class="visually-hidden" for="tool-query">Search the toolbox</label>
+        <input id="tool-query" type="search" placeholder="Search" autocomplete="off" />
+    </div>
+
+    <nav class="tool-nav" aria-label="Toolbox sections">
+        {sections.map(({ id, name }) => <a href={`#${id}`}>{name}</a>)}
+    </nav>
+
+    {sections.map((section) => (
+        <section id={section.id} class="tool-section" aria-labelledby={`${section.id}-heading`}>
+            <h2 id={`${section.id}-heading`}>{section.name}</h2>
+            {section.groups.map((group) => (
+                <div class="tool-group">
+                    {group.name && <h3>{group.name}</h3>}
+                    <ul>
+                        {group.tools.map((tool) => (
+                            <li data-search={[section.name, group.name, tool.name, tool.description, ...tool.tags].join(' ').toLowerCase()}>
+                                <a href={tool.url} target="_blank" rel="noopener noreferrer">{tool.name}</a>
+                                {tool.favorite && <span class="tool-favorite"><span aria-hidden="true">★</span><span class="visually-hidden">Favorite</span></span>}
+                                <span class="tool-description">{tool.description}{tool.draft && ' (suggestion)'}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
+        </section>
+    ))}
+    <p id="tool-empty" class="post-meta" role="status" hidden>Nothing matches that search.</p>
+
+    <script is:inline src="/js/toolbox.js"></script>
+</Base>

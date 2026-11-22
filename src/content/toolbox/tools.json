@@ -1,0 +1,94 @@
+[
+  {
+    "id": "artificial-intelligence",
+    "name": "Artificial Intelligence",
+    "groups": [
+      {
+        "name": "LLMs",
+        "tools": [
+          { "name": "Claude", "url": "https://claude.ai/", "description": "AI assistant from Anthropic.", "draft": true },
+          { "name": "ChatGPT", "url": "https://chatgpt.com/", "description": "AI assistant from OpenAI.", "draft": true },
+          { "name": "Gemini", "url": "https://gemini.google.com/", "description": "AI assistant from Google.", "draft": true },
+          { "name": "Ollama", "url": "https://ollama.com/", "description": "Run open models on your own computer.", "tags": ["local"], "draft": true }
+        ]
+      },
+      {
+        "name": "Coding Agents",
+        "tools": [
+          { "name": "Claude Code", "url": "https://claude.com/product/claude-code", "description": "Coding agent from Anthropic.", "draft": true },
+          { "name": "Codex", "url": "https://openai.com/codex/", "description": "Coding agent from OpenAI.", "draft": true },
+          { "name": "Cursor", "url": "https://cursor.com/", "description": "Code editor with built-in AI.", "draft": true }
+        ]
+      },
+      {
+        "name": "Agentic AI",
+        "tools": [
+          { "name": "Building effective agents", "url": "https://www.anthropic.com/research/building-effective-agents", "description": "Article on common agent patterns and when to use them.", "draft": true },
+          { "name": "Model Context Protocol", "url": "https://modelcontextprotocol.io/", "description": "Open standard for connecting AI apps to tools and data.", "tags": ["mcp"], "draft": true },
+          { "name": "LangGraph", "url": "https://www.langchain.com/langgraph", "description": "Framework for building agents.", "draft": true }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "adblock",
+    "name": "Adblock",
+    "groups": [
+      {
+        "tools": [
+          { "name": "uBlock Origin", "url": "https://github.com/gorhill/uBlock", "description": "Content blocker for web browsers.", "tags": ["browser", "extension", "privacy"], "draft": false },
+          { "name": "Pi-hole", "url": "https://pi-hole.net/", "description": "Blocks ads for a whole home network.", "tags": ["dns", "network"], "draft": true }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "free-books-online",
+    "name": "Free Books Online",
+    "groups": [
+      {
+        "tools": [
+          { "name": "Project Gutenberg", "url": "https://www.gutenberg.org/", "description": "Free ebooks, mostly older works in the public domain.", "tags": ["reading"], "draft": false },
+          { "name": "Internet Archive", "url": "https://archive.org/details/texts", "description": "Digital library of books and texts to read or borrow.", "tags": ["reading", "library"], "draft": false },
+          { "name": "Standard Ebooks", "url": "https://standardebooks.org/", "description": "Carefully formatted public domain ebooks.", "tags": ["reading"], "draft": true },
+          { "name": "LibriVox", "url": "https://librivox.org/", "description": "Free public domain audiobooks read by volunteers.", "tags": ["audio"], "draft": true }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cybersecurity",
+    "name": "Cybersecurity",
+    "groups": [
+      {
+        "name": "Learn",
+        "tools": [
+          { "name": "Web Security Academy", "url": "https://portswigger.net/web-security", "description": "Free web security training with labs.", "tags": ["training"], "draft": true },
+          { "name": "MITRE ATT&CK", "url": "https://attack.mitre.org/", "description": "Reference of attacker tactics and techniques.", "draft": true }
+        ]
+      },
+      {
+        "name": "Use",
+        "tools": [
+          { "name": "CyberChef", "url": "https://gchq.github.io/CyberChef/", "description": "Decode, convert and analyze data in the browser.", "draft": true },
+          { "name": "VirusTotal", "url": "https://www.virustotal.com/", "description": "Scan files and links for malware.", "draft": true },
+          { "name": "Have I Been Pwned", "url": "https://haveibeenpwned.com/", "description": "Check whether an email appears in known data breaches.", "draft": true }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "developer-tools",
+    "name": "Developer Tools",
+    "groups": [
+      {
+        "tools": [
+          { "name": "DevDocs", "url": "https://devdocs.io/", "description": "Many API docs in one searchable place.", "tags": ["documentation"], "draft": true },
+          { "name": "regex101", "url": "https://regex101.com/", "description": "Test and explain regular expressions.", "tags": ["regex"], "draft": true },
+          { "name": "explainshell", "url": "https://explainshell.com/", "description": "Explains each part of a shell command.", "tags": ["linux", "bash"], "draft": true },
+          { "name": "Excalidraw", "url": "https://excalidraw.com/", "description": "Quick hand-drawn style diagrams.", "tags": ["diagram"], "draft": true }
+        ]
+      }
+    ]
+  }
+]

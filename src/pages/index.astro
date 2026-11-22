@@ -5,9 +5,14 @@ import SectionCard from '../components/SectionCard.astro';
 import PostList from '../components/PostList.astro';
 import { projects } from '../data/projects';
 import { getPosts } from '../data/posts';
+import { profile } from '../data/profile';
 import { getLiveSections } from '../data/sections';
 
-const sections = await getLiveSections();
+const channel = profile.links.find(({ label }) => label === 'YouTube');
+const cards = [
+    ...await getLiveSections(),
+    ...(channel ? [{ ...channel, summary: 'My YouTube channel.', icon: 'M3 6.5h18v11H3zM10.5 9.5v5l4-2.5z' }] : []),
+];
 const posts = (await getPosts()).filter(({ data }) => data.showOnHome);
 ---
 <Base title="Charles Zhao" description="Charles Zhao personal portfolio website" path="/">
@@ -28,7 +33,7 @@ const posts = (await getPosts()).filter(({ data }) => data.showOnHome);
     <section class="section" aria-labelledby="explore-heading">
         <h2 id="explore-heading">Explore</h2>
         <div class="project-grid">
-            {sections.map((section) => <SectionCard {...section} />)}
+            {cards.map((card) => <SectionCard {...card} />)}
         </div>
     </section>
 </Base>

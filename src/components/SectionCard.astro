@@ -1,11 +1,14 @@
 ---
-import type { Section } from '../data/sections';
-
-type Props = Section;
-const { label, href, summary, image } = Astro.props;
+interface Props { label: string; href: string; summary: string; image?: string; icon?: string }
+const { label, href, summary, image, icon } = Astro.props;
+const external = href.startsWith('https:');
 ---
-<a class="section-card" href={href}>
-    {image && <img src={image} alt="" width="800" height="600" loading="lazy" />}
+<a class="section-card" href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>
+    {image ? <img src={image} alt="" width="800" height="600" loading="lazy" /> : icon && (
+        <span class="section-card-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={icon} fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </span>
+    )}
     <span class="section-card-label">{label}</span>
     <span class="section-card-summary">{summary}</span>
 </a>

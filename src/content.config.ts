@@ -37,4 +37,22 @@ const garage = defineCollection({
     }),
 });
 
-export const collections = { archives, garage };
+const toolbox = defineCollection({
+    loader: file('src/content/toolbox/tools.json'),
+    schema: z.object({
+        name: z.string(),
+        groups: z.array(z.object({
+            name: z.string().optional(),
+            tools: z.array(z.object({
+                name: z.string(),
+                url: z.url({ protocol: /^https$/ }),
+                description: z.string(),
+                tags: z.array(z.string()).default([]),
+                favorite: z.boolean().default(false),
+                draft: z.boolean().default(true),
+            })),
+        })),
+    }),
+});
+
+export const collections = { archives, garage, toolbox };

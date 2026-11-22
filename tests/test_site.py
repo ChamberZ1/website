@@ -107,6 +107,9 @@ class SiteTests(unittest.TestCase):
     def test_drafts_and_placeholders_are_not_published(self):
         for path in [*ROOT.rglob('*.html'), *ROOT.rglob('*.xml')]:
             self.assertNotIn('[Placeholder]', path.read_text(encoding='utf-8'), path.name)
+        toolbox = ROOT / 'toolbox.html'
+        if toolbox.exists():
+            self.assertNotIn('(suggestion)', toolbox.read_text(encoding='utf-8'))
 
     def test_sitemap_lists_only_built_pages(self):
         for url in ElementTree.parse(ROOT / 'sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc'):
