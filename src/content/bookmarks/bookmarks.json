@@ -85,8 +85,7 @@
         "links": [
           { "name": "Project Gutenberg", "url": "https://www.gutenberg.org/", "description": "Free ebooks, mostly older works in the public domain.", "tags": ["reading"], "draft": false },
           { "name": "Internet Archive", "url": "https://archive.org/details/texts", "description": "Digital library of books and texts to read or borrow.", "tags": ["reading", "library"], "draft": false },
-          { "name": "Standard Ebooks", "url": "https://standardebooks.org/", "description": "Carefully formatted public domain ebooks.", "tags": ["reading"], "draft": false },
-          { "name": "LibriVox", "url": "https://librivox.org/", "description": "Free public domain audiobooks read by volunteers.", "tags": ["audio"], "draft": false }
+          { "name": "Standard Ebooks", "url": "https://standardebooks.org/", "description": "Carefully formatted public domain ebooks.", "tags": ["reading"], "draft": false }
         ]
       }
     ]
