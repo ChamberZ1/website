@@ -63,20 +63,6 @@
     ]
   },
   {
-    "id": "developer-tools",
-    "name": "Developer Tools",
-    "groups": [
-      {
-        "links": [
-          { "name": "DevDocs", "url": "https://devdocs.io/", "description": "Many API docs in one searchable place.", "tags": ["documentation"], "draft": false },
-          { "name": "regex101", "url": "https://regex101.com/", "description": "Test and explain regular expressions.", "tags": ["regex"], "draft": false },
-          { "name": "explainshell", "url": "https://explainshell.com/", "description": "Explains each part of a shell command.", "tags": ["linux", "bash"], "draft": false },
-          { "name": "Excalidraw", "url": "https://excalidraw.com/", "description": "Quick hand-drawn style diagrams.", "tags": ["diagram"], "draft": false }
-        ]
-      }
-    ]
-  },
-  {
     "id": "adblock",
     "name": "Adblock",
     "groups": [
