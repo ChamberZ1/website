@@ -8,7 +8,7 @@ export interface Section {
     enabled: boolean;
 }
 
-export const sections: Section[] = [
+const sections: Section[] = [
     { label: '/Photography', href: '/photography', summary: 'Photo gallery.', image: '/assets/img/mtn-ridges1-800px.webp', enabled: true },
     { label: '/Toolbox', href: '/toolbox', summary: 'Useful bookmarks and resources.', enabled: false },
     { label: '/Archives', href: '/archives', summary: 'Writing, guides, and experiences.', enabled: false },

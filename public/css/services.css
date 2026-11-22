@@ -29,6 +29,8 @@ body {
     color: var(--text);
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     min-height: 100vh;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 .page-intro-band {
@@ -182,7 +184,7 @@ main {
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    padding: 0.8rem 1.1rem;
+    padding: 0.85rem 1.1rem;
     border-radius: 999px;
     transition: box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease;
 }
@@ -226,5 +228,11 @@ main {
 
     .page-intro h2 {
         font-size: 2rem;
+    }
+
+    .site-footer a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
     }
 }

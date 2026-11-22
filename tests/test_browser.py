@@ -369,6 +369,14 @@ class BrowserTests(unittest.TestCase):
         for page in ('index.html', 'services.html', 'photography.html', 'cyber.html'):
             with self.subTest(page=page):
                 self.load(page)
+                if page == 'index.html':
+                    self.click('#sidebar-toggle')
+                    self.assertTrue(self.script('''
+                        return [...document.querySelectorAll('.links a')].every(link => {
+                            const r = link.getBoundingClientRect();
+                            return r.left >= 0 && r.right <= innerWidth && link.scrollWidth <= link.clientWidth;
+                        });
+                    '''))
                 self.assertLessEqual(self.script('return document.documentElement.scrollWidth'),
                                      self.script('return innerWidth'))
         self.click('.window-toggle[data-window="edu-window"]')

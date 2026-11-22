@@ -18,7 +18,7 @@ function resetZoom() {
     img.removeEventListener('mousemove', updateZoomPos);
 }
 
-function openImage(fullImageUrl, altText) {
+function openImage(fullImageUrl) {
     const modal = document.getElementById("photoModal");
     const modalImg = document.getElementById("fullImage");
 
@@ -32,12 +32,6 @@ function openImage(fullImageUrl, altText) {
     document.body.style.overflow = "hidden";
 
     currentImageIndex = imageItems.findIndex(item => item.full === fullImageUrl);
-
-    if (currentImageIndex === -1) {
-        modalImg.src = fullImageUrl;
-        modalImg.alt = altText || "Expanded photograph";
-        return;
-    }
 
     modalImg.src = imageItems[currentImageIndex].full;
     modalImg.alt = imageItems[currentImageIndex].alt;
@@ -127,13 +121,13 @@ function setupPhotography() {
         img.setAttribute('aria-label', `Open image: ${img.getAttribute('alt') || 'Photograph'}`);
 
         img.addEventListener('click', () => {
-            openImage(img.getAttribute('data-full'), img.getAttribute('alt'));
+            openImage(img.getAttribute('data-full'));
         });
 
         img.addEventListener('keydown', event => {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
-                openImage(img.getAttribute('data-full'), img.getAttribute('alt'));
+                openImage(img.getAttribute('data-full'));
             }
         });
     });
@@ -360,8 +354,9 @@ document.addEventListener('keydown', event => {
     }
 });
 
-// Close Start Menu if clicking outside of it
-document.addEventListener('click', event => {
+// Close Start Menu on a press outside it. iOS Safari does not send click for
+// taps on plain page content.
+document.addEventListener('pointerdown', event => {
     const startMenu = document.getElementById('start-menu');
     const startBtn = document.querySelector('.start-btn');
 

@@ -39,7 +39,7 @@
     if (!sidebarToggle || !sidebarContent) return;
 
     sidebarContent.classList.add('is-collapsible');
-    const mobileLayout = window.matchMedia('(max-width: 820px)');
+    const mobileLayout = window.matchMedia('(max-width: 820px), (max-width: 960px) and (max-height: 500px)');
 
     function setSidebarOpen(open, restoreFocus = false) {
         const expanded = mobileLayout.matches && open;
@@ -56,7 +56,7 @@
         setSidebarOpen(false);
         if (mobileLayout.matches && focusWasInside) sidebarToggle.focus();
         if (!mobileLayout.matches && toggleHadFocus) {
-            sidebarContent.querySelector('a[href], button')?.focus();
+            sidebarContent.querySelector('a[href]')?.focus();
         }
     }
 
@@ -72,12 +72,14 @@
 
     const sidebar = sidebarToggle.closest('.sidebar');
     sidebar?.addEventListener('focusout', function (event) {
-        if (mobileLayout.matches && !sidebar.contains(event.relatedTarget)) {
+        // Safari reports no relatedTarget when a link or button is tapped.
+        if (mobileLayout.matches && event.relatedTarget && !sidebar.contains(event.relatedTarget)) {
             setSidebarOpen(false);
         }
     });
 
-    document.addEventListener('click', function (event) {
+    // iOS Safari does not send click for taps on plain page content.
+    document.addEventListener('pointerdown', function (event) {
         if (mobileLayout.matches && !sidebarContent.hidden &&
             !sidebarContent.contains(event.target) && !sidebarToggle.contains(event.target)) {
             setSidebarOpen(false);
