@@ -97,6 +97,8 @@
     "groups": [
       {
         "tools": [
+          { "name": "Google Maps", "url": "https://www.google.com/maps", "description": "Plan destinations, check ETAs, read reviews, and find stops such as gas stations, restaurants and hotels.", "tags": ["directions", "road trip", "food"], "draft": false },
+          { "name": "Google My Maps", "url": "https://www.google.com/mymaps", "description": "Make a custom map of a trip's destinations and stops.", "tags": ["planning", "road trip", "itinerary"], "draft": false },
           { "name": "Google Flights", "url": "https://www.google.com/travel/flights", "description": "Compare flights and track prices.", "tags": ["airfare"], "draft": true },
           { "name": "Rome2Rio", "url": "https://www.rome2rio.com/", "description": "Ways to get between two places by plane, train, bus or car.", "tags": ["transport"], "draft": true },
           { "name": "Wikivoyage", "url": "https://en.wikivoyage.org/", "description": "Free travel guides written by volunteers.", "tags": ["guides"], "draft": true },
