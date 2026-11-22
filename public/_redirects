@@ -1,0 +1,5 @@
+# Cloudflare can keep serving removed files from cache for up to a week.
+/assets/zcharles-official-transcript.pdf / 302
+/assets/masters-diploma.pdf / 302
+/assets/bachelors-diploma.pdf / 302
+/README.md / 302
