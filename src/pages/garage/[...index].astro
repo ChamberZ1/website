@@ -1,0 +1,67 @@
+---
+// A rest route so that /garage is not built until it has a photo and a finished mod.
+import { Image, getImage } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import BikeDrawing from '../../components/BikeDrawing.astro';
+import { bike, bikePhoto, getMods, isGarageLive } from '../../data/garage';
+import { getPosts } from '../../data/posts';
+
+export async function getStaticPaths() {
+    return (await isGarageLive()) ? [{ params: { index: undefined } }] : [];
+}
+
+const mods = await getMods();
+const posts = await getPosts();
+const photo = bikePhoto && await getImage({ src: bikePhoto, width: Math.min(bikePhoto.width, 1600) });
+const preview = bikePhoto && await getImage({ src: bikePhoto, width: Math.min(bikePhoto.width, 1200), format: 'jpg' });
+// Hotspots are percentages of the photo, drawn on a 1000-unit-wide canvas.
+const height = bikePhoto ? Math.round(1000 * bikePhoto.height / bikePhoto.width) : 660;
+---
+<Base title="Garage | Charles Zhao" description={`${bike.name} and its modifications`} path="/garage" image={preview?.src}>
+    <h1>Garage</h1>
+    <p class="post-meta">{bike.name}</p>
+
+    <div class="garage">
+        <svg id="bike" class="bike" viewBox={`0 0 1000 ${height}`} role="group" aria-label={bike.photoAlt}>
+            {photo ? <image href={photo.src} width="1000" height={height} /> : <BikeDrawing />}
+            {mods.map(({ id, data }, index) => data.hotspot && (
+                <a class="hotspot" href={`#${id}`} aria-label={`${index + 1}. ${data.name}`}>
+                    <circle class="hotspot-area" cx={data.hotspot.x * 10} cy={data.hotspot.y * height / 100} r="64" />
+                    <circle class="hotspot-dot" cx={data.hotspot.x * 10} cy={data.hotspot.y * height / 100} r="34" />
+                    <text x={data.hotspot.x * 10} y={data.hotspot.y * height / 100} text-anchor="middle" dominant-baseline="central" font-size="36">{index + 1}</text>
+                </a>
+            ))}
+        </svg>
+
+        <ol class="mods">
+            {mods.map(({ id, data }) => (
+                <li id={id} tabindex="-1">
+                    <h2>{data.name}{data.draft && ' (draft)'}</h2>
+                    {(data.brand || data.price) && <p class="post-meta">{[data.brand, data.price].filter(Boolean).join(', ')}</p>}
+                    <p>{data.description}</p>
+                    {data.notes && <p><strong>Installation:</strong> {data.notes}</p>}
+                    {data.photo && <Image src={data.photo} alt={data.photoAlt} width={Math.min(data.photo.width, 800)} />}
+                    <p class="mod-links">
+                        {data.hotspot && <a href="#bike" data-mod={id}>Show on bike</a>}
+                        {data.link && <a href={data.link} target="_blank" rel="noopener noreferrer">Product page</a>}
+                        {data.video && <a href={data.video} target="_blank" rel="noopener noreferrer">Video</a>}
+                        {data.post && posts.some((post) => post.id === data.post?.id) && <a href={`/archives/${data.post.id}`}>Related post</a>}
+                    </p>
+                </li>
+            ))}
+        </ol>
+    </div>
+
+    <script is:inline src="/js/garage.js"></script>
+    {import.meta.env.DEV && (
+        <p id="hotspot-helper" class="post-meta">Dev only: click the bike to get hotspot coordinates.</p>
+        <script is:inline>
+            document.getElementById('bike').addEventListener('click', function (event) {
+                const box = this.getBoundingClientRect();
+                const x = Math.round((event.clientX - box.left) / box.width * 100);
+                const y = Math.round((event.clientY - box.top) / box.height * 100);
+                document.getElementById('hotspot-helper').textContent = `"hotspot": { "x": ${x}, "y": ${y} }`;
+            });
+        </script>
+    )}
+</Base>

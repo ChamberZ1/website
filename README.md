@@ -64,6 +64,20 @@ This repository is public, so anyone can read a draft on GitHub, and an image's
 location data stays in the original file. Keep private drafts elsewhere and
 remove location data before committing photos.
 
+## Adding to Garage
+
+1. Add a side-on photo of the bike as `src/content/garage/bike.jpg`.
+2. Edit `src/content/garage/mods.json`. Each mod needs `id`, `name` and
+   `description`. Optional: `brand`, `price`, `notes` (installation), `link`,
+   `video`, `photo`, `photoAlt`, `post` (an Archives file name without `.md`)
+   and `hotspot`.
+3. For hotspots, run `npm run dev`, open `/garage` and click the bike. The
+   coordinates to paste appear below it.
+4. Set `"draft": false` on finished mods and push to `main`.
+
+Garage appears by itself once there is a photo and one finished mod. Before
+committing photos, hide the license plate and VIN and remove location data.
+
 ## Deployment
 
 Cloudflare Pages: build command `npm run build`, output directory `dist`.

@@ -1,5 +1,5 @@
-import { defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { defineCollection, reference } from 'astro:content';
+import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 const archives = defineCollection({
@@ -18,4 +18,23 @@ const archives = defineCollection({
     }),
 });
 
-export const collections = { archives };
+const garage = defineCollection({
+    loader: file('src/content/garage/mods.json'),
+    schema: ({ image }) => z.object({
+        name: z.string(),
+        description: z.string(),
+        brand: z.string().optional(),
+        price: z.string().optional(),
+        notes: z.string().optional(),
+        link: z.url().optional(),
+        video: z.url().optional(),
+        photo: image().optional(),
+        photoAlt: z.string().default(''),
+        post: reference('archives').optional(),
+        // Percentages from the left and top of the bike photo.
+        hotspot: z.object({ x: z.number().min(0).max(100), y: z.number().min(0).max(100) }).optional(),
+        draft: z.boolean().default(true),
+    }),
+});
+
+export const collections = { archives, garage };

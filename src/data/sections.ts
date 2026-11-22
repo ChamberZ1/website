@@ -1,7 +1,8 @@
+import { isGarageLive } from './garage';
 import { getPosts } from './posts';
 
 // Navigation links and homepage cards. Set `enabled: true` once a section has a
-// page and real content. Archives turns on by itself with the first published post.
+// page and real content. Archives and Garage turn on by themselves when they have content.
 export interface Section {
     label: string;
     href: string;
@@ -18,6 +19,9 @@ const sections: Section[] = [
 ];
 
 export async function getLiveSections() {
-    const hasPosts = (await getPosts()).length > 0;
-    return sections.filter(({ href, enabled }) => enabled || (href === '/archives' && hasPosts));
+    const ready: Record<string, boolean> = {
+        '/archives': (await getPosts()).length > 0,
+        '/garage': await isGarageLive(),
+    };
+    return sections.filter(({ href, enabled }) => enabled || ready[href]);
 }
