@@ -168,24 +168,6 @@ body {
 .sidebar-toggle[aria-expanded="true"] .hamburger-icon::before { transform: translateY(6px) rotate(45deg); }
 .sidebar-toggle[aria-expanded="true"] .hamburger-icon::after { transform: translateY(-6px) rotate(-45deg); }
 
-/* ---------- resume link ---------- */
-
-.actions { margin-top: 1.75rem; }
-
-.resume-link {
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 0.45rem 0.85rem;
-    transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
-}
-
-.resume-link:hover { border-color: var(--border-strong); color: var(--text); }
-
 /* ---------- navigation ---------- */
 
 .links {

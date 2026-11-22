@@ -15,6 +15,7 @@ const { home = false } = Astro.props;
 
     <div id="sidebar-content" class="sidebar-content">
         <nav class="links" aria-label="Site">
+            <a href={profile.resume} target="_blank" rel="noopener noreferrer">Resume</a>
             <a href="/" aria-current={home ? 'page' : undefined}>Projects</a>
             {liveSections.map((section) => <a href={section.href}>{section.label}</a>)}
         </nav>
@@ -24,9 +25,5 @@ const { home = false } = Astro.props;
                 ? <a href={href}>{label}</a>
                 : <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>)}
         </nav>
-
-        <div class="actions">
-            <a class="resume-link" href={profile.resume} target="_blank" rel="noopener noreferrer">Resume</a>
-        </div>
     </div>
 </header>
