@@ -23,7 +23,7 @@ const url = path && new URL(path, Astro.site).href;
 const hasFeed = (await getPosts()).length > 0;
 // The dev server needs inline code and a websocket; the built site does not.
 // Cloudflare adds its Web Analytics script, which reports to cloudflareinsights.com.
-const csp = import.meta.env.PROD && "default-src 'none'; style-src 'self'; script-src 'self' https://static.cloudflareinsights.com; img-src 'self'; connect-src https://cloudflareinsights.com; manifest-src 'self'; base-uri 'self'; form-action 'none';";
+const csp = import.meta.env.PROD && "default-src 'none'; style-src 'self'; script-src 'self' https://static.cloudflareinsights.com; img-src 'self'; connect-src 'self' https://cloudflareinsights.com; manifest-src 'self'; base-uri 'self'; form-action 'none';";
 ---
 <!DOCTYPE html>
 <html lang="en">
