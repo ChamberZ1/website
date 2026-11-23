@@ -13,9 +13,27 @@ const cards = [
     ...await getLiveSections(),
     ...(channel ? [{ ...channel, summary: 'My YouTube channel.', image: '/assets/img/youtube-banner-800px.webp' }] : []),
 ];
+const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        { '@type': 'WebSite', '@id': 'https://zcharles.com/#website', name: profile.name, url: 'https://zcharles.com/' },
+        {
+            '@type': 'ProfilePage',
+            url: 'https://zcharles.com/',
+            mainEntity: {
+                '@type': 'Person',
+                '@id': 'https://zcharles.com/#person',
+                name: profile.name,
+                url: 'https://zcharles.com/',
+                alumniOf: { '@type': 'CollegeOrUniversity', name: 'Virginia Tech' },
+                sameAs: profile.links.map(({ href }) => href).filter((href) => href.startsWith('https:')),
+            },
+        },
+    ],
+};
 const posts = (await getPosts()).filter(({ data }) => data.showOnHome);
 ---
-<Base title="Charles Zhao" description="Charles Zhao personal portfolio website" path="/">
+<Base title="Charles Zhao" description="Charles Zhao's cybersecurity projects, resume, photography and bookmarks." path="/" schema={schema}>
     <section class="section" id="projects" aria-labelledby="projects-heading">
         <h2 id="projects-heading">Projects</h2>
         <div class="project-grid">

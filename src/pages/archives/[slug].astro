@@ -12,8 +12,21 @@ const { post } = Astro.props;
 const { title, date, updated, summary, category, cover, coverAlt, draft } = post.data;
 const { Content } = await render(post);
 const preview = cover && await getImage({ src: cover, width: Math.min(cover.width, 1200), format: 'jpg' });
+const url = `https://zcharles.com/archives/${post.id}`;
+const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: summary,
+    url,
+    mainEntityOfPage: url,
+    datePublished: isoDate(date),
+    dateModified: isoDate(updated ?? date),
+    image: preview && new URL(preview.src, Astro.site).href,
+    author: { '@type': 'Person', '@id': 'https://zcharles.com/#person', name: 'Charles Zhao', url: 'https://zcharles.com/' },
+};
 ---
-<Base title={`${title} | Charles Zhao`} description={summary} path={`/archives/${post.id}`} image={preview?.src} published={isoDate(date)}>
+<Base title={`${title} | Charles Zhao`} description={summary} path={`/archives/${post.id}`} image={preview?.src} published={isoDate(date)} schema={schema}>
     <article class="post">
         <h1>{title}</h1>
         <p class="post-meta">

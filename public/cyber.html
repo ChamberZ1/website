@@ -3,14 +3,19 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Charles Zhao | Cybersecurity" />
-        <title>HAKERMANE</title>
+        <meta name="description" content="Cybersecurity projects by Charles Zhao, including KubeRange, Phisherman and a Sliver C2 stager." />
+        <title>Cyber | Charles Zhao</title>
 
         <meta property="og:title" content="Cyber | Charles Zhao" />
-        <meta property="og:description" content="Cybersecurity projects by Charles Zhao" />
+        <meta property="og:description" content="Cybersecurity projects by Charles Zhao, including KubeRange, Phisherman and a Sliver C2 stager." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://zcharles.com/cyber" />
-        <meta property="og:image" content="https://zcharles.com/android-chrome-512x512.png" />
+        <meta property="og:image" content="https://zcharles.com/assets/img/link-preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Charles Zhao, zcharles.com" />
+        <meta property="og:site_name" content="Charles Zhao" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://zcharles.com/cyber" />
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com; script-src 'self'; img-src 'self'; font-src https://cdnjs.cloudflare.com https://fonts.gstatic.com; manifest-src 'self'; base-uri 'self'; form-action 'none';">
@@ -20,6 +25,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
 
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
@@ -100,7 +106,7 @@
                     <button type="button" class="window-close" data-window="cybertwit-window" aria-label="Close Daily Cybersecurity News window">x</button>
                 </div>
                 <div class="window-body">
-                    <img src="/assets/svg/xwhite.svg" alt="CyberTwitDaily" class="cybertwit-preview">
+                    <img src="/assets/svg/xwhite.svg" alt="CyberTwitDaily" class="cybertwit-preview" loading="lazy">
         
                     <p class="project-desc">
                         An X feed aggregating the latest cybersecurity news, research, and exploits from top infosec sources.
@@ -119,13 +125,13 @@
             <div id="phisherman-window" class="window-popup" role="dialog" aria-label="Phisherman">
                 <div class="window-header">
                     <div class="header-left">
-                        <img src="/assets/svg/phishmail.svg" class="header-icon" alt="Icon for phisherman project">
+                        <img src="/assets/img/phishmail-icon.webp" class="header-icon" alt="Icon for phisherman project">
                         <span>Phisherman</span>
                     </div>
                     <button type="button" class="window-close" data-window="phisherman-window" aria-label="Close Phisherman window">x</button>
                 </div>
                 <div class="window-body">
-                    <img src="/assets/img/phishmail.webp" alt="Phisherman" class="project-preview">
+                    <img src="/assets/img/phishmail.webp" alt="Phisherman" class="project-preview" loading="lazy">
 
                     <p class="project-desc">
                         Multi-layer system leveraging rules, classic ML, and DL models for detecting phishing emails.
@@ -149,7 +155,7 @@
                     <button type="button" class="window-close" data-window="kuberange-window" aria-label="Close KubeRange window">x</button>
                 </div>
                 <div class="window-body">
-                    <img src="/assets/img/k8s.webp" alt="KubeRange" class="project-preview">
+                    <img src="/assets/img/k8s.webp" alt="KubeRange" class="project-preview" loading="lazy">
 
                     <p class="project-desc">
                         Kubernetes-based cyber range platform that dynamically provisions isolated vulnerable environments (DVWA, OWASP Juice Shop) for security training, with centralized log monitoring via ELK Stack.
@@ -174,7 +180,7 @@
                     <button type="button" class="window-close" data-window="pi-hole-window" aria-label="Close Pi-hole window">x</button>
                 </div>
                 <div class="window-body">
-                    <img src="/assets/img/pi-hole-shark-invis.webp" alt="Pi-hole Project" class="project-preview">
+                    <img src="/assets/img/pi-hole-shark-invis.webp" alt="Pi-hole Project" class="project-preview" loading="lazy">
         
                     <p class="project-desc">
                         A DNS sinkhole configured on a Raspberry Pi to block and monitor DNS traffic.
@@ -198,7 +204,7 @@
                     <button type="button" class="window-close" data-window="sliver-window" aria-label="Close Sliver C2 window">x</button>
                 </div>
                 <div class="window-body">
-                    <img src="/assets/img/sliver.webp" alt="Sliver C2 Framework" class="project-preview">
+                    <img src="/assets/img/sliver.webp" alt="Sliver C2 Framework" class="project-preview" loading="lazy">
         
                     <p class="project-desc">
                         A custom C++ stager built to deliver a Sliver C2 implant while evading Microsoft Defender Antivirus.
@@ -228,7 +234,7 @@
                         <img src="/assets/svg/xwhite.svg" class="app-icon" title="CyberTwit" alt="CyberTwitDaily project">
                     </button>
                     <button type="button" class="app-icon-container window-toggle" title="Phisherman" data-window="phisherman-window" aria-controls="phisherman-window" aria-expanded="false">
-                        <img src="/assets/svg/phishmail.svg" class="app-icon" title="Phisherman" alt="Phisherman project">
+                        <img src="/assets/img/phishmail-icon.webp" class="app-icon" title="Phisherman" alt="Phisherman project">
                     </button>
                     <button type="button" class="app-icon-container window-toggle" title="KubeRange" data-window="kuberange-window" aria-controls="kuberange-window" aria-expanded="false">
                         <img src="/assets/svg/k8s.svg" class="app-icon" title="KubeRange" alt="KubeRange project">

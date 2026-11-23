@@ -108,7 +108,7 @@ main {
 }
 
 .service-card.card-security  { --card-accent: #2e6da4; --tag-text: #2e6da4; --tag-bg: #eaf2fb; --accent: #2e6da4; }
-.service-card.card-web       { --card-accent: #2a7a5e; --tag-text: #2a7a5e; --tag-bg: #e8f5f1; --accent: #2a7a5e; }
+.service-card.card-web       { --card-accent: #2a7a5e; --tag-text: #2a7a5e; --tag-bg: #e8f5f1; --accent: #256b53; }
 .service-card.card-ai        { --card-accent: #7c4dbb; --tag-text: #7c4dbb; --tag-bg: #f3eefb; --accent: #7c4dbb; }
 
 .service-tag {

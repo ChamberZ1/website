@@ -14,9 +14,11 @@ interface Props {
     image?: string;
     /** Publication date (YYYY-MM-DD) of an article. */
     published?: string;
+    /** schema.org data for search engines. */
+    schema?: object;
 }
 
-const { title, description, path, noindex = false, image = '/android-chrome-512x512.png', published } = Astro.props;
+const { title, description, path, noindex = false, image, published, schema } = Astro.props;
 const url = path && new URL(path, Astro.site).href;
 const hasFeed = (await getPosts()).length > 0;
 // The dev server needs inline code and a websocket; the built site does not.
@@ -34,7 +36,12 @@ const csp = import.meta.env.PROD && "default-src 'none'; style-src 'self'; scrip
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content={published ? 'article' : 'website'} />
-        <meta property="og:image" content={new URL(image, Astro.site).href} />
+        <meta property="og:site_name" content="Charles Zhao" />
+        <meta property="og:image" content={new URL(image ?? '/assets/img/link-preview.png', Astro.site).href} />
+        {!image && <meta property="og:image:width" content="1200" />}
+        {!image && <meta property="og:image:height" content="630" />}
+        <meta property="og:image:alt" content={image ? title : 'Charles Zhao, zcharles.com'} />
+        <meta name="twitter:card" content="summary_large_image" />
         {published && <meta property="article:published_time" content={published} />}
         {url && <meta property="og:url" content={url} />}
         {url && <link rel="canonical" href={url} />}
@@ -46,6 +53,7 @@ const csp = import.meta.env.PROD && "default-src 'none'; style-src 'self'; scrip
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         {hasFeed && <link rel="alternate" type="application/rss+xml" title="Charles Zhao" href="/rss.xml" />}
+        {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />}
         <script is:inline src="/js/theme.js"></script>
     </head>
     <body>

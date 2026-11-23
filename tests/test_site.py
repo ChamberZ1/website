@@ -2,7 +2,9 @@
 python3 -m unittest discover -s tests
 """
 from html.parser import HTMLParser
+import json
 from pathlib import Path
+import re
 import unittest
 from urllib.parse import urlsplit
 from xml.etree import ElementTree
@@ -110,6 +112,24 @@ class SiteTests(unittest.TestCase):
         bookmarks = ROOT / 'bookmarks.html'
         if bookmarks.exists():
             self.assertNotIn('(draft)', bookmarks.read_text(encoding='utf-8'))
+
+    def test_search_and_sharing_tags(self):
+        titles = []
+        for path in ROOT.rglob('*.html'):
+            page = Page(path)
+            metas = {a.get('name') or a.get('property'): a.get('content', '') for t, a in page.tags if t == 'meta'}
+            title = re.search(r'<title>(.*?)</title>', path.read_text(encoding='utf-8')).group(1)
+            titles.append(title)
+            self.assertIn('Charles Zhao', title, path.name)
+            self.assertTrue(metas.get('description'), path.name)
+            image = resolve(path, urlsplit(metas['og:image']).path)
+            self.assertTrue(image.is_file(), f'{path.name}: missing {image.name}')
+            self.assertEqual(sum(t == 'h1' for t, _ in page.tags), 1, path.name)
+            if metas.get('robots') != 'noindex':
+                self.assertTrue(any(t == 'link' and a.get('rel') == 'canonical' for t, a in page.tags), path.name)
+            for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', path.read_text(encoding='utf-8'), re.S):
+                json.loads(block)
+        self.assertEqual(len(titles), len(set(titles)), 'Page titles must be unique')
 
     def test_sitemap_lists_only_built_pages(self):
         for url in ElementTree.parse(ROOT / 'sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc'):
