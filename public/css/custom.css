@@ -508,6 +508,7 @@ body.cyber {
 
 .project-preview {
     width: 100%;
+    height: auto;
     max-height: 200px;
     object-fit: contain;
     margin-bottom: 15px;
